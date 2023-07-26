@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HomePage.less"
 import "@arco-design/web-react/dist/css/arco.css";
 import { Form, Table } from "@arco-design/web-react";
@@ -166,7 +166,7 @@ const PieChart = (props: EquipmentPieChartProps) => {
         gradeLevel = levelGrade90
     }
 
-    let result = [0, 0, 0, 0,0,0,0]
+    let result = [0, 0, 0, 0, 0, 0, 0]
 
     for (let i = 0, j = 0; j < 100; j++) {
         if (j <= gradeLevel[i]) {
@@ -184,7 +184,7 @@ const PieChart = (props: EquipmentPieChartProps) => {
         <p style={{ fontSize: 10 }}>主力:{gradeLevel[2] + 1}-{gradeLevel[3]}:<span style={{ color: "purple" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[3]).toFixed(2)}%</span></p>
         <p style={{ fontSize: 10 }}>优秀:{gradeLevel[3] + 1}-{gradeLevel[4]}:<span style={{ color: "orange" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[4]).toFixed(2)}%</span></p>
         <p style={{ fontSize: 10 }}>传家宝:{gradeLevel[4] + 1}-{gradeLevel[5]}:<span style={{ color: "red" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[5]).toFixed(2)}%</span></p>
-        <p style={{ fontSize: 10 }}>神器:{gradeLevel[5] + 1}-{"以上"}:<span style={{ color: "red", fontWeight:"bold" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[6]).toFixed(2)}%</span></p>
+        <p style={{ fontSize: 10 }}>神器:{gradeLevel[5] + 1}-{"以上"}:<span style={{ color: "red", fontWeight: "bold" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[6]).toFixed(2)}%</span></p>
     </div>
 };
 
@@ -202,6 +202,50 @@ const GetTotalGrade = (item: Equipment) => {
     const rrGrade = item.RR
     return speedGrade + atkGrade + defendGrade + hpGrade + atkPercentGrade + defendPercentGrade + hpPercentGrade + ccGrade + cdGrade + hrGrade + rrGrade
 }
+
+interface ImageCropperProps {
+    imageUrl: string,
+    left: number,
+    top: number,
+    right: number,
+    bottom: number
+}
+const ImageCropper = (props: ImageCropperProps) => {
+    const [croppedImageUrl, setCroppedImageUrl] = useState('');
+    const { imageUrl, left, top, right, bottom } = props
+    useEffect(() => {
+        handleCrop()
+    },[])
+    const handleCrop = () => {
+        // 创建一个临时图片对象用于裁剪
+        const image = new Image();
+        image.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const cropWidth = right - left;
+            const cropHeight = bottom - top;
+
+            canvas.width = cropWidth;
+            canvas.height = cropHeight;
+            if (ctx == undefined) {
+                return <div></div>
+            }
+            ctx.drawImage(image, left, top, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+
+            // 将裁剪后的图片转换成 data URL
+            const dataURL = canvas.toDataURL();
+            setCroppedImageUrl(dataURL);
+        };
+        image.src = imageUrl;
+    };
+
+
+    return (
+        <div>
+            {croppedImageUrl && <img src={croppedImageUrl} alt="Cropped Image" />}
+        </div>
+    );
+};
 
 const HomePage = () => {
     let defaultInfo: Equipment[] = []
@@ -289,18 +333,25 @@ const HomePage = () => {
                                     let clipStr = "rect(" + item.Y1 * heightPercent + "px " + item.X2 * widthPercent + "px " + item.Y2 * heightPercent + "px " + item.X1 * widthPercent + "px)"
 
                                     return <div key={index} style={{ height: targetHeight * imageInterval * 1.17 }}>
-                                        <img
+                                        <ImageCropper
+                                            imageUrl={item.OriginImage === undefined ? "" : URL.createObjectURL(item.OriginImage)}
+                                            bottom={item.Y2 }
+                                            top={item.Y1}
+                                            left={item.X1 }
+                                            right={item.X2}
+                                        />
+                                        {/* <img
                                             alt="装备"
-                                            src={item.OriginImage === undefined ? "" : URL.createObjectURL(item.OriginImage)}
+                                            src=
                                             style={{
                                                 height: item.OriginImageHeight * heightPercent,
                                                 width: item.OriginImageWidth * widthPercent,
                                                 left: -item.X1 * widthPercent + 10,
                                                 top: -item.Y1 * heightPercent + targetHeight * 2.31 * index + 100,
                                                 position: "absolute",
-                                                clip: "rect(" + item.Y1 * heightPercent + "px " + item.X2 * widthPercent + "px " + item.Y2 * heightPercent + "px " + item.X1 * widthPercent + "px)",
+                                                clip: "rect(" +  * heightPercent + "px " +  * widthPercent + "px " + item.Y2 * heightPercent + "px " + item.X1 * widthPercent + "px)",
                                             }}
-                                        />
+                                        /> */}
                                     </div>
                                 },
                             },
