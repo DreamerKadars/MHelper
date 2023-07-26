@@ -13,7 +13,8 @@ func DealOldFile() {
 	folderPaths := []string{
 		utils.ImagePath,
 		utils.JsonPath,
-		utils.ImageAfterProcessPath,
+		utils.ImageAfterProcess192Path,
+		utils.ImageAfterProcess127Path,
 	}
 
 	for {
@@ -24,8 +25,7 @@ func DealOldFile() {
 			}
 		}
 
-		// 定期查询间隔：1小时
-		time.Sleep(1 * time.Hour)
+		time.Sleep(10 * time.Minute)
 	}
 }
 

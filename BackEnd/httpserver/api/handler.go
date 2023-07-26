@@ -18,6 +18,7 @@ import (
 const (
 	PngFileSuffix  = ".png"
 	JpegFileSuffix = ".jpeg"
+	JpgFileSuffix  = ".jpg"
 )
 
 func UploadImageInfo(ctx iris.Context) {
@@ -39,8 +40,8 @@ func UploadImageInfo(ctx iris.Context) {
 
 	fileSuffix := strings.ToLower(path.Ext(handler.Filename)) //获取文件后缀
 
-	if fileSuffix != PngFileSuffix && fileSuffix != JpegFileSuffix {
-		utils.FailResponse(ctx, fmt.Errorf("图片仅仅支持png/jpeg格式"))
+	if fileSuffix != PngFileSuffix && fileSuffix != JpegFileSuffix && fileSuffix != JpgFileSuffix {
+		utils.FailResponse(ctx, fmt.Errorf("图片仅仅支持png/jpeg/jpg格式"))
 		return
 	}
 

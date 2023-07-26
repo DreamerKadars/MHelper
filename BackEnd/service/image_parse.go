@@ -8,7 +8,6 @@ import (
 	"image"
 	"image/jpeg"
 	"image/png"
-	"math/rand"
 	"os"
 	"os/exec"
 	"strconv"
@@ -26,6 +25,7 @@ const (
 	ClassRr        = "rr"        // 效果抵抗
 	ClassHr        = "hr"        // 效果命中
 	ClassEquipment = "equipment" // 完整装备
+	ClassLevel85   = "85"        // 85级装备
 	dpiMin         = 70
 	dpiMax         = 2400
 	numLengthParam = 2.20
@@ -66,12 +66,15 @@ type Object struct {
 func CorrectYoloObjects(YoloObjects []*Object) []*Equipment {
 	equipment := make([]*Equipment, 0)
 	otherObject := make([]*Object, 0)
+	levelObject := make([]*Object, 0)
 
 	for _, object := range YoloObjects {
 		if object.Class == ClassEquipment {
 			equipment = append(equipment, &Equipment{
 				Object: *object,
 			})
+		} else if object.Class == ClassLevel85 {
+			levelObject = append(levelObject, object)
 		} else {
 			otherObject = append(otherObject, object)
 		}
@@ -85,6 +88,18 @@ func CorrectYoloObjects(YoloObjects []*Object) []*Equipment {
 				objectOther.X1 >= equip.X1-(equip.X2-equip.X1)/10 &&
 				objectOther.Y1 >= equip.Y1-(equip.Y2-equip.Y1)/10 {
 				equip.Objects = append(equip.Objects, *objectOther)
+			}
+		}
+	}
+
+	// 等级判断
+	for _, levelObjectTemp := range levelObject {
+		for _, equip := range equipment {
+			if levelObjectTemp.X2 <= equip.X2+(equip.X2-equip.X1)/10 &&
+				levelObjectTemp.Y2 <= equip.Y2+(equip.Y2-equip.Y1)/10 &&
+				levelObjectTemp.X1 >= equip.X1-(equip.X2-equip.X1)/10 &&
+				levelObjectTemp.Y1 >= equip.Y1-(equip.Y2-equip.Y1)/10 {
+				equip.Level = 85 // 当前只有85级装备
 			}
 		}
 	}
@@ -175,7 +190,7 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 	}
 
 	res = CorrectYoloObjects(YoloObjects)
-
+	indexImage := 1
 	for _, equip := range res {
 		// 装备的主属性被认为是锚点，即右上角坐标y值最大的那个
 		var indexAnchor = equip.AnchorIndex
@@ -187,7 +202,8 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 				continue
 			}
 			if object.X1 > leftX {
-				value, percent, err := CalculateNum(utils.ImageAfterProcessPath, imageFileName, imageSuffix, int(object.X2), int(object.Y1), int(object.X2+numLengthParam*(object.X2-object.X1)), int(object.Y2))
+				value, percent, err := CalculateNum(indexImage, utils.ImageAfterProcess127Path, imageFileName, imageSuffix, false, int(object.X2), int(object.Y1), int(object.X2+numLengthParam*(object.X2-object.X1)), int(object.Y2))
+				indexImage++
 				if err != nil {
 					continue
 				}
@@ -232,7 +248,8 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 		// }
 		// 读取装备强化等级
 		x1, y1, x2, y2 := GetUpgradeLevelLoc(equip.X1, equip.Y1, equip.X2, equip.Y2)
-		equip.UpgradeLevel, _, err = CalculateNum(utils.ImageAfterProcessPath, imageFileName, imageSuffix, x1, y1, x2, y2)
+		equip.UpgradeLevel, _, err = CalculateNum(indexImage, utils.ImageAfterProcess192Path, imageFileName, imageSuffix, true, x1, y1, x2, y2)
+		indexImage++
 		if err != nil {
 			utils.Error("%+v", err)
 		}
@@ -240,14 +257,14 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 	return res, nil
 }
 
-// 计算图片中一个副属性的数值
-func CalculateNum(imagePath, imageFileName, imageSuffix string, x1, y1, x2, y2 int) (value int, percent bool, err error) {
+// 计算图片中一个副属性的数值,强制需要+号时必须要识别到+号
+func CalculateNum(index int, imagePath, imageFileName, imageSuffix string, mustPlus bool, x1, y1, x2, y2 int) (value int, percent bool, err error) {
 	var targetImage string
 	var ocrResult string
 	defer func() {
 		utils.Info("OCR： 生成图像文件[%s],ocr识别结果：[%s],转义结果[数字:%d 百分比;%+v],是否有错误[%+v]", targetImage, ocrResult, value, percent, err)
 	}()
-	targetImage = imagePath + imageFileName + "_temp_" + strconv.Itoa(rand.Intn(1000)) + imageSuffix
+	targetImage = imagePath + imageFileName + "_temp_" + strconv.Itoa(index) + imageSuffix
 	err = Cut(imagePath+imageFileName, targetImage, x1, y1, x2, y2)
 	if err != nil {
 		return 0, false, err
@@ -273,16 +290,28 @@ func CalculateNum(imagePath, imageFileName, imageSuffix string, x1, y1, x2, y2 i
 	}
 	ocrResult = out.String()
 	result := ocrResult
+	result = strings.Replace(result, "020", "%", -1)
 	if strings.Contains(result, "%") {
 		percent = true
 	}
-	result = strings.Replace(result, "020", "%", -1)
+	// 如果存在百分号，删除%号后面的字符
+	if strings.LastIndex(result, "%") != -1 {
+		result = result[:strings.LastIndex(result, "%")]
+	}
+
 	result = strings.ReplaceAll(result, "%", "")
 	result = strings.ReplaceAll(result, "\n", "")
 	result = strings.ReplaceAll(result, " ", "")
 
 	if len(result) == 0 {
-		return -1, false, fmt.Errorf("未解析到数字")
+		return 0, false, fmt.Errorf("未解析到数字")
+	}
+	if mustPlus && !strings.Contains(result, "+") {
+		return 0, false, nil
+	}
+	// 如果存在+号，删除+号前的字符
+	if strings.LastIndex(result, "+") != -1 {
+		result = result[strings.LastIndex(result, "+"):]
 	}
 	result = strings.TrimPrefix(result, "+")
 	value, err = strconv.Atoi(result)
@@ -349,10 +378,10 @@ func saveImage(path string, subImg image.Image, quality int, tt string) error {
 // 0 0.25968 0.47286 1
 // 0 0 0.24633 1
 func GetUpgradeLevelLoc(x1, y1, x2, y2 float32) (newX1, newY1, newX2, newY2 int) {
-	newX1 = int(x1 + 0.25968*(x2-x1))
+	newX1 = int(x1 + 0.28968*(x2-x1))
 	newY1 = int(y1)
-	newX2 = int(x1 + 0.47286*(x2-x1))
-	newY2 = int(y1 + 0.24633*(y2-y1))
+	newX2 = int(x1 + 0.42286*(x2-x1))
+	newY2 = int(y1 + 0.21633*(y2-y1))
 	return
 }
 

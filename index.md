@@ -1,1 +1,2 @@
 pip3 install --upgrade pip
+/Users/bytedance/Library/Python/3.11/bin/pyinstaller --onefile --add-binary "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.dylib:torch/libtorch_global_deps.dylib" ./python_helper/parse.py
