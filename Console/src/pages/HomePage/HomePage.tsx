@@ -208,11 +208,12 @@ interface ImageCropperProps {
     left: number,
     top: number,
     right: number,
-    bottom: number
+    bottom: number,
+    croppedWidth: number,
 }
 const ImageCropper = (props: ImageCropperProps) => {
     const [croppedImageUrl, setCroppedImageUrl] = useState('');
-    const { imageUrl, left, top, right, bottom } = props
+    const { imageUrl, left, top, right, bottom, croppedWidth } = props
     useEffect(() => {
         handleCrop()
     },[])
@@ -225,12 +226,16 @@ const ImageCropper = (props: ImageCropperProps) => {
             const cropWidth = right - left;
             const cropHeight = bottom - top;
 
-            canvas.width = cropWidth;
-            canvas.height = cropHeight;
+            // 计算缩放比例
+            const scale = croppedWidth / cropWidth;
+            const scaledHeight = cropHeight * scale;
+
+            canvas.width = croppedWidth;
+            canvas.height = scaledHeight;
             if (ctx == undefined) {
                 return <div></div>
             }
-            ctx.drawImage(image, left, top, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+            ctx.drawImage(image, left, top, cropWidth, cropHeight, 0, 0, croppedWidth, scaledHeight);
 
             // 将裁剪后的图片转换成 data URL
             const dataURL = canvas.toDataURL();
@@ -250,9 +255,6 @@ const ImageCropper = (props: ImageCropperProps) => {
 const HomePage = () => {
     let defaultInfo: Equipment[] = []
     const [Info, setInfo] = useState(defaultInfo)
-    const targetHeight = 100
-    const targetWidth = 250
-    const imageInterval = 1.1
     return (
         <Layout>
             <Header>
@@ -325,33 +327,17 @@ const HomePage = () => {
                         columns={[
                             {
                                 title: '装备',
-                                width: targetWidth * imageInterval * imageInterval,
+                                width: 400,
                                 render(col, item, index) {
-                                    // 计算比例使得高度为50 长度为125
-                                    let heightPercent = targetHeight / (item.Y2 - item.Y1)
-                                    let widthPercent = targetWidth / (item.X2 - item.X1)
-                                    let clipStr = "rect(" + item.Y1 * heightPercent + "px " + item.X2 * widthPercent + "px " + item.Y2 * heightPercent + "px " + item.X1 * widthPercent + "px)"
-
-                                    return <div key={index} style={{ height: targetHeight * imageInterval * 1.17 }}>
+                                    return <div key={index} style={{ }}>
                                         <ImageCropper
                                             imageUrl={item.OriginImage === undefined ? "" : URL.createObjectURL(item.OriginImage)}
-                                            bottom={item.Y2 }
+                                            bottom={item.Y2}
                                             top={item.Y1}
-                                            left={item.X1 }
+                                            left={item.X1}
                                             right={item.X2}
+                                            croppedWidth={ 300}
                                         />
-                                        {/* <img
-                                            alt="装备"
-                                            src=
-                                            style={{
-                                                height: item.OriginImageHeight * heightPercent,
-                                                width: item.OriginImageWidth * widthPercent,
-                                                left: -item.X1 * widthPercent + 10,
-                                                top: -item.Y1 * heightPercent + targetHeight * 2.31 * index + 100,
-                                                position: "absolute",
-                                                clip: "rect(" +  * heightPercent + "px " +  * widthPercent + "px " + item.Y2 * heightPercent + "px " + item.X1 * widthPercent + "px)",
-                                            }}
-                                        /> */}
                                     </div>
                                 },
                             },
@@ -359,7 +345,7 @@ const HomePage = () => {
                                 title: '装备副词条',
                                 width: 150,
                                 render(col, item, index) {
-                                    return <div style={{ maxHeight: targetHeight }}>
+                                    return <div style={{  }}>
                                         {item.Speed !== 0 && <p style={{ fontSize: 10 }}> 速度:{item.Speed}</p>}
                                         {item.Atk !== 0 && <p style={{ fontSize: 10 }}>攻击力:{item.Atk}</p>}
                                         {item.AtkPercent !== 0 && <p style={{ fontSize: 10 }}>攻击力:{item.AtkPercent}%</p>}
@@ -390,7 +376,7 @@ const HomePage = () => {
                                     const hrGrade = item.Hr
                                     const rrGrade = item.RR
 
-                                    return <div style={{ maxHeight: targetHeight }}>
+                                    return <div style={{  }}>
                                         {item.Speed !== 0 && <p style={{ fontSize: 10 }}> 速度得分:{speedGrade}</p>}
                                         {item.Atk !== 0 && <p style={{ fontSize: 10 }}> 攻击力固定值得分:{atkGrade}</p>}
                                         {item.AtkPercent !== 0 && <p style={{ fontSize: 10 }}> 攻击力百分比得分:{atkPercentGrade}</p>}
@@ -409,8 +395,8 @@ const HomePage = () => {
                                 title: '副词条总分',
                                 width: 120,
                                 render(col, item, index) {
-                                    return <div style={{ maxHeight: targetHeight }}>
-                                        {<p style={{ fontSize: 10, color: "red" }}> 总分:{GetTotalGrade(item).toFixed(2)}</p>}
+                                    return <div style={{  }}>
+                                        {<p style={{ fontSize: 12, color: "red", fontWeight: "bold" }}> 总分:{GetTotalGrade(item).toFixed(2)}</p>}
                                     </div>
                                 }
                             },
@@ -418,7 +404,7 @@ const HomePage = () => {
                                 title: '装备等级',
                                 width: 170,
                                 render(col, item, index) {
-                                    return <div style={{ maxHeight: targetHeight }}>
+                                    return <div style={{  }}>
                                         {item.Level === 85 ? <div style={{ color: "green" }}>85级可重铸装备</div> : <div style={{}}>其他不可重铸装备</div>}
                                     </div>
                                 }
@@ -427,20 +413,20 @@ const HomePage = () => {
                                 title: '当前强化等级',
                                 width: 150,
                                 render(col, item, index) {
-                                    return <div style={{ maxHeight: targetHeight }}>
+                                    return <div style={{  }}>
                                         +{item.UpgradeLevel}
                                     </div>
                                 }
                             },
-                            {
-                                title: '剩余强化次数',
-                                width: 150,
-                                render(col, item, index) {
-                                    return <div style={{ maxHeight: targetHeight }}>
-                                        {Math.floor((17 - item.UpgradeLevel) / 3)}
-                                    </div>
-                                }
-                            },
+                            // {
+                            //     title: '剩余强化次数',
+                            //     width: 150,
+                            //     render(col, item, index) {
+                            //         return <div style={{  }}>
+                            //             {Math.floor((17 - item.UpgradeLevel) / 3)}
+                            //         </div>
+                            //     }
+                            // },
                             {
                                 title: '强化预览',
                                 width: 300,
