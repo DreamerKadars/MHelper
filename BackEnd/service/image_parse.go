@@ -301,6 +301,7 @@ func CalculateNum(index int, imagePath, imageFileName, imageSuffix string, mustP
 
 	result = strings.ReplaceAll(result, "%", "")
 	result = strings.ReplaceAll(result, "\n", "")
+	result = strings.ReplaceAll(result, "\f", "")
 	result = strings.ReplaceAll(result, " ", "")
 
 	if len(result) == 0 {
