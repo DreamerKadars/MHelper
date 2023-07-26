@@ -392,6 +392,7 @@ const HomePage = () => {
                             },
                             {
                                 title: '强化预览',
+                                width: 300,
                                 render(col, item, index) {
                                     return <div style={{}}>
                                         < PieChart equip={item} />

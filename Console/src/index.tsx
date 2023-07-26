@@ -20,7 +20,7 @@ export const PathCardCreate: string = "/CardCreate"
 
 createRoot(document.getElementById('root')!).render(<div className='layout'>
   {/* <Header></Header> */}
-  <Layout style={{}}>
+  <Layout style={{ width: 1500 }}>
     <Layout>
       {/* <Sider><div className='logo' />
         <Menu></Menu>
