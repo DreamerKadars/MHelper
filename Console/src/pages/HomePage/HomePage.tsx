@@ -89,67 +89,67 @@ const PieChart = (props: EquipmentPieChartProps) => {
     for (let i = 0; i < upgradeTime; i++) {
         for (let j = 0; j < 100; j++) {
             if (props.equip.Atk !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.5 * grade[j]
+                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.5 * grade[j]
+            }
+            if (props.equip.AtkPercent !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
+                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
+                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
+                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
+                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+            }
+            if (props.equip.Defend !== 0) {
                 gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.5 * grade[j]
                 gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.5 * grade[j]
             }
-            if (props.equip.AtkPercent !== 0) {
-                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
-            }
-            if (props.equip.Defend !== 0) {
-                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.5 * grade[j]
-                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.5 * grade[j]
-            }
             if (props.equip.DefendPercent !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
             }
             if (props.equip.Hp !== 0) {
-                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 1 * grade[j]
+                gradeTemp[j + 3] = gradeTemp[j + 3] + 0.25 * 0.5 * grade[j]
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.5 * grade[j]
             }
             if (props.equip.HpPercent !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
             }
             if (props.equip.Speed !== 0) {
-                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.5 * grade[j]
-                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.5 * grade[j]
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.33 * grade[j]
+                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.33 * grade[j]
+                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.33 * grade[j]
             }
             if (props.equip.Hr !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
             }
             if (props.equip.RR !== 0) {
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
                 gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
             }
             if (props.equip.CC !== 0) {
-                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.25 * grade[j] // 4.5分
-                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.25 * grade[j] // 6分
-                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.25 * grade[j] // 7.5分
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.25 * grade[j] // 9分
+                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.33 * grade[j] // 4.5分
+                gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.33 * grade[j] // 6分
+                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.33 * grade[j] // 7.5分
             }
             if (props.equip.CD !== 0) {
-                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j] // 4.4
-                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j] // 5.5 
-                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j] // 6.6
-                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j] // 7.7
-                gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j] // 8.8
+                gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.25 * grade[j] // 4.4
+                gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.25 * grade[j] // 5.5 
+                gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.25 * grade[j] // 6.6
+                gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.25 * grade[j] // 7.7
             }
         }
         console.log(grade, gradeTemp)
@@ -267,7 +267,7 @@ const HomePage = () => {
                         fontSize: 40,
                         fontWeight: "bold"
                     }}>
-                        <div>E7装备强化推荐器(只支持红装)</div>
+                        <div>E7装备强化推荐器(只支持85红装)</div>
                     </Col>
                 </Row>
             </Header>
@@ -428,7 +428,7 @@ const HomePage = () => {
                             //     }
                             // },
                             {
-                                title: '强化预览',
+                                title: '强化预览(仅85红装)',
                                 width: 300,
                                 render(col, item, index) {
                                     return <div style={{}}>
