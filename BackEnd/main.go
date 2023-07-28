@@ -10,5 +10,9 @@ func init() {
 }
 
 func main() {
+	// 需要使用
+	// utils.Info("%+v", utils.GenerateHeroDataJSON())
+	// utils.Info("%+v", utils.GetAllHeroImage())
+
 	httpserver.StartHttpServer()
 }

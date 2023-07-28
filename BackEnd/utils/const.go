@@ -7,4 +7,7 @@ const (
 	ImagePath                = "../predict/image/"
 	JsonPath                 = "../predict/json/"
 	JsonSuffix               = ".json"
+	DataFolder               = "./Data/"
+	DataHeroStatisticName    = "hero_data.json"
+	DataHeroImageFolder      = "./Data/HeroImage/"
 )
