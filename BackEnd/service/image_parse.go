@@ -16,19 +16,12 @@ import (
 )
 
 const (
-	ClassAtk       = "atk"       // 攻击力
-	ClassDefend    = "defend"    // 防御力
-	ClassHp        = "hp"        // 血量
-	ClassSpeed     = "speed"     // 速度
-	ClassCC        = "cc"        // 暴击率
-	ClassCD        = "cd"        // 暴击伤害
-	ClassRr        = "rr"        // 效果抵抗
-	ClassHr        = "hr"        // 效果命中
-	ClassEquipment = "equipment" // 完整装备
-	ClassLevel85   = "85"        // 85级装备
-	dpiMin         = 70
-	dpiMax         = 2400
-	numLengthParam = 2.20
+	ClassEquipment      = "equipment" // 完整装备
+	ClassLevel85        = "85"        // 85级装备
+	dpiMin              = 70
+	dpiMax              = 2400
+	numLengthParam      = 2.20
+	numLengthParamLarge = 3.0
 )
 
 type Equipment struct {
@@ -50,6 +43,8 @@ type Equipment struct {
 	UpgradePercent []float64 //升级到各个级别装备的概率
 	AnchorIndex    int       // 主属性锚点下标
 	Objects        []Object  // 包含在内的检测物体
+	MainType       string    // 主属性类型
+	MainValue      int       // 主属性数值
 }
 
 type Object struct {
@@ -199,6 +194,16 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 		// 锚点右侧的属性需要参与计算数值，代表副词条
 		for index, object := range equip.Objects {
 			if index == indexAnchor {
+				// 主属性
+				value, percent, err := CalculateNum(indexImage, utils.ImageAfterProcess127Path, imageFileName, imageSuffix, false, int(object.X2), int(object.Y1), int(object.X2+numLengthParamLarge*(object.X2-object.X1)), int(object.Y2))
+				if err != nil {
+					continue
+				}
+				equip.MainType = object.Class
+				if percent {
+					equip.MainType += "Percent"
+				}
+				equip.MainValue = value
 				continue
 			}
 			if object.X1 > leftX {
@@ -208,33 +213,33 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 					continue
 				}
 				switch object.Class {
-				case ClassAtk:
+				case utils.ClassAtk:
 					if percent {
 						equip.AtkPercent = value
 					} else {
 						equip.Atk = value
 					}
-				case ClassHp:
+				case utils.ClassHp:
 					if percent {
 						equip.HpPercent = value
 					} else {
 						equip.Hp = value
 					}
-				case ClassDefend:
+				case utils.ClassDefend:
 					if percent {
 						equip.DefendPercent = value
 					} else {
 						equip.Defend = value
 					}
-				case ClassSpeed:
+				case utils.ClassSpeed:
 					equip.Speed = value
-				case ClassCC:
+				case utils.ClassCC:
 					equip.CC = value
-				case ClassCD:
+				case utils.ClassCD:
 					equip.CD = value
-				case ClassRr:
+				case utils.ClassRr:
 					equip.RR = value
-				case ClassHr:
+				case utils.ClassHr:
 					equip.Hr = value
 				}
 			}

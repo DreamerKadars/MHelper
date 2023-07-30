@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./HomePage.less"
 import "@arco-design/web-react/dist/css/arco.css";
-import { Form, Table } from "@arco-design/web-react";
+import { Form, Image as ArcoImage, Link, Table } from "@arco-design/web-react";
 import { } from "../../const";
 import { Layout } from '@arco-design/web-react';
 import { Upload } from '@arco-design/web-react';
@@ -9,6 +9,9 @@ import { UploadItem } from "@arco-design/web-react/es/Upload";
 import { Grid } from '@arco-design/web-react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement } from "chart.js";
+import { Equipment, InitEquipment, UploadImageRespInfo } from "../type";
+import { LoadHeroJSON } from "../../utils/api/help";
+import { EquipAnalyse } from "../../utils/EquipAnalyse/EquipAnalyse";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -18,57 +21,14 @@ const Header = Layout.Header;
 const Footer = Layout.Footer;
 const Content = Layout.Content;
 
-export interface Info {
-    Code: number;
-    Data: Equipment[];
-}
 
-export interface Equipment {
-    ID: string;
-    Class: string;
-    X1: number;
-    Y1: number;
-    X2: number;
-    Y2: number;
-    Value: number;
-    Percent: boolean;
-    CC: number;
-    CD: number;
-    Atk: number;
-    AtkPercent: number;
-    Speed: number;
-    Hp: number;
-    HpPercent: number;
-    RR: number;
-    Hr: number;
-    Defend: number;
-    DefendPercent: number;
-    Level: number;
-    UpgradeLevel: number;
-    UpgradePercent: null;
-    Objects: Object[];
-    OriginImage?: File;
-    OriginImageWidth: number;
-    OriginImageHeight: number;
-}
-
-export interface Object {
-    Class: string;
-    X1: number;
-    Y1: number;
-    X2: number;
-    Y2: number;
-    Value: number;
-    Percent: boolean;
-}
-
-
-interface EquipmentPieChartProps {
-    equip: Equipment;
-}
 // 85等级的分段
 const levelGrade90 = [60, 63, 65, 68, 70, 73, 1000]
 const levelGrade85 = [50, 53, 55, 58, 60, 63, 1000]
+interface EquipmentPieChartProps {
+    equip: Equipment;
+}
+
 const PieChart = (props: EquipmentPieChartProps) => {
     let totalGrade = GetTotalGrade(props.equip)
     let grade: number[] = Array<number>(500)
@@ -211,52 +171,50 @@ interface ImageCropperProps {
     bottom: number,
     croppedWidth: number,
 }
-const ImageCropper = (props: ImageCropperProps) => {
-    const [croppedImageUrl, setCroppedImageUrl] = useState('');
+const ImageCropper = async (props: ImageCropperProps) => {
     const { imageUrl, left, top, right, bottom, croppedWidth } = props
-    useEffect(() => {
-        handleCrop()
-    },[])
-    const handleCrop = () => {
-        // 创建一个临时图片对象用于裁剪
-        const image = new Image();
+
+    // 创建一个临时图片对象用于裁剪
+    let image = new Image();
+    image.src = imageUrl
+
+    await new Promise<void>((res, rej) => {
         image.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const cropWidth = right - left;
-            const cropHeight = bottom - top;
+            res();
+        }
+    });
 
-            // 计算缩放比例
-            const scale = croppedWidth / cropWidth;
-            const scaledHeight = cropHeight * scale;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const cropWidth = right - left;
+    const cropHeight = bottom - top;
 
-            canvas.width = croppedWidth;
-            canvas.height = scaledHeight;
-            if (ctx == undefined) {
-                return <div></div>
-            }
-            ctx.drawImage(image, left, top, cropWidth, cropHeight, 0, 0, croppedWidth, scaledHeight);
+    // 计算缩放比例
+    const scale = croppedWidth / cropWidth;
+    const scaledHeight = cropHeight * scale;
 
-            // 将裁剪后的图片转换成 data URL
-            const dataURL = canvas.toDataURL();
-            setCroppedImageUrl(dataURL);
-        };
-        image.src = imageUrl;
-    };
+    canvas.width = croppedWidth;
+    canvas.height = scaledHeight;
+    if (ctx == undefined) {
+        return ""
+    }
+    ctx.drawImage(image, left, top, cropWidth, cropHeight, 0, 0, croppedWidth, scaledHeight);
 
-
-    return (
-        <div>
-            {croppedImageUrl && <img src={croppedImageUrl} alt="Cropped Image" />}
-        </div>
-    );
+    // 将裁剪后的图片转换成 data URL
+    const dataURL = canvas.toDataURL();
+    return dataURL;
 };
 
 const HomePage = () => {
     let defaultInfo: Equipment[] = []
+
     const [Info, setInfo] = useState(defaultInfo)
+    const [visible, setVisible] = useState(false)
+    let defaultEquipment: Equipment = InitEquipment();
+    const [equip, setEquip] = useState(defaultEquipment)
     return (
         <Layout>
+            <EquipAnalyse equip={equip} visible={visible} onCancel={() => { setVisible(false) }}/>
             <Header>
                 <Row className='grid-demo' style={{ marginBottom: 16 }}>
                     <Col span={24} style={{
@@ -296,22 +254,38 @@ const HomePage = () => {
                                 }
                                 let width = 0;
                                 let height = 0;
+                                let urlOriginImage = ""
                                 if (item.originFile !== undefined) {
                                     const imageBitmap = await createImageBitmap(item.originFile);
                                     width = imageBitmap.width;
                                     height = imageBitmap.height;
+                                    urlOriginImage = URL.createObjectURL(item.originFile)
                                 }
 
-                                equip = (item.response as Info).Data
-                                equip?.map((_, index) => {
-                                    equip[index].OriginImage = item.originFile
-                                    equip[index].OriginImageWidth = width
-                                    equip[index].OriginImageHeight = height
-                                    if (equip[index].Objects?.length > 1) { // 至少有两个属性才展示。
-                                        newInfo.push(equip[index]);
-                                    }
-                                    return null
-                                })
+                                equip = (item.response as UploadImageRespInfo).Data
+
+                                if (equip !== undefined) {
+                                    const promises2 = equip?.map(async (equipTemp, index) => {
+                                        equip[index].OriginImage = item.originFile
+                                        equip[index].OriginImageWidth = width
+                                        equip[index].OriginImageHeight = height
+                                        await ImageCropper({
+                                            imageUrl: urlOriginImage,
+                                            left: equipTemp.X1,
+                                            top: equipTemp.Y1,
+                                            right: equipTemp.X2,
+                                            bottom: equipTemp.Y2,
+                                            croppedWidth: 300
+                                        }).then((url) => {
+                                            equip[index].EquipImageStr = url
+                                        })
+                                        if (equip[index].Objects?.length > 1) { // 至少有两个属性才展示。
+                                            newInfo.push(equip[index]);
+                                        }
+                                        return null
+                                    })
+                                    await Promise.all(promises2);
+                                }
                             })
                             await Promise.all(promises);
                             setInfo(newInfo)
@@ -329,15 +303,8 @@ const HomePage = () => {
                                 title: '装备',
                                 width: 400,
                                 render(col, item, index) {
-                                    return <div key={index} style={{ }}>
-                                        <ImageCropper
-                                            imageUrl={item.OriginImage === undefined ? "" : URL.createObjectURL(item.OriginImage)}
-                                            bottom={item.Y2}
-                                            top={item.Y1}
-                                            left={item.X1}
-                                            right={item.X2}
-                                            croppedWidth={ 300}
-                                        />
+                                    return <div key={index} style={{}}>
+                                        <ArcoImage src={item.EquipImageStr}></ArcoImage>
                                     </div>
                                 },
                             },
@@ -345,7 +312,7 @@ const HomePage = () => {
                                 title: '装备副词条',
                                 width: 150,
                                 render(col, item, index) {
-                                    return <div style={{  }}>
+                                    return <div style={{}}>
                                         {item.Speed !== 0 && <p style={{ fontSize: 10 }}> 速度:{item.Speed}</p>}
                                         {item.Atk !== 0 && <p style={{ fontSize: 10 }}>攻击力:{item.Atk}</p>}
                                         {item.AtkPercent !== 0 && <p style={{ fontSize: 10 }}>攻击力:{item.AtkPercent}%</p>}
@@ -376,7 +343,7 @@ const HomePage = () => {
                                     const hrGrade = item.Hr
                                     const rrGrade = item.RR
 
-                                    return <div style={{  }}>
+                                    return <div style={{}}>
                                         {item.Speed !== 0 && <p style={{ fontSize: 10 }}> 速度得分:{speedGrade}</p>}
                                         {item.Atk !== 0 && <p style={{ fontSize: 10 }}> 攻击力固定值得分:{atkGrade}</p>}
                                         {item.AtkPercent !== 0 && <p style={{ fontSize: 10 }}> 攻击力百分比得分:{atkPercentGrade}</p>}
@@ -395,7 +362,7 @@ const HomePage = () => {
                                 title: '副词条总分',
                                 width: 120,
                                 render(col, item, index) {
-                                    return <div style={{  }}>
+                                    return <div style={{}}>
                                         {<p style={{ fontSize: 12, color: "red", fontWeight: "bold" }}> 总分:{GetTotalGrade(item).toFixed(2)}</p>}
                                     </div>
                                 }
@@ -404,7 +371,7 @@ const HomePage = () => {
                                 title: '装备等级',
                                 width: 170,
                                 render(col, item, index) {
-                                    return <div style={{  }}>
+                                    return <div style={{}}>
                                         {item.Level === 85 ? <div style={{ color: "green" }}>85级可重铸装备</div> : <div style={{}}>其他不可重铸装备</div>}
                                     </div>
                                 }
@@ -413,7 +380,7 @@ const HomePage = () => {
                                 title: '当前强化等级',
                                 width: 150,
                                 render(col, item, index) {
-                                    return <div style={{  }}>
+                                    return <div style={{}}>
                                         +{item.UpgradeLevel}
                                     </div>
                                 }
@@ -429,10 +396,22 @@ const HomePage = () => {
                             // },
                             {
                                 title: '强化预览(仅85红装)',
-                                width: 300,
+                                width: 250,
                                 render(col, item, index) {
                                     return <div style={{}}>
                                         < PieChart equip={item} />
+                                    </div>
+                                }
+                            },
+                            {
+                                title: '操作',
+                                width: 120,
+                                render(col, item, index) {
+                                    return <div style={{}}>
+                                        <Link onClick={() => {
+                                            setEquip(item)
+                                            setVisible(true)
+                                        }} >装备解析</Link>
                                     </div>
                                 }
                             },
