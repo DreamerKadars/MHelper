@@ -200,7 +200,7 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 					continue
 				}
 				equip.MainType = object.Class
-				if percent {
+				if percent && (object.Class== utils.ClassAtk || object.Class== utils.ClassDefend || object.Class == utils.ClassHp){
 					equip.MainType += "Percent"
 				}
 				equip.MainValue = value

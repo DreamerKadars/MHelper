@@ -62,7 +62,6 @@ export const StatisticShow = (props: StatisticShowProps) => {
     let tempRange: number[] = numberRange
     let level = props.StatisticLevel
     let averageNum = props.StatisticAverage
-    console.log(props.StatisticAverage)
     return <div ><Popover content={"范围是[" + tempRange[0] + "," + tempRange[1] + "],落在第" + level + "区间内"}> <span style={{ color: colors[level-1], fontWeight: "bold" }}>{averageNum.toFixed(2)}</span></Popover></div>
 }
 

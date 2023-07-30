@@ -31,12 +31,10 @@ const HeroImageShow = (props: HeroImageShowProps) => {
     if (props.ImageSizeParm !== undefined) { 
         ImageSizeParm = props.ImageSizeParm
     }
-    console.log(ImageSizeParm)
     useEffect(() => {
         handleCrop()
     }, [props.HeroDetail.heroCode])
     const handleCrop = () => {
-        console.log(props.HeroDetail.heroCode)
         let srcHeroImage = E7DataDomain + "/HeroImage/" + props.HeroDetail.heroCode + ".png"
         let srcIronImage = E7DataDomain + "/icon.png"
         let srcHeroFrameImage = E7DataDomain + "/hero_frame.png"
@@ -98,7 +96,6 @@ const HeroImageShow = (props: HeroImageShowProps) => {
             }
             ctx.fillText(props.HeroDetail.heroName, x, 118 * ImageSizeParm,maxTextWidth);
         }).then(() => {
-            console.log(ctx.canvas.toDataURL())
             const dataURL = canvas.toDataURL();
             setCroppedImageUrl(dataURL);
         });

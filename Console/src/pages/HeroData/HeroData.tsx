@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "@arco-design/web-react/dist/css/arco.css";
-import { Button, Card, Checkbox, Form, Grid, Input, Link, Select, Table, TableColumnProps } from "@arco-design/web-react";
+import { Button, Card, Checkbox, Form, Grid, Input, Link, Popover, Select, Table, TableColumnProps } from "@arco-design/web-react";
 import { } from "../../const";
 import { LoadHeroJSON } from "../../utils/api/help";
 import { AttributeCode, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCode } from "../type";
@@ -100,14 +100,14 @@ const HomeData = () => {
         {
             title: '暴击率',
             render(col, item: HeroDetail, index) {
-                return <StatisticShow Type={ClassCD} StatisticAverage={item.heroDetail.criticalAverage} StatisticLevel={item.heroDetail.criticalLevel} />
+                return <StatisticShow Type={ClassCC} StatisticAverage={item.heroDetail.criticalAverage} StatisticLevel={item.heroDetail.criticalLevel} />
             },
             sorter: (a: HeroDetail, b: HeroDetail) => a.heroDetail.criticalAverage - b.heroDetail.criticalAverage,
         },
         {
             title: '暴击伤害',
             render(col, item: HeroDetail, index) {
-                return <StatisticShow Type={ClassCC} StatisticAverage={item.heroDetail.criticalHitAverage} StatisticLevel={item.heroDetail.criticalHitLevel} />
+                return <StatisticShow Type={ClassCD} StatisticAverage={item.heroDetail.criticalHitAverage} StatisticLevel={item.heroDetail.criticalHitLevel} />
             },
             sorter: (a: HeroDetail, b: HeroDetail) => a.heroDetail.criticalHitAverage - b.heroDetail.criticalHitAverage,
         },
@@ -211,9 +211,9 @@ const HomeData = () => {
                         <Input onChange={(val) => { setName(val) }}></Input>
                     </FormItem>
                 </Grid.Col>
-                <Grid.Col span={9} style={{ marginLeft: 10 }}>
-                    <FormItem label='只看RTA角色' style={{ marginRight: 10 }}>
-                        <Checkbox value={ChakeyListFilter} onChange={setChakeyListFilter}></Checkbox>
+                <Grid.Col span={12} style={{ marginLeft: 10 }}>
+                    <FormItem label={<Popover content={<div>参考B站UP主阿吉的视频攻略:<Link href="https://www.bilibili.com/video/BV1Es4y1T7tf">点此跳转</Link></div>}>只看RTA角色</Popover>} style={{ marginRight: 10 }}>
+                        <Checkbox checked={ChakeyListFilter} onChange={setChakeyListFilter}></Checkbox>
                     </FormItem>
                 </Grid.Col>
                 {/* <Grid.Col span={2} style={{ marginLeft: 10 }}>

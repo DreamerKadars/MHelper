@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "@arco-design/web-react/dist/css/arco.css";
-import { Descriptions, Form, Modal, Popover, Table, Image, Input, InputNumber, Checkbox, Select, Link } from "@arco-design/web-react";
+import { Descriptions, Form, Modal, Popover, Table, Image, Input, InputNumber, Checkbox, Select, Link, Card, Space } from "@arco-design/web-react";
 import { } from "../../const";
 import { Layout } from '@arco-design/web-react';
 import { Upload } from '@arco-design/web-react';
@@ -9,10 +9,11 @@ import { Grid } from '@arco-design/web-react';
 import { Radar, Bar } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement, ChartOptions } from "chart.js";
 import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain } from '../const';
-import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../pages/type";
+import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitEquipment, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../pages/type";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
 import { LoadHeroJSON } from "../api/help";
 import { HeroDetailStatisticShow } from "../StatisticShow/StatisticShow";
+import { PieChart } from "../PieChart/PieChart";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -46,7 +47,10 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
     const [Hr, setHr] = useState(0)
     const [Defend, setDefend] = useState(0)
     const [DefendPercent, setDefendPercent] = useState(0)
-    const [IsRightThree, setIsRightThree] = useState(true)
+    const [UpgradeLevel, setUpgradeLevel] = useState(0)
+    const [EquipLevel, setEquipLevel] = useState(0)
+    const [IsRightThree, setIsRightThree] = useState(false)
+
     const defaultHero: HeroDetail = {
         heroCode: "",
         heroName: "",
@@ -58,6 +62,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
     const [hero, setHero] = useState(defaultHero)
     const [heroVisible, setHeroVisible] = useState(false)
     const [ChakeyListFilter, setChakeyListFilter] = useState(false)
+    const [HeroNameFilter, setHeroNameFilter] = useState("")
 
     if (HeroListResult !== undefined && HeroListResult.heroList != undefined) {
         tempHeroList = HeroListResult.heroList.filter((item) => {
@@ -66,25 +71,50 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                     return false
                 }
             }
+            if (HeroNameFilter !== "") {
+                if (item.heroName.indexOf(HeroNameFilter) < 0) {
+                    return false
+                }
+            }
             return true
         })
     }
     useEffect(() => {
+        setIsRightThree(false)
         if (props.equip !== undefined) {
-            setAtk(props.equip.Atk)
-            setAtkPercent(props.equip.AtkPercent)
-            setDefend(props.equip.Defend)
-            setDefendPercent(props.equip.DefendPercent)
-            setHp(props.equip.Hp)
-            setHpPercent(props.equip.HpPercent)
-            setSpeed(props.equip.Speed)
-            setCC(props.equip.CC)
-            setCD(props.equip.CD)
-            setHr(props.equip.Hr)
-            setRR(props.equip.RR)
-            setMainType(props.equip.MainType)
-            setMainValue(props.equip.MainValue)
-            setIsRightThree(false)
+            if (props.visible) {
+                setAtk(props.equip.Atk)
+                setAtkPercent(props.equip.AtkPercent)
+                setDefend(props.equip.Defend)
+                setDefendPercent(props.equip.DefendPercent)
+                setHp(props.equip.Hp)
+                setHpPercent(props.equip.HpPercent)
+                setSpeed(props.equip.Speed)
+                setCC(props.equip.CC)
+                setCD(props.equip.CD)
+                setHr(props.equip.Hr)
+                setRR(props.equip.RR)
+                setMainType(props.equip.MainType)
+                setMainValue(props.equip.MainValue)
+                setUpgradeLevel(props.equip.UpgradeLevel)
+                setEquipLevel(props.equip.Level)
+            } else {
+                setAtk(0)
+                setAtkPercent(0)
+                setDefend(0)
+                setDefendPercent(0)
+                setHp(0)
+                setHpPercent(0)
+                setSpeed(0)
+                setCC(0)
+                setCD(0)
+                setHr(0)
+                setRR(0)
+                setMainType("")
+                setMainValue(0)
+                setUpgradeLevel(0)
+                setEquipLevel(85)
+            }
         }
     }, [props.visible])
 
@@ -145,7 +175,6 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
 
     let FindSuitHeroList: FindSuitHero[] = []
 
-
     tempHeroList.map((item: HeroDetail) => {
         const useTotalGrade = (speedGrade * item.heroDetail.speedLevel +
             atkGrade * item.heroDetail.attackLevel +
@@ -160,18 +189,33 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
             rrGrade * item.heroDetail.effectResistanceLevel) / 10
         FindSuitHeroList.push({
             HeroDetail: item,
-            UseRadio: useTotalGrade / totalGrade,
+            UseRadio: totalGrade === 0 ? 0 : (useTotalGrade / totalGrade),
         })
     })
 
+    // 构造强化概率计算的输入
+    let equip: Equipment = InitEquipment()
 
+    equip.CC = CC
+    equip.CD = CD
+    equip.Atk = Atk
+    equip.AtkPercent = AtkPercent
+    equip.Speed = Speed
+    equip.Hp = Hp
+    equip.HpPercent = HpPercent
+    equip.RR = RR
+    equip.Hr = Hr
+    equip.Defend = Defend
+    equip.DefendPercent = DefendPercent
+    equip.UpgradeLevel = UpgradeLevel
+    equip.Level = EquipLevel
 
     return <Modal style={{ width: 1600 }} visible={props.visible} onCancel={props.onCancel} onConfirm={() => { props.onCancel() }} onOk={() => { props.onCancel() }}>
         <HeroDetailStatisticShow Hero={hero} visible={heroVisible} onCancel={() => { setHeroVisible(false) }} />
         <Grid.Row>
             <Grid.Col span={5}>
-                <Image src={props.equip?.EquipImageStr}></Image>
-                <Checkbox style={{ marginTop: 20 }} value={IsRightThree} onChange={setIsRightThree}>是否为右三件</Checkbox>
+                <div><Image src={props.equip?.EquipImageStr}></Image></div>
+                <Checkbox style={{ marginTop: 20 }} checked={IsRightThree} onChange={setIsRightThree}>是否为右三件</Checkbox>
                 {IsRightThree && <div style={{ marginTop: 20 }}>
                     主属性类型：
                     <Select value={MainType} onChange={setMainType} style={{ width: 130 }}>
@@ -190,9 +234,9 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                     <InputNumber min={0} style={{ width: 60 }} value={MainValue} onChange={setMainValue} />
                 </div>}
                 <div style={{ marginTop: 20 }}>
-                    <div><span style={{ color: "" }}>攻击分: {atkGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>防御分: {defendGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>生命分: {hpGrade.toFixed(2)}</span></div>
+                    <div><span style={{ color: "" }}>攻击分: {(atkGrade + atkPercentGrade).toFixed(2)}</span></div>
+                    <div><span style={{ color: "" }}>防御分: {(defendGrade + defendPercentGrade).toFixed(2)}</span></div>
+                    <div><span style={{ color: "" }}>生命分: {(hpGrade + hpPercentGrade).toFixed(2)}</span></div>
                     <div><span style={{ color: "" }}>速度分: {speedGrade.toFixed(2)}</span></div>
                     <div><span style={{ color: "" }}>暴率分: {ccGrade.toFixed(2)}</span></div>
                     <div><span style={{ color: "" }}>暴伤分: {cdGrade.toFixed(2)}</span></div>
@@ -200,29 +244,38 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                     <div><span style={{ color: "" }}>抵抗分: {rrGrade.toFixed(2)}</span></div>
                     <div><span style={{ color: "red" }}>总分: {totalGrade.toFixed(2)}</span></div>
                 </div>
+                <Card title={"强化预览(85级红装)"} style={{ marginTop: 40 }}>
+                    <PieChart equip={equip} />
+                </Card>
             </Grid.Col>
             <Grid.Col span={4}>
                 <div style={{ width: 200 }}>
-                    <InputNumber prefix={<span style={{ color: "blue" }}>攻击力固定值</span>} min={0} value={Atk} style={{ margin: 10, width: 200 }} onChange={setAtk} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>攻击力百分比</span>} min={0} value={AtkPercent} style={{ margin: 10, width: 200 }} onChange={setAtkPercent} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力固定值</span>} min={0} value={Defend} style={{ margin: 10, width: 200 }} onChange={setDefend} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力百分比</span>} min={0} value={DefendPercent} style={{ margin: 10, width: 200 }} onChange={setDefendPercent} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值固定值</span>} min={0} value={Hp} style={{ margin: 10, width: 200 }} onChange={setHp} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值百分比</span>} min={0} value={HpPercent} style={{ margin: 10, width: 200 }} onChange={setHpPercent} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>速度{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Speed} style={{ margin: 10, width: 200 }} onChange={setSpeed} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击率{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CC} style={{ margin: 10, width: 200 }} onChange={setCC} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击伤害{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CD} style={{ margin: 10, width: 200 }} onChange={setCD} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={setHr} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={setRR} />
+                    <InputNumber defaultValue={0} hideControl prefix={<span style={{ color: "blue" }}>攻击力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Atk} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtk(val) } else { setAtk(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>攻击力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={AtkPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtkPercent(val) } else { setAtkPercent(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Defend} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefend(val) } else { setDefend(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={DefendPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefendPercent(val) } else { setDefendPercent(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Hp} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHp(val) } else { setHp(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={HpPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHpPercent(val) } else { setHpPercent(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>速度{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Speed} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setSpeed(val) } else { setSpeed(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击率{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CC} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCC(val) } else { setCC(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击伤害{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CD} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCD(val) } else { setCD(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>强化等级{"\u00A0\u00A0\u00A0\u00A0\u00A0"}+</span>} min={0} value={UpgradeLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setUpgradeLevel(val) } else { setUpgradeLevel(0) } }} />
+                    <InputNumber prefix={<span style={{ color: "blue" }}>装备等级{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={EquipLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setEquipLevel(val) } else { setEquipLevel(0) } }} />
                 </div>
             </Grid.Col>
             <Grid.Col span={11}>
                 <div style={{ backgroundColor: "blue" }}></div>
-                <Grid.Col span={24} style={{ marginLeft: 10 }}>
-                    <Form.Item label='只看RTA角色' style={{ marginRight: 10 }}>
-                        <Checkbox value={ChakeyListFilter} onChange={setChakeyListFilter}></Checkbox>
-                    </Form.Item>
-                </Grid.Col>
+                <Grid.Row>
+                    <Grid.Col span={10} style={{ margin: 10 }}>
+                        <Input addBefore={"角色名称筛选"} value={HeroNameFilter} onChange={setHeroNameFilter}></Input>
+                    </Grid.Col>
+                    <Grid.Col span={4} style={{ margin: 10 }}>
+                        <Popover content={<div>参考B站UP主阿吉的视频攻略:<Link href="https://www.bilibili.com/video/BV1Es4y1T7tf">点此跳转</Link></div>}>只看RTA角色</Popover>
+                        <Checkbox checked={ChakeyListFilter} onChange={setChakeyListFilter}></Checkbox>
+                    </Grid.Col>
+                </Grid.Row>
                 <Table
                     data={FindSuitHeroList}
                     columns={[
@@ -236,6 +289,29 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                             title: '装备分利用率',
                             render(col, item: FindSuitHero, index) {
                                 return <span>{(item.UseRadio * 100).toFixed(2)}%</span>
+                            },
+                            sorter: (a: FindSuitHero, b: FindSuitHero) => a.UseRadio - b.UseRadio,
+                            sortDirections: ['ascend', 'descend'],
+                            defaultSortOrder: 'descend',
+                        },
+                        {
+                            title: '常用套装',
+                            render(col, item: FindSuitHero, index) {
+                                let set1 = item.HeroDetail.heroDetail.rankSets1.split(",")
+                                let set2 = item.HeroDetail.heroDetail.rankSets2.split(",")
+                                let set3 = item.HeroDetail.heroDetail.rankSets3.split(",")
+                                let allSet: string[] = []
+                                let setAllTemp = [set1, set2, set3]
+                                setAllTemp.map((set) => {
+                                    set.map((val) => {
+                                        if (!allSet.includes(val)&&val!=="") {
+                                            allSet.push(val)
+                                        }
+                                    })
+                                })
+                                return <Space direction='vertical'><Image.PreviewGroup infinite>{allSet.map((setTemp, index) => {
+                                    return <Space><Image width={30} style={{ display: "inline-block" }} key={index} src={E7DataDomain + "/SetIcon/set_" + setTemp + ".png"}></Image></Space>
+                                })}</Image.PreviewGroup></Space>
                             },
                             sorter: (a: FindSuitHero, b: FindSuitHero) => a.UseRadio - b.UseRadio,
                             sortDirections: ['ascend', 'descend'],
