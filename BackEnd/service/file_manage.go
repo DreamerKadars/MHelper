@@ -12,6 +12,7 @@ import (
 func DealOldFile() {
 	folderPaths := []string{
 		utils.ImagePath,
+		utils.ImageResultPath,
 		utils.JsonPath,
 		utils.ImageAfterProcess192Path,
 		utils.ImageAfterProcess127Path,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "@arco-design/web-react/dist/css/arco.css";
-import { Descriptions, Form, Modal, Popover, Table } from "@arco-design/web-react";
+import { Descriptions, Form, Modal, Popover, Space, Table,Image as ArcoImage } from "@arco-design/web-react";
 import { } from "../../const";
 import { Layout } from '@arco-design/web-react';
 import { Upload } from '@arco-design/web-react';
@@ -190,7 +190,7 @@ export const HeroDetailStatisticShow = (props: HeroDetailStatisticShowProps) => 
             <Grid.Col span={3}>
                 <HeroImageShow HeroDetail={props.Hero}></HeroImageShow>
             </Grid.Col>
-            <Grid.Col span={13}>
+            <Grid.Col span={8}>
                 <Descriptions
                     column={2}
                     colon=":"
@@ -199,7 +199,25 @@ export const HeroDetailStatisticShow = (props: HeroDetailStatisticShowProps) => 
                     labelStyle={{ paddingRight: 36 }}
                 />
             </Grid.Col>
-            <Grid.Col span={8} style={{}}>
+            <Grid.Col span={5} style={{ marginRight: 30 }}>
+                <Descriptions title='套装使用情况' ></Descriptions>
+                <Table
+                    pagination={ false}
+                    data={[{ SetString: props.Hero.heroDetail.rankSets1, UseRadio: props.Hero.heroDetail.eqipRankShare1 },
+                    { SetString: props.Hero.heroDetail.rankSets2, UseRadio: props.Hero.heroDetail.eqipRankShare2 },
+                    { SetString: props.Hero.heroDetail.rankSets3, UseRadio: props.Hero.heroDetail.eqipRankShare3 },
+                ]} columns={[
+                    {title:"使用率",render(col, item, index) {
+                        return <div>{ item.UseRadio}%</div>
+                    },
+                    }, {
+                        title: "套装", render(col, item, index) {
+                            return <SetShow SetString={item.SetString} />
+                        },
+                    }
+                ]} />
+            </Grid.Col>
+            <Grid.Col span={7} style={{}}>
                 <Radar data={dataRadar} />
             </Grid.Col>
         </Grid.Row>
@@ -215,3 +233,14 @@ export const HeroDetailStatisticShow = (props: HeroDetailStatisticShowProps) => 
         
     </Modal>
 }
+
+interface SetShowProps { 
+    SetString: string;
+}
+const SetShow = (props: SetShowProps) => {
+    let set1 = props.SetString.split(",")
+    return <Space direction='vertical'><ArcoImage.PreviewGroup infinite>{set1.map((setTemp, index) => {
+        return <Space><ArcoImage width={30} style={{ display: "inline-block" }} key={index} src={E7DataDomain + "/SetIcon/set_" + setTemp + ".png"}></ArcoImage></Space>
+    })}</ArcoImage.PreviewGroup></Space>
+    return <div></div>
+ }

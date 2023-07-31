@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "@arco-design/web-react/dist/css/arco.css";
-import { Descriptions, Form, Modal, Popover, Table, Image, Input, InputNumber, Checkbox, Select, Link, Card, Space } from "@arco-design/web-react";
+import { Descriptions, Form, Modal, Popover, Table, Image, Input, InputNumber, Checkbox, Select, Link, Card, Space, Button } from "@arco-design/web-react";
 import { } from "../../const";
 import { Layout } from '@arco-design/web-react';
 import { Upload } from '@arco-design/web-react';
@@ -8,12 +8,13 @@ import { UploadItem } from "@arco-design/web-react/es/Upload";
 import { Grid } from '@arco-design/web-react';
 import { Radar, Bar } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement, ChartOptions } from "chart.js";
-import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain } from '../const';
+import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain, SetList } from '../const';
 import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitEquipment, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../pages/type";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
 import { LoadHeroJSON } from "../api/help";
 import { HeroDetailStatisticShow } from "../StatisticShow/StatisticShow";
 import { PieChart } from "../PieChart/PieChart";
+import { GenerateSetImageUrl } from "../helper";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -63,6 +64,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
     const [heroVisible, setHeroVisible] = useState(false)
     const [ChakeyListFilter, setChakeyListFilter] = useState(false)
     const [HeroNameFilter, setHeroNameFilter] = useState("")
+    const [EquipSetFilter, setEquipSetFilter] = useState("")
 
     if (HeroListResult !== undefined && HeroListResult.heroList != undefined) {
         tempHeroList = HeroListResult.heroList.filter((item) => {
@@ -76,8 +78,34 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                     return false
                 }
             }
+            if (EquipSetFilter !== "") {
+                let set1 = item.heroDetail.rankSets1.split(",")
+                let set2 = item.heroDetail.rankSets2.split(",")
+                let set3 = item.heroDetail.rankSets3.split(",")
+                let setAllTemp = [...set1, ...set2, ...set3]
+                if (!setAllTemp.includes(EquipSetFilter)) { 
+                    return false
+                }
+            }
             return true
         })
+    }
+    const SetZero = () => { 
+        setAtk(0)
+        setAtkPercent(0)
+        setDefend(0)
+        setDefendPercent(0)
+        setHp(0)
+        setHpPercent(0)
+        setSpeed(0)
+        setCC(0)
+        setCD(0)
+        setHr(0)
+        setRR(0)
+        setMainType("")
+        setMainValue(0)
+        setUpgradeLevel(0)
+        setEquipLevel(85)
     }
     useEffect(() => {
         setIsRightThree(false)
@@ -99,21 +127,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                 setUpgradeLevel(props.equip.UpgradeLevel)
                 setEquipLevel(props.equip.Level)
             } else {
-                setAtk(0)
-                setAtkPercent(0)
-                setDefend(0)
-                setDefendPercent(0)
-                setHp(0)
-                setHpPercent(0)
-                setSpeed(0)
-                setCC(0)
-                setCD(0)
-                setHr(0)
-                setRR(0)
-                setMainType("")
-                setMainValue(0)
-                setUpgradeLevel(0)
-                setEquipLevel(85)
+                SetZero()
             }
         }
     }, [props.visible])
@@ -215,7 +229,8 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
         <Grid.Row>
             <Grid.Col span={5}>
                 <div><Image src={props.equip?.EquipImageStr}></Image></div>
-                <Checkbox style={{ marginTop: 20 }} checked={IsRightThree} onChange={setIsRightThree}>是否为右三件</Checkbox>
+                <div><Button style={{ margin: 20 }} type="primary" onClick={() => { SetZero() }}>重置分数</Button></div>
+                <Checkbox style={{ marginTop: 0 }} checked={IsRightThree} onChange={setIsRightThree}>是否为右三件</Checkbox>
                 {IsRightThree && <div style={{ marginTop: 20 }}>
                     主属性类型：
                     <Select value={MainType} onChange={setMainType} style={{ width: 130 }}>
@@ -269,10 +284,34 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                 <div style={{ backgroundColor: "blue" }}></div>
                 <Grid.Row>
                     <Grid.Col span={10} style={{ margin: 10 }}>
-                        <Input addBefore={"角色名称筛选"} value={HeroNameFilter} onChange={setHeroNameFilter}></Input>
+                        <span style={{ marginRight: 20 }}>角色名称筛选</span>
+                        <Input value={HeroNameFilter} style={{ width: 180, }} onChange={setHeroNameFilter}></Input>
                     </Grid.Col>
-                    <Grid.Col span={4} style={{ margin: 10 }}>
-                        <Popover content={<div>参考B站UP主阿吉的视频攻略:<Link href="https://www.bilibili.com/video/BV1Es4y1T7tf">点此跳转</Link></div>}>只看RTA角色</Popover>
+                    <Grid.Col span={6} style={{ margin: 10 }}>
+                        <span style={{marginRight:20}}>套装筛选</span>
+                        <Select
+                            value={EquipSetFilter}
+                            onChange={setEquipSetFilter}
+                            virtualListProps={{ height: 1000 }}
+                            style={{width:70,}}
+                            renderFormat={(option, value) => {
+                                if (value === "") { 
+                                    return <div></div>
+                                }
+                                return <Image preview={false} width={30} src={GenerateSetImageUrl(value+"")}></Image>
+                            }}
+                        >
+                            <Select.Option value={""}>空</Select.Option>
+                            {SetList.map((setTemp) => { 
+                                return <Select.Option value={setTemp}>
+                                    <Image preview={false } width={30} src={GenerateSetImageUrl(setTemp)}></Image>
+                                </Select.Option>
+                            })}
+                            
+                        </Select>
+                    </Grid.Col>
+                    <Grid.Col span={4} style={{ marginTop: 15 }}>
+                        <Popover content={<div>参考B站UP主阿吉的视频攻略:<Link href="https://www.bilibili.com/video/BV1Es4y1T7tf">点此跳转</Link></div>}><span>只看RTA角色</span></Popover>
                         <Checkbox checked={ChakeyListFilter} onChange={setChakeyListFilter}></Checkbox>
                     </Grid.Col>
                 </Grid.Row>
@@ -310,7 +349,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                                     })
                                 })
                                 return <Space direction='vertical'><Image.PreviewGroup infinite>{allSet.map((setTemp, index) => {
-                                    return <Space><Image width={30} style={{ display: "inline-block" }} key={index} src={E7DataDomain + "/SetIcon/set_" + setTemp + ".png"}></Image></Space>
+                                    return <Space><Image width={30} style={{ display: "inline-block" }} key={index} src={GenerateSetImageUrl(setTemp)}></Image></Space>
                                 })}</Image.PreviewGroup></Space>
                             },
                             sorter: (a: FindSuitHero, b: FindSuitHero) => a.UseRadio - b.UseRadio,
