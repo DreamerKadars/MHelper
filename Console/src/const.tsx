@@ -10,3 +10,5 @@ export function HandlerAxiosErr(error: any) {
         Message.error(error.message)
     }
 }
+
+export const HeaderSave = "x-st-save"
