@@ -5,6 +5,7 @@ const (
 	ImageAfterProcess127Path = "../predict/image_process_127/"
 	ImageResultPath          = "../predict/image_result/"
 	ImagePath                = "../predict/image/"
+	SaveImagePath            = "../predict/save/"
 	JsonPath                 = "../predict/json/"
 	JsonSuffix               = ".json"
 	DataFolder               = "./Data/"
