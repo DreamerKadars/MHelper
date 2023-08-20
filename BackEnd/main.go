@@ -1,6 +1,7 @@
 package main
 
 import (
+	dataagent "MHelper/data_agent"
 	"MHelper/httpserver"
 	"MHelper/service"
 )
@@ -10,9 +11,9 @@ func init() {
 }
 
 func main() {
-	// 需要使用
-	// utils.Info("%+v", utils.GenerateHeroDataJSON())
-	// utils.Info("%+v", utils.GetAllHeroImage())
-
-	httpserver.StartHttpServer()
+	if dataagent.IsArgsDataAgent() {
+		dataagent.StartDataAgent()
+	} else {
+		httpserver.StartHttpServer()
+	}
 }

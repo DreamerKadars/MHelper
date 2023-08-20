@@ -8,9 +8,9 @@ const (
 	SaveImagePath            = "../predict/save/"
 	JsonPath                 = "../predict/json/"
 	JsonSuffix               = ".json"
-	DataFolder               = "./Data/"
+	DataFolder               = "../Data/"
 	DataHeroStatisticName    = "hero_data.json"
-	DataHeroImageFolder      = "./Data/HeroImage/"
+	DataHeroImageFolder      = "../Data/HeroImage/"
 
 	ClassAtk    = "atk"    // 攻击力
 	ClassDefend = "defend" // 防御力

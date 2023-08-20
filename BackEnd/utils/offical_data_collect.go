@@ -53,7 +53,7 @@ type HeroDetail struct {
 	// StrategyType               int64       `json:"strategyType"`
 	// BossType                   int64       `json:"bossType"`
 	// Floor                      int64       `json:"floor"`
-	// RegDate                    string      `json:"regDate"`
+	RegDate                    string  `json:"regDate"` // 更新时间
 	AttackStats                string  `json:"attackStats"`
 	DefenseStats               string  `json:"defenseStats"`
 	VitalityStatistics         string  `json:"vitalityStatistics"`
@@ -247,8 +247,12 @@ func GenerateHeroDataJSON() error {
 	return nil
 }
 
-func GetAllHeroImage() error {
+func FileIsExist(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil
+}
 
+func GetAllHeroImage() error {
 	HeroListResultByte, err := os.ReadFile(DataFolder + DataHeroStatisticName)
 	if err != nil {
 		return err
@@ -258,15 +262,20 @@ func GetAllHeroImage() error {
 		return err
 	}
 	for _, hero := range heroListResult.HeroList {
+		heroImagePath := DataHeroImageFolder + hero.HeroCode + ".png"
+		if FileIsExist(heroImagePath) {
+			continue
+		}
 		respHttp, err := httpEpic(http.MethodGet, EpicStaticUrl, fmt.Sprintf(HeroImagePath, hero.HeroCode), nil)
 		if err != nil {
 			return err
 		}
-
-		file, err := os.Create(DataHeroImageFolder + hero.HeroCode + ".png")
+		file, err := os.Create(heroImagePath)
 		if err != nil {
+			Error("%+v", err)
 			return err
 		}
+		Info(heroImagePath)
 		defer file.Close()
 		_, err = file.Write(respHttp)
 		if err != nil {
