@@ -5,6 +5,8 @@ go 1.18
 require (
 	github.com/kataras/iris/v12 v12.2.0
 	github.com/lithammer/shortuuid v3.0.0+incompatible
+	go.mongodb.org/mongo-driver v1.12.1
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
@@ -45,10 +47,16 @@ require (
 	github.com/kataras/sitemap v0.0.6 // indirect
 	github.com/klauspost/compress v1.16.3 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.23 // indirect
+	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sergi/go-diff v1.3.1 // indirect
+	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
+	github.com/xdg-go/scram v1.1.2 // indirect
+	github.com/xdg-go/stringprep v1.0.4 // indirect
+	github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d // indirect
 	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.7.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
