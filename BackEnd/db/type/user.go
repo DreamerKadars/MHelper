@@ -7,29 +7,29 @@ import (
 )
 
 type User struct {
-	Meta              `bson:"inline"`
-	UserName          *string `bson:"user_name,omitempty"`
-	AccountID *int64 `bson:"account_id,omitempty"`
-	PassWord *string `bson:"pass_word,omitempty"`
-	Role *string `bson:"role,omitempty"`
+	Meta      `bson:"inline"`
+	UserName  *string `bson:"user_name,omitempty"`
+	AccountID *int    `bson:"account_id,omitempty"`
+	PassWord  *string `bson:"pass_word,omitempty"`
+	Role      *string `bson:"role,omitempty"`
 }
 
-func (u User) GetUserName()string{
-	if u.UserName!= nil{
+func (u User) GetUserName() string {
+	if u.UserName != nil {
 		return *u.UserName
 	}
 	return ""
 }
 
-func (u User) GetAccountID()int64{
-	if u.AccountID!= nil{
+func (u User) GetAccountID() int {
+	if u.AccountID != nil {
 		return *u.AccountID
 	}
 	return 0
 }
 
-func (u User) GetRole()string{
-	if u.Role!= nil{
+func (u User) GetRole() string {
+	if u.Role != nil {
 		return *u.Role
 	}
 	return ""
@@ -44,7 +44,9 @@ type CreateUserResponse struct {
 }
 
 type GetUserRequest struct {
-	ID ResourceID
+	ID       ResourceID
+	UserName string
+	PassWord string
 }
 
 type GetUserResponse struct {

@@ -22,7 +22,6 @@ func StartDataAgent() {
 		// 更新英雄数据
 		// UpdateHeroDataJSON()
 		// 更新英雄图片
-		UpdateHeroImage()
 
 		<-time.NewTicker(time.Hour).C
 		// 周六晚上2点自动更新

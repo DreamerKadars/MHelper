@@ -94,3 +94,7 @@ func UploadImageInfo(ctx iris.Context) {
 	}
 	utils.SuccessResponse(ctx, res)
 }
+
+func TestXxxx(ctx iris.Context) {
+	return
+}

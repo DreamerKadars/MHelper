@@ -13,14 +13,14 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type UserOperator struct {
+type HeroTemplateOperator struct {
 }
 
-func (o *UserOperator) GetCollectionName() string {
+func (o *HeroTemplateOperator) GetCollectionName() string {
 	return strings.TrimSuffix(utils.GenerateTypeName(o), "Operator")
 }
 
-func (o *UserOperator) CreateUser(ctx context.Context, req *db_type.CreateUserRequest) (*db_type.CreateUserResponse, error) {
+func (o *HeroTemplateOperator) CreateHeroTemplate(ctx context.Context, req *db_type.CreateHeroTemplateRequest) (*db_type.CreateHeroTemplateResponse, error) {
 	var id db_type.ResourceID = db_type.ResourceID(utils.GenerateID(req.Info))
 	req.Info.ID = id
 
@@ -33,22 +33,16 @@ func (o *UserOperator) CreateUser(ctx context.Context, req *db_type.CreateUserRe
 	if result.InsertedID == nil {
 		return nil, fmt.Errorf("result.InsertedID is nil")
 	}
-	resp := &db_type.CreateUserResponse{
+	resp := &db_type.CreateHeroTemplateResponse{
 		ID: req.Info.ID,
 	}
 	return resp, nil
 }
 
-func (o *UserOperator) GetUser(ctx context.Context, req *db_type.GetUserRequest) (*db_type.GetUserResponse, error) {
+func (o *HeroTemplateOperator) GetHeroTemplate(ctx context.Context, req *db_type.GetHeroTemplateRequest) (*db_type.GetHeroTemplateResponse, error) {
 	var filter bson.D = []bson.E{}
 	if req.ID != "" {
 		filter = append(filter, bson.E{Key: db_type.IDFiledName, Value: req.ID})
-	}
-	if req.UserName != "" {
-		filter = append(filter, bson.E{Key: "user_name", Value: req.UserName})
-	}
-	if req.PassWord != "" {
-		filter = append(filter, bson.E{Key: "pass_word", Value: req.PassWord})
 	}
 	singleResult := client.GetCollection(o.GetCollectionName()).FindOne(ctx, filter)
 	if singleResult == nil {
@@ -62,7 +56,7 @@ func (o *UserOperator) GetUser(ctx context.Context, req *db_type.GetUserRequest)
 		utils.Info("%+v", err)
 		return nil, err
 	}
-	var resp db_type.GetUserResponse
+	var resp db_type.GetHeroTemplateResponse
 	err = singleResult.Decode(&resp.Info)
 	if err != nil {
 		utils.Info("%+v", err)
@@ -71,24 +65,24 @@ func (o *UserOperator) GetUser(ctx context.Context, req *db_type.GetUserRequest)
 	return &resp, nil
 }
 
-func (o *UserOperator) ListUser(ctx context.Context, req *db_type.ListUserRequest) (*db_type.ListUserResponse, error) {
+func (o *HeroTemplateOperator) ListHeroTemplate(ctx context.Context, req *db_type.ListHeroTemplateRequest) (*db_type.ListHeroTemplateResponse, error) {
 	var filter bson.D = []bson.E{}
-	if req.UserSerialNumber != nil {
-		filter = append(filter, bson.E{Key: db_type.IDFiledName, Value: req.UserSerialNumber})
+	if req.HeroCode != nil {
+		filter = append(filter, bson.E{Key: "hero_code", Value: req.HeroCode})
 	}
 	cur, err := client.GetCollection(o.GetCollectionName()).Find(ctx, filter)
 	if err != nil {
 		return nil, err
 	}
-	resp := &db_type.ListUserResponse{}
+	resp := &db_type.ListHeroTemplateResponse{}
 	for cur.Next(ctx) {
-		User := db_type.User{}
-		err = cur.Decode(&User)
+		HeroTemplate := db_type.HeroTemplate{}
+		err = cur.Decode(&HeroTemplate)
 		if err != nil {
 			utils.Info("call cur.Decode fail:%+v", err)
 			continue
 		}
-		resp.Infos = append(resp.Infos, User)
+		resp.Infos = append(resp.Infos, HeroTemplate)
 	}
 	if err != nil {
 		return nil, err
@@ -100,8 +94,8 @@ func (o *UserOperator) ListUser(ctx context.Context, req *db_type.ListUserReques
 	return resp, nil
 }
 
-func (o *UserOperator) UpdateUser(ctx context.Context, req *db_type.UpdateUserRequest) (*db_type.UpdateUserResponse, error) {
-	_, err := o.GetUser(ctx, &db_type.GetUserRequest{
+func (o *HeroTemplateOperator) UpdateHeroTemplate(ctx context.Context, req *db_type.UpdateHeroTemplateRequest) (*db_type.UpdateHeroTemplateResponse, error) {
+	_, err := o.GetHeroTemplate(ctx, &db_type.GetHeroTemplateRequest{
 		ID: req.ID,
 	})
 	if err != nil {
@@ -118,12 +112,12 @@ func (o *UserOperator) UpdateUser(ctx context.Context, req *db_type.UpdateUserRe
 	sessionContext := mongo.NewSessionContext(context.Background(), session)
 
 	txnFunc := func(sessionContext mongo.SessionContext) error {
-		User, err := o.GetUser(sessionContext, &db_type.GetUserRequest{ID: req.ID})
+		HeroTemplate, err := o.GetHeroTemplate(sessionContext, &db_type.GetHeroTemplateRequest{ID: req.ID})
 		if err != nil {
 			return err
 		}
 
-		if err := User.Info.IsValid(req.NewInfo); err != nil {
+		if err := HeroTemplate.Info.IsValid(req.NewInfo); err != nil {
 			return err
 		}
 
@@ -150,11 +144,11 @@ func (o *UserOperator) UpdateUser(ctx context.Context, req *db_type.UpdateUserRe
 		return nil, err
 	}
 
-	return &db_type.UpdateUserResponse{}, nil
+	return &db_type.UpdateHeroTemplateResponse{}, nil
 }
 
-func (o *UserOperator) DeleteUser(ctx context.Context, req *db_type.DeleteUserRequest) (*db_type.DeleteUserResponse, error) {
-	_, err := o.GetUser(ctx, &db_type.GetUserRequest{
+func (o *HeroTemplateOperator) DeleteHeroTemplate(ctx context.Context, req *db_type.DeleteHeroTemplateRequest) (*db_type.DeleteHeroTemplateResponse, error) {
+	_, err := o.GetHeroTemplate(ctx, &db_type.GetHeroTemplateRequest{
 		ID: req.ID,
 	})
 	if err != nil {
@@ -172,5 +166,5 @@ func (o *UserOperator) DeleteUser(ctx context.Context, req *db_type.DeleteUserRe
 	if res.DeletedCount != 1 {
 		return nil, db_type.ErrNotFound
 	}
-	return &db_type.DeleteUserResponse{}, nil
+	return &db_type.DeleteHeroTemplateResponse{}, nil
 }

@@ -20,4 +20,7 @@ ToDo List
     - 用户系统
     - 装备管理
 
-5. 模拟战
+
+记录：
+启动mongoDB
+sudo mongod --dbpath ~/data/db --logpath ~/data/log/mongodb/mongo.log --fork

@@ -29,10 +29,10 @@ func CheckDBConf() {
 	}
 }
 
-func init() {
+func readDBConf() {
 	data, err := os.ReadFile(fmt.Sprintf(utils.Setting.ConfDir+"db_%s_conf.yml", utils.GetEnvTag()))
 	if err != nil {
-		panic("load conf file fail!")
+		panic("load conf file fail!" + err.Error())
 	}
 	err = yaml.Unmarshal(data, &dbConf)
 	if err != nil {
@@ -43,6 +43,8 @@ func init() {
 }
 
 func InitDBConnect() {
+	readDBConf()
+
 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
 	opts := options.Client().ApplyURI(dbConf.ConnectConf.Url).SetServerAPIOptions(serverAPI)
 

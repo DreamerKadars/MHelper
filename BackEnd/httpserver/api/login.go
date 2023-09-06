@@ -1,27 +1,33 @@
 package api
 
 import (
+	"MHelper/httpmiddleware"
+	"MHelper/service"
 	"MHelper/utils"
-	"time"
 
 	"github.com/kataras/iris/v12"
-	"github.com/kataras/iris/v12/middleware/jwt"
 )
 
-var jwtSecret string
-
-func SetJwtSecret (secret string) {
-	jwtSecret = secret
+type LoginRequest struct {
+	Username string
+	Password string
 }
 
+func Login(ctx iris.Context) {
+	req := LoginRequest{}
+	err := ctx.ReadJSON(&req)
+	if err != nil {
+		utils.FailResponse(ctx, err)
+		return
+	}
 
-func AuthorMiddleware (ctx iris.Context) {
-	
-	token := jwt.FromHeader(ctx)
-	signer := jwt.NewSigner(jwt.HS256, , 15*time.Minute)
-	token, err := signer.Sign(userClaims{Username: "kataras"})
-
-	verifier := NewVerifier(HS256, secret)
-	
+	// 验证账号密码
+	err = service.CheckUser(req.Username, req.Password)
+	if err != nil {
+		utils.FailResponse(ctx, err)
+		return
+	}
+	// 用账号生成jwt
+	httpmiddleware.SetJwtCookie(ctx, req.Username)
+	return
 }
-// 使用JWT为用户生成可以使用的Token，并且提供解析使用的中间件

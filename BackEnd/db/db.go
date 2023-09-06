@@ -9,11 +9,29 @@ import (
 
 var Operator ChiefOperator
 
+type StaticDataConf struct {
+	Dir                  string `yaml:"dir"`
+	HeroDataFribbelsFile string `yaml:"hero_data_fribbels_file"`
+	HeroDataFile         string `yaml:"hero_data_file"`
+}
+
+var staticDataConf StaticDataConf
+
+func SetStaticDataConf(s StaticDataConf) {
+	staticDataConf = s
+}
+
 func InitDB() {
+	err := operator.InitStaticHero(staticDataConf.Dir+staticDataConf.HeroDataFile, staticDataConf.Dir+staticDataConf.HeroDataFribbelsFile)
+	if err != nil {
+		panic(err)
+	}
 	client.InitDBConnect()
 	Operator = ChiefOperator{}
 }
 
 type ChiefOperator struct {
 	operator.UserOperator
+	operator.HeroStaticOperator
+	operator.HeroTemplateOperator
 }

@@ -12,7 +12,6 @@ var Log *log.Logger
 
 func init() {
 	Log = log.New(os.Stdout, "INFO:", log.LstdFlags)
-
 }
 
 func Info(format string, a ...any) {

@@ -14,7 +14,7 @@ func CheckSetting() {
 	}
 }
 
-func init() {
+func InitConfDir() {
 	Setting.ConfDir = os.Getenv("ServiceConfDir")
 	CheckSetting()
 }

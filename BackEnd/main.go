@@ -1,7 +1,7 @@
 package main
 
 import (
-	dataagent "MHelper/data_agent"
+	data_agent "MHelper/data_agent"
 	"MHelper/httpserver"
 	"MHelper/service"
 )
@@ -11,8 +11,8 @@ func init() {
 }
 
 func main() {
-	if dataagent.IsArgsDataAgent() {
-		dataagent.StartDataAgent()
+	if data_agent.IsArgsDataAgent() {
+		data_agent.StartDataAgent()
 	} else {
 		httpserver.StartHttpServer()
 	}
