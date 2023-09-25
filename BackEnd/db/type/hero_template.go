@@ -71,7 +71,3 @@ type DeleteHeroTemplateRequest struct {
 
 type DeleteHeroTemplateResponse struct {
 }
-
-func (o *HeroTemplate) IsValid(newInfo interface{}) error {
-	return nil
-}

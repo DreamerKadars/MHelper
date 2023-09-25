@@ -29,9 +29,6 @@ func ListHeroTemplate(ctx context.Context, req *db_type.ListHeroTemplateRequest)
 }
 
 func CreateHeroTemplate(ctx context.Context, req *db_type.CreateHeroTemplateRequest) (db_type.ResourceID, error) {
-	if err := req.Info.IsValid(nil); err != nil {
-		return "", err
-	}
 	respCreateHeroTemplate, err := db.Operator.CreateHeroTemplate(ctx, req)
 	if err != nil {
 		return "", err

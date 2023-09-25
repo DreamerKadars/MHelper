@@ -21,6 +21,10 @@ func (o *HeroTemplateOperator) GetCollectionName() string {
 }
 
 func (o *HeroTemplateOperator) CreateHeroTemplate(ctx context.Context, req *db_type.CreateHeroTemplateRequest) (*db_type.CreateHeroTemplateResponse, error) {
+	if err := o.IsValidHeroTemplate(&req.Info, nil); err != nil {
+		return nil, err
+	}
+
 	var id db_type.ResourceID = db_type.ResourceID(utils.GenerateID(req.Info))
 	req.Info.ID = id
 
@@ -117,7 +121,7 @@ func (o *HeroTemplateOperator) UpdateHeroTemplate(ctx context.Context, req *db_t
 			return err
 		}
 
-		if err := HeroTemplate.Info.IsValid(req.NewInfo); err != nil {
+		if err := o.IsValidHeroTemplate(&HeroTemplate.Info, &req.NewInfo); err != nil {
 			return err
 		}
 
@@ -167,4 +171,37 @@ func (o *HeroTemplateOperator) DeleteHeroTemplate(ctx context.Context, req *db_t
 		return nil, db_type.ErrNotFound
 	}
 	return &db_type.DeleteHeroTemplateResponse{}, nil
+}
+
+func (o *HeroTemplateOperator) IsValidHeroTemplate(oldInfo, newInfo *db_type.HeroTemplate) error {
+	var tempHeroTemplate db_type.HeroTemplate = *oldInfo
+	if newInfo != nil {
+		updateInfoJSON, err := bson.Marshal(newInfo)
+		if err != nil {
+			return err
+		}
+		err = bson.Unmarshal(updateInfoJSON, tempHeroTemplate)
+		if err != nil {
+			return err
+		}
+	}
+
+	heroCode := utils.GetString(tempHeroTemplate.HeroCode)
+
+	if heroCode == "" {
+		return fmt.Errorf("角色编码不能为空")
+	}
+
+	_, err := heroStaticOperator.GetHeroStaticDetail(context.Background(), &db_type.GetHeroStaticDetailRequest{
+		HeroCode: heroCode,
+	})
+	if err != nil {
+		return fmt.Errorf("寻找编码为[%s]的角色失败:%+v", heroCode, err)
+	}
+
+	if utils.GetString(tempHeroTemplate.HeroTemplateName) == "" {
+		return fmt.Errorf("模板名称不能为空")
+	}
+
+	return nil
 }

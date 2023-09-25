@@ -51,13 +51,14 @@ func SetJwtCookie(ctx iris.Context, username string) {
 		return
 	}
 	ctx.SetCookie(&http.Cookie{
+		// Domain:  "",
 		Name:    JwtCookieKey,
 		Value:   string(token),
 		Expires: time.Now().Add(time.Hour * 72),
-		Path:    "/api/",
+		Path:    "/",
 	})
-	ctx.StatusCode(http.StatusFound)
-	ctx.Header(LocationHeader, DefaultIndex)
+	ctx.StatusCode(http.StatusOK)
+	// ctx.Header(LocationHeader, DefaultIndex)
 }
 
 func GetTokenInfo(ctx iris.Context) {

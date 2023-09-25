@@ -13,19 +13,20 @@ import {
 } from 'react-dom/client'
 import HeroData from "./pages/HeroData/HeroData"
 import { LoadHeroJSON } from "./utils/api/help";
+import MLogin from "./pages/MLogin/MLogin";
+import HeroTemplateForm from "./pages/Admin/HeroTemplate/HeroForm/HeroFrom";
+import { PathHeroData, PathHeroTemplateCreate, PathHeroTemplateManage, PathLogin, PathMain } from "./const";
+import HeroTemplateManage from "./pages/Admin/HeroTemplate/HeroTemplateManage";
 
 const Sider = Layout.Sider;
 const Content = Layout.Content;
-
-export const PathMain: string = "/Main"
-export const PathHeroData: string = "/HeroData"
 
 createRoot(document.getElementById('root')!).render(<div className='layout'>
   {/* <Header></Header> */}
   <Header></Header>
   <Layout style={{ width: 1500 }}>
     <Layout>
-      <Sider style={{width:130}}><div className='logo' />
+      <Sider style={{width:160}}><div className='logo' />
         <Menu></Menu>
       </Sider>
       <Content style={{ background: 'rgb(240,255,255)', padding: '30px' }}>
@@ -33,6 +34,9 @@ createRoot(document.getElementById('root')!).render(<div className='layout'>
           <Routes>
             <Route path={PathMain} element={<HomePage />} />
             <Route path={PathHeroData} element={<HeroData />} />
+            <Route path={PathLogin} element={<MLogin />} />
+            <Route path={PathHeroTemplateManage} element={<HeroTemplateManage />} />
+            <Route path={PathHeroTemplateCreate} element={<HeroTemplateForm type={"create" } />}></Route>
             <Route path='/*' element={<Navigate to={PathMain}></Navigate>} />
           </Routes>
         </BrowserRouter>

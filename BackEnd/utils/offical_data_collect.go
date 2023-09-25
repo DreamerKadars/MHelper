@@ -11,11 +11,15 @@ import (
 )
 
 const (
-	EpicUrl        = "https://epic7.smilegatemegaport.com"
-	EpicStaticUrl  = "https://static.smilegatemegaport.com"
-	HeroListPath   = "/guide/wearingStatus/getHeroList"
-	HeroDetailPath = "/guide/getHeroDetail"
-	HeroImagePath  = "/event/live/epic7/guide/images/hero/%s_s.png"
+	EpicUrl               = "https://epic7.smilegatemegaport.com"
+	EpicStaticUrl         = "https://static.smilegatemegaport.com"
+	EpicGameUrl           = "https://epic7.game.onstove.com"
+	HeroListPath          = "/guide/wearingStatus/getHeroList"
+	HeroDetailPath        = "/guide/getHeroDetail"
+	HeroImagePath         = "/event/live/epic7/guide/images/hero/%s_s.png"
+	ArtifactListPath      = "/guide/wearingStatus/getArtifactList"
+	ArtifactImagePath     = "/event/live/epic7/guide/wearingStatus/images/artifact/%s_ico.png"
+	ArtifactFullImagePath = "/event/live/epic7/guide/wearingStatus/images/artifact/%s_full.png"
 )
 
 func UnmarshalHeroListResult(data []byte) (HeroListResult, error) {
@@ -128,6 +132,76 @@ func GetAllHeroList() (HeroListResult, error) {
 			break
 		}
 		res.HeroList = append(res.HeroList, respHeroListTemp.HeroList...)
+	}
+	return res, nil
+}
+
+func UnmarshalArtifactResult(data []byte) (ArtifactResult, error) {
+	var r ArtifactResult
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ArtifactResult) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+type ArtifactResult struct {
+	ArtifactList []ArtifactDetail `json:"artifactList"`
+	Lang         string           `json:"lang"`
+	TotalCount   int64            `json:"totalCount"`
+}
+
+type ArtifactDetail struct {
+	// LangCode              interface{} `json:"langCode"`
+	ArtifactCode          string  `json:"artifactCode"`
+	ArtifactName          string  `json:"artifactName"`
+	JobCode               string  `json:"jobCode"`
+	Grade                 int64   `json:"grade"`
+	AbilityAttack         int64   `json:"abilityAttack"`
+	AbilityDefense        int64   `json:"abilityDefense"`
+	EnhanceAbilityAttack  int64   `json:"enhanceAbilityAttack"`
+	EnhanceAbilityDefense int64   `json:"enhanceAbilityDefense"`
+	InfoText              string  `json:"infoText"`
+	Lv0101                string  `json:"lv01_01"`
+	Lv0102                string  `json:"lv01_02"`
+	Lv0103                string  `json:"lv01_03"`
+	Lv0104                string  `json:"lv01_04"`
+	Lv0105                string  `json:"lv01_05"`
+	LVMax01               string  `json:"lvMax_01"`
+	LVMax02               string  `json:"lvMax_02"`
+	LVMax03               string  `json:"lvMax_03"`
+	LVMax04               string  `json:"lvMax_04"`
+	LVMax05               string  `json:"lvMax_05"`
+	RowNum                int64   `json:"rowNum"`
+	PageNo                int64   `json:"pageNo"`
+	RankingSeq            int64   `json:"rankingSeq"`
+	Ranking               int64   `json:"ranking"`
+	SpecificGravity       float32 `json:"specificGravity"`
+	// AcquisitionPlaces     interface{} `json:"acquisitionPlaces"`
+}
+
+func GetAllArtifactList() (ArtifactResult, error) {
+	var res ArtifactResult
+	res.ArtifactList = make([]ArtifactDetail, 0)
+	for i := 1; ; i++ {
+		respArtifactListTempByte, err := httpEpic(http.MethodPost, EpicGameUrl, ArtifactListPath, map[string]string{
+			"Gc_currentpage": strconv.Itoa(i),
+			"Gc_lang":        "zh-CN",
+			"Gc_world":       "world_global",
+			"Gc_ispaging":    "Y",
+		})
+		if err != nil {
+			return res, err
+		}
+		respArtifactListTemp, err := UnmarshalArtifactResult(respArtifactListTempByte)
+		if err != nil {
+			return res, err
+		}
+		if len(respArtifactListTemp.ArtifactList) == 0 {
+			break
+		}
+		res.ArtifactList = append(res.ArtifactList, respArtifactListTemp.ArtifactList...)
 	}
 	return res, nil
 }
@@ -276,6 +350,89 @@ func GetAllHeroImage() error {
 			return err
 		}
 		Info(heroImagePath)
+		defer file.Close()
+		_, err = file.Write(respHttp)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func GenerateArtifactDataJSON() error {
+	allArtifactList, err := GetAllArtifactList()
+	if err != nil {
+		return err
+	}
+	// for index, _ := range allArtifactList.ArtifactList {
+	// 	err := FullHeroDetail(&allArtifactList.ArtifactList[index])
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// }
+	f, err := os.Create(DataFolder + DataArtifactStatisticName) //创建文件，会自动覆盖
+	if err != nil {
+		return err
+	}
+	defer f.Close() //关闭文件
+	resByte, err := json.Marshal(allArtifactList)
+	if err != nil {
+		return err
+	}
+	_, err = f.Write(resByte)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetAllArtifactImage() error {
+	ArtifactListResultByte, err := os.ReadFile(DataFolder + DataArtifactStatisticName)
+	if err != nil {
+		return err
+	}
+	artifactListResult, err := UnmarshalArtifactResult(ArtifactListResultByte)
+	if err != nil {
+		return err
+	}
+
+	for _, artifact := range artifactListResult.ArtifactList {
+		artifactImagePath := DataArtifactImageFolder + artifact.ArtifactCode + "_ico.png"
+		if FileIsExist(artifactImagePath) {
+			continue
+		}
+		respHttp, err := httpEpic(http.MethodGet, EpicStaticUrl, fmt.Sprintf(ArtifactImagePath, artifact.ArtifactCode), nil)
+		if err != nil {
+			return err
+		}
+		file, err := os.Create(artifactImagePath)
+		if err != nil {
+			Error("%+v", err)
+			return err
+		}
+		Info(artifactImagePath)
+		defer file.Close()
+		_, err = file.Write(respHttp)
+		if err != nil {
+			return err
+		}
+	}
+
+	for _, artifact := range artifactListResult.ArtifactList {
+		artifactImagePath := DataArtifactImageFolder + artifact.ArtifactCode + "_full.png"
+		if FileIsExist(artifactImagePath) {
+			continue
+		}
+		respHttp, err := httpEpic(http.MethodGet, EpicStaticUrl, fmt.Sprintf(ArtifactFullImagePath, artifact.ArtifactCode), nil)
+		if err != nil {
+			return err
+		}
+		file, err := os.Create(artifactImagePath)
+		if err != nil {
+			Error("%+v", err)
+			return err
+		}
+		Info(artifactImagePath)
 		defer file.Close()
 		_, err = file.Write(respHttp)
 		if err != nil {

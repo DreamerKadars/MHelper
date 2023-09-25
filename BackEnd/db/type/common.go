@@ -21,7 +21,3 @@ type Meta struct {
 	CreateTime time.Time
 	UpdateTime time.Time
 }
-
-func (m *Meta) IsValid(newInfo interface{}) error {
-	return nil
-}

@@ -11,6 +11,8 @@ import (
 type HeroStaticOperator struct {
 }
 
+var heroStaticOperator HeroStaticOperator
+
 var heroStaticMap map[string]db_type.HeroStatic = make(map[string]db_type.HeroStatic)
 
 func InitStaticHero(heroDataFile, heroDataFribbelsFile string) error {

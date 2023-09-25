@@ -15,6 +15,7 @@ import { LoadHeroJSON } from "../api/help";
 import { HeroDetailStatisticShow } from "../StatisticShow/StatisticShow";
 import { PieChart } from "../PieChart/PieChart";
 import { GenerateSetImageUrl } from "../helper";
+import { EquipSetSelect } from "../EquipSetSelect/EquipSetSelect";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -288,27 +289,10 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                         <Input value={HeroNameFilter} style={{ width: 180, }} onChange={setHeroNameFilter}></Input>
                     </Grid.Col>
                     <Grid.Col span={6} style={{ margin: 10 }}>
-                        <span style={{marginRight:20}}>套装筛选</span>
-                        <Select
-                            value={EquipSetFilter}
+                        <EquipSetSelect
+                            EquipSet={EquipSetFilter}
                             onChange={setEquipSetFilter}
-                            virtualListProps={{ height: 1000 }}
-                            style={{width:70,}}
-                            renderFormat={(option, value) => {
-                                if (value === "") { 
-                                    return <div></div>
-                                }
-                                return <Image preview={false} width={30} src={GenerateSetImageUrl(value+"")}></Image>
-                            }}
-                        >
-                            <Select.Option value={""}>空</Select.Option>
-                            {SetList.map((setTemp) => { 
-                                return <Select.Option value={setTemp}>
-                                    <Image preview={false } width={30} src={GenerateSetImageUrl(setTemp)}></Image>
-                                </Select.Option>
-                            })}
-                            
-                        </Select>
+                        />
                     </Grid.Col>
                     <Grid.Col span={4} style={{ marginTop: 15 }}>
                         <Popover content={<div>参考B站UP主阿吉的视频攻略:<Link href="https://www.bilibili.com/video/BV1Es4y1T7tf">点此跳转</Link></div>}><span>只看RTA角色</span></Popover>

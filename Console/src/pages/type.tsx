@@ -130,6 +130,136 @@ export const InitializeHeroStaticDetail = () => {
     };
 };
 
+export type HeroFribbelsResult = Map<string, HeroFribbels>
+
+export interface HeroFribbels {
+    code: string;
+    _id: string;
+    name: string;
+    moonlight: boolean;
+    rarity: number;
+    attribute: string;
+    role: string;
+    zodiac: string;
+    self_devotion: SelfDevotion;
+    assets: Assets;
+    ex_equip: any[];
+    skills: Skills;
+    calculatedStatus: CalculatedStatus;
+}
+
+export interface Assets {
+    icon: string;
+    image: string;
+    thumbnail: string;
+}
+
+export interface CalculatedStatus {
+    lv50FiveStarFullyAwakened: { [key: string]: number };
+    lv60SixStarFullyAwakened: { [key: string]: number };
+}
+
+export interface Grades {
+    B: number;
+    A: number;
+    S: number;
+    SS: number;
+    SSS: number;
+}
+
+export interface Skills {
+    S1: S1;
+    S2: S2;
+    S3: S1;
+}
+
+export interface S1 {
+    hitTypes: string[];
+    rate: number;
+    pow: number;
+    targets: number;
+    selfHpScaling: number;
+    options: any[];
+}
+
+export interface S2 {
+    hitTypes: any[];
+    options: any[];
+}
+
+export interface HeroDetailBackEnd {
+    code: string;
+    self_devotion: SelfDevotion;
+    calculatedStatus: CalculatedStatus;
+    heroCode: string;
+    heroName: string;
+    grade: number;
+    jobCode: string;
+    attributeCode: string;
+    heroDetail: HeroDetailBackEndStatistics;
+}
+
+export interface HeroDetailBackEndStatistics {
+    heroCode: string;
+    worldCode: string;
+    regDate: Date;
+    attackStats: string;
+    defenseStats: string;
+    vitalityStatistics: string;
+    speedStatistics: string;
+    criticalStatistics: string;
+    criticalHitStatistics: string;
+    effectiveStatistics: string;
+    effectResistanceStatistics: string;
+    attackLevel: number;
+    defenseLevel: number;
+    vitalityLevel: number;
+    speedLevel: number;
+    criticalLevel: number;
+    criticalHitLevel: number;
+    effectiveLevel: number;
+    effectResistanceLevel: number;
+    attackAverage: number;
+    defenseAverage: number;
+    vitalityAverage: number;
+    speedAverage: number;
+    criticalAverage: number;
+    criticalHitAverage: number;
+    effectiveAverage: number;
+    effectResistanceAverage: number;
+    numberStatistic: number;
+    rankSets1: string;
+    eqipRankShare1: number;
+    rankSets2: string;
+    eqipRankShare2: number;
+    rankSets3: string;
+    eqipRankShare3: number;
+}
+
+export interface SelfDevotion {
+    type: string;
+    grades: Grades;
+}
+
+export interface Grades {
+    B: number;
+    A: number;
+    S: number;
+    SS: number;
+    SSS: number;
+}
+
+// Converts JSON strings to/from your types
+export class Convert {
+    public static toHeroDetailBackEnd(json: string): HeroDetailBackEnd {
+        return JSON.parse(json);
+    }
+
+    public static heroDetailBackEndToJson(value: HeroDetailBackEnd): string {
+        return JSON.stringify(value);
+    }
+}
+
 export enum AttributeCode {
     Dark = "dark",
     Fire = "fire",
@@ -199,3 +329,56 @@ export const JobCodeIconFlex: Map<string, number> = new Map([
     [JobCode.Manauser, 4],
     [JobCode.Warrior, 5],
 ]);
+
+export interface HeroTemplate {
+    HeroTemplateName?: string,
+    HeroCode?: string,
+    HeroPanel?: HeroPanel,
+    AverageGrade?: number,
+    Set?: string[],
+    Artifact?: string[],
+}
+export interface Range {
+    Up: Number,
+    Down: Number,
+}
+export interface HeroPanel {
+    HP: Range,//血量
+    DF: Range,//防御
+    ATK: Range,//攻击
+    CC: Range,//暴击率
+    CD: Range,//暴击伤害
+    HR: Range,//命中
+    RR: Range,//抵抗
+}
+
+export interface ArtifactListResult {
+    artifactList: ArtifactInfo[],
+
+}
+export interface ArtifactInfo {
+    artifactCode: string;
+    artifactName: string;
+    jobCode: string;
+    grade: number;
+    abilityAttack: number;
+    abilityDefense: number;
+    enhanceAbilityAttack: number;
+    enhanceAbilityDefense: number;
+    infoText: string;
+    lv01_01: string;
+    lv01_02: string;
+    lv01_03: string;
+    lv01_04: string;
+    lv01_05: string;
+    lvMax_01: string;
+    lvMax_02: string;
+    lvMax_03: string;
+    lvMax_04: string;
+    lvMax_05: string;
+    rowNum: number;
+    pageNo: number;
+    rankingSeq: number;
+    ranking: number;
+    specificGravity: number;
+}

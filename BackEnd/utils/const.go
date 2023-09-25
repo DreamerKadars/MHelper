@@ -1,16 +1,18 @@
 package utils
 
 const (
-	ImageAfterProcess192Path = "../predict/image_process_192/"
-	ImageAfterProcess127Path = "../predict/image_process_127/"
-	ImageResultPath          = "../predict/image_result/"
-	ImagePath                = "../predict/image/"
-	SaveImagePath            = "../predict/save/"
-	JsonPath                 = "../predict/json/"
-	JsonSuffix               = ".json"
-	DataFolder               = "../Data/"
-	DataHeroStatisticName    = "hero_data.json"
-	DataHeroImageFolder      = "../Data/HeroImage/"
+	ImageAfterProcess192Path  = "../predict/image_process_192/"
+	ImageAfterProcess127Path  = "../predict/image_process_127/"
+	ImageResultPath           = "../predict/image_result/"
+	ImagePath                 = "../predict/image/"
+	SaveImagePath             = "../predict/save/"
+	JsonPath                  = "../predict/json/"
+	JsonSuffix                = ".json"
+	DataFolder                = "../Data/"
+	DataHeroStatisticName     = "hero_data.json"
+	DataArtifactStatisticName = "artifact_data.json"
+	DataHeroImageFolder       = "../Data/HeroImage/"
+	DataArtifactImageFolder   = "../Data/ArtifactImage/"
 
 	ClassAtk    = "atk"    // 攻击力
 	ClassDefend = "defend" // 防御力

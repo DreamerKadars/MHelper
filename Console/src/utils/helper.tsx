@@ -6,3 +6,6 @@ export function SkipToUrl(url: string) {
 export function GenerateSetImageUrl(setTemp:string) { 
     return E7DataDomain + "/SetIcon/set_" + setTemp + ".png"
 }
+export function GenerateArtifactImageUrl(artifactTemp: string) {
+    return E7DataDomain + "/ArtifactImage/" + artifactTemp + "_ico.png"
+}

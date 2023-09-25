@@ -1,9 +1,12 @@
 import React from "react";
 import { Menu as ArcoMenu } from "@arco-design/web-react";
-import { IconHome, IconCalendar, IconBook } from '@arco-design/web-react/icon';
+import { IconHome, IconCalendar, IconBook, IconDesktop, IconUserGroup } from '@arco-design/web-react/icon';
 import "@arco-design/web-react/dist/css/arco.css";
 import { SkipToUrl } from "../../utils/helper";
+import { PathAdmin, PathHeroTemplateManage } from "../../const";
+import cookie from 'react-cookies'
 const MenuItem = ArcoMenu.Item;
+const JwtCookieKey = "user_jwt_token"
 // const SubMenu = ArcoMenu.SubMenu;
 
 export default function Menu() {
@@ -23,6 +26,14 @@ export default function Menu() {
                 <IconCalendar />
                 角色数据
             </MenuItem>
+            {(cookie.load(JwtCookieKey) !== "" && cookie.load(JwtCookieKey) !== undefined) && <ArcoMenu.SubMenu key={PathAdmin} title={<>
+                <IconDesktop /> 后台管理
+            </>}>
+                <MenuItem key={PathHeroTemplateManage}>
+                    <IconUserGroup />
+                    角色模板
+                </MenuItem>
+            </ArcoMenu.SubMenu>}
         </ArcoMenu>
     );
 }

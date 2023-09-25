@@ -30,6 +30,8 @@ func StartDataAgent() {
 			UpdateHeroDataJSON()
 			// 更新英雄图片
 			UpdateHeroImage()
+			// 更新神器数据和图片
+			UpdateArtifactImageAndJSON()
 		}
 	}
 }
@@ -48,5 +50,22 @@ func UpdateHeroImage() {
 		utils.Info("call GetAllHeroImage fail:%+v", err)
 	} else {
 		utils.Info("call GetAllHeroImage success")
+	}
+}
+
+// UpdateArtifactImageAndJSON 更新artifact的数据信息和图片
+func UpdateArtifactImageAndJSON() {
+	err := utils.GenerateArtifactDataJSON()
+	if err != nil {
+		utils.Info("call GenerateArtifactDataJSON fail:%+v", err)
+	} else {
+		utils.Info("call GenerateArtifactDataJSON success")
+	}
+
+	err = utils.GetAllArtifactImage()
+	if err != nil {
+		utils.Info("call GetAllArtifactImage fail:%+v", err)
+	} else {
+		utils.Info("call GetAllArtifactImage success")
 	}
 }
