@@ -9,7 +9,7 @@ import { UploadItem, UploadListProps } from "@arco-design/web-react/es/Upload";
 import { Grid } from '@arco-design/web-react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement } from "chart.js";
-import { Equipment, InitEquipment, UploadImageRespInfo } from "../type";
+import { Equipment, InitEquipment, UploadImageRespInfo } from "../../utils/const";
 import { LoadHeroJSON } from "../../utils/api/help";
 import { EquipAnalyse } from "../../utils/EquipAnalyse/EquipAnalyse";
 import { GetTotalGrade, PieChart } from "../../utils/PieChart/PieChart";

@@ -2,8 +2,6 @@ module MHelper
 
 go 1.21
 
-toolchain go1.21.0
-
 require (
 	github.com/kataras/iris/v12 v12.2.5
 	github.com/lithammer/shortuuid v3.0.0+incompatible
