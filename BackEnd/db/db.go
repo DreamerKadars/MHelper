@@ -10,9 +10,10 @@ import (
 var Operator ChiefOperator
 
 type StaticDataConf struct {
-	Dir                  string `yaml:"dir"`
-	HeroDataFribbelsFile string `yaml:"hero_data_fribbels_file"`
-	HeroDataFile         string `yaml:"hero_data_file"`
+	Dir                        string `yaml:"dir"`
+	HeroDataFribbelsFile       string `yaml:"hero_data_fribbels_file"`
+	HeroDataFile               string `yaml:"hero_data_file"`
+	HeroExtraPanelInfoDataFile string `yaml:"hero_extra_panel_info_data_file"`
 }
 
 var staticDataConf StaticDataConf
@@ -22,7 +23,9 @@ func SetStaticDataConf(s StaticDataConf) {
 }
 
 func InitDB() {
-	err := operator.InitStaticHero(staticDataConf.Dir+staticDataConf.HeroDataFile, staticDataConf.Dir+staticDataConf.HeroDataFribbelsFile)
+	err := operator.InitStaticHero(staticDataConf.Dir+staticDataConf.HeroDataFile,
+		staticDataConf.Dir+staticDataConf.HeroDataFribbelsFile,
+		staticDataConf.Dir+staticDataConf.HeroExtraPanelInfoDataFile)
 	if err != nil {
 		panic(err)
 	}

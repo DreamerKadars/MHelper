@@ -3,7 +3,7 @@ import "@arco-design/web-react/dist/css/arco.css";
 import { Button, Card, Checkbox, Form, Grid, Input, Link, Popover, Select, Table, TableColumnProps } from "@arco-design/web-react";
 import { } from "../../const";
 import { LoadHeroJSON } from "../../utils/api/help";
-import { AttributeCode, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCode } from "../type";
+import { AttributeCode, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCode } from "../../utils/const";
 import HeroImageShow from "../../utils/HeroImageShow/HeroImageShow";
 import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRr, ClassSpeed } from "../../utils/const";
 import { HeroDetailStatisticShow, StatisticShow } from "../../utils/StatisticShow/StatisticShow";

@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	EpicUrl               = "https://epic7.smilegatemegaport.com"
+	EpicUrl               = "https://epic7.game.onstove.com"
 	EpicStaticUrl         = "https://static.smilegatemegaport.com"
 	EpicGameUrl           = "https://epic7.game.onstove.com"
 	HeroListPath          = "/guide/wearingStatus/getHeroList"
@@ -21,6 +21,8 @@ const (
 	ArtifactImagePath     = "/event/live/epic7/guide/wearingStatus/images/artifact/%s_ico.png"
 	ArtifactFullImagePath = "/event/live/epic7/guide/wearingStatus/images/artifact/%s_full.png"
 )
+
+var HeroCodeBlackList = []string{"c1001", "c1005"} // 这两个女主是转职前的，避免冲突先删除
 
 func UnmarshalHeroListResult(data []byte) (HeroListResult, error) {
 	var r HeroListResult
@@ -111,6 +113,7 @@ func httpEpic(method, domain, path string, header map[string]string) ([]byte, er
 	}
 	return respBody, nil
 }
+
 func GetAllHeroList() (HeroListResult, error) {
 	var res HeroListResult
 	res.HeroList = make([]HeroInfo, 0)
@@ -121,9 +124,12 @@ func GetAllHeroList() (HeroListResult, error) {
 			"Gc_world":        "world_global",
 			"Gc_ispaging":     "Y",
 		})
+
 		if err != nil {
+			fmt.Println("", err.Error())
 			return res, err
 		}
+		fmt.Println(string(respHeroListTempByte))
 		respHeroListTemp, err := UnmarshalHeroListResult(respHeroListTempByte)
 		if err != nil {
 			return res, err
@@ -133,6 +139,22 @@ func GetAllHeroList() (HeroListResult, error) {
 		}
 		res.HeroList = append(res.HeroList, respHeroListTemp.HeroList...)
 	}
+
+	resTemp := make([]HeroInfo, 0)
+	for _, hero := range res.HeroList {
+		blackFlag := false
+		for _, blackListHero := range HeroCodeBlackList {
+			if hero.HeroCode == blackListHero {
+				blackFlag = true
+			}
+		}
+		if blackFlag {
+			continue
+		}
+		resTemp = append(resTemp, hero)
+	}
+	res.HeroList = resTemp
+
 	return res, nil
 }
 
@@ -440,4 +462,25 @@ func GetAllArtifactImage() error {
 		}
 	}
 	return nil
+}
+
+func (r *HeroExtraInfoResult) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+type HeroExtraInfoResult map[string]HeroExtraInfo
+
+type HeroExtraInfo struct {
+	Name        string       `json:"name"`
+	ExtraPanels []ExtraPanel `json:"extra_panels"`
+}
+
+type ExtraPanel struct {
+	Reason      string        `json:"reason"`
+	EffectValue []EffectValue `json:"EffectValue"`
+}
+
+type EffectValue struct {
+	ClassType string `json:"classType"`
+	Value     int64  `json:"value"`
 }

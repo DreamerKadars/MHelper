@@ -1,68 +1,282 @@
-import { Button, Grid, Message, Modal } from '@arco-design/web-react';
+import { Button, Card, Form, Grid, Input, Link, Message, Modal, Select, Table, TableColumnProps } from '@arco-design/web-react';
 import { useEffect, useState } from 'react';
-import { HeroTemplate } from '../../type'; 
+import { ConvertHeroListResultToMap, GetHeroDetailFromMap, HeroDetail, HeroListResult, HeroTemplate } from '../../../utils/const';
 
 import { IconEdit, IconDelete } from '@arco-design/web-react/icon';
-import { HandlerAxiosErrPrefix } from '../../../utils/api/help';
-import { SkipToUrl } from '../../../utils/helper';
-import { PathHeroTemplateCreate } from '../../../const';
+import { HandlerAxiosErrPrefix, HandlerAxiosSuccessPrefix, LoadHeroJSON } from '../../../utils/api/help';
+import { GetHeroDetailFromListByHeroCode, SkipToUrl } from '../../../utils/helper';
+import { PathHeroTemplateAnalyse, PathHeroTemplateCreate, PathHeroTemplateUpdate } from '../../../const';
+import { HeroTemplateDelete, HeroTemplateList, HeroTemplateUpdate } from '../../../utils/api/heroTemplate';
+import HeroImageShow from '../../../utils/HeroImageShow/HeroImageShow';
+import { HeroSelect } from '../../../utils/HeroSelect/HeroSelect';
+import { RangeShow } from "../../../utils/StatisticShow/StatisticShow";
+import { AttributeCode, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRr, ClassSpeed, JobCode } from '../../../utils/const';
+import { useLocation, useNavigate } from 'react-router-dom';
 const { Row, Col } = Grid;
 
-
-export default function HeroTemplateManage() {
+interface HeroTemplateManageProps {
+    isPublic: boolean
+    // role: string
+}
+    
+export default function HeroTemplateManage(props:HeroTemplateManageProps) {
     let defaultHeroTemplateList: HeroTemplate[] = []
     let defaultHeroTemplateDelete: HeroTemplate = {}
-    const [HeroTemplateList, setHeroTemplateList] = useState(defaultHeroTemplateList)
-    const [ReadFlag, setReadFlag] = useState(false)
-    const [HeroTemplateDelete, setHeroTemplateDelete] = useState(defaultHeroTemplateDelete)
-    const [FlagDelete, setFlagDelete] = useState(false)
-
-    // const [{ data, loading, error }, execute, refetch] = ListHeroTemplat()
+    const [fresh, setFresh] = useState(false)
+    const [heroTemplateList, setHeroTemplateList] = useState(defaultHeroTemplateList)
+    const [heroJson,] = LoadHeroJSON()
+    let HeroListResult: HeroListResult = heroJson.data
     
+    const HeroListMap = ConvertHeroListResultToMap(HeroListResult)
+
+    const [ReadFlag, setReadFlag] = useState(false)
+    const [FlagDelete, setFlagDelete] = useState(false)
+    const [attributeCode, setAttributeCode] = useState<string[]>([])
+    const [jobCode, setJobCode] = useState<string[]>([])
+    const [starCode, setStarCode] = useState<number[]>([])
+    const [name, setName] = useState("")
+
+    const [{ }, funcHeroTemplateList] = HeroTemplateList(false)
+    const [{ }, heroTemplateDelete] = HeroTemplateDelete()
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [pageNum, setPageNum] = useState(1)
+
+    useEffect(() => {
+        funcHeroTemplateList().then((resp) => {
+            setHeroTemplateList(resp.data.Data)
+        }).catch((error) => { HandlerAxiosErrPrefix("创建角色模板", error) })
+    }, [fresh])
+    
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        let page = searchParams.get('page');
+        if (page == null) {
+            page = "1"
+        }
+        console.log(page)
+        setPageNum(Number(page))
+    }, [location]);
+
+    const handlePageChange = (page: string) => {
+        
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('page', page);
+        navigate({
+            search: searchParams.toString(),
+        });
+    };
+
+    let heroTemplateListAfterFilter = heroTemplateList.filter((info:HeroTemplate) => { 
+        let item = GetHeroDetailFromMap(info.HeroCode !== undefined ? info.HeroCode : "", HeroListMap)
+        if (attributeCode?.length > 0 && !attributeCode.includes(item.attributeCode)) {
+            return false
+        }
+        if (jobCode?.length > 0 && !jobCode.includes(item.jobCode)) {
+            return false
+        }
+        if (starCode?.length > 0 && !starCode.includes(item.grade)) {
+            return false
+        }
+        if (name !== "" && item.heroName.indexOf(name) < 0) {
+            return false
+        }
+        return true
+    })
+
+    const columns: TableColumnProps[] = [
+        {
+            title: '模板名称',
+            render(col, item: HeroTemplate, index) {
+                return <span key={col+"-"+index}>{item.HeroTemplateName}</span>
+            },
+        },
+        {
+            title: '使用角色',
+            render(col, item: HeroTemplate, index) {
+                let tempHeroDetail = GetHeroDetailFromListByHeroCode(item.HeroCode!, HeroListResult?.heroList)
+                if (tempHeroDetail) {
+                    return <HeroImageShow key={col+"-"+index} ImageSizeParm={0.6} HeroDetail={tempHeroDetail} />
+                } else {
+                    return <div key={col+"-"+index}></div>
+                }
+            },
+        },
+        {
+            title: '有效均分',
+            render(col, item: HeroTemplate, index) {
+                return item.AverageGrade
+            },
+        },
+        {
+            title: '生命值',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassHp} RangeData={item?.HeroPanel?.HP}></RangeShow>
+            },
+        },
+        {
+            title: '攻击力',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassAtk} RangeData={item?.HeroPanel?.ATK}></RangeShow>
+            },
+        },
+        {
+            title: '防御力',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassDefend} RangeData={item?.HeroPanel?.DF}></RangeShow>
+            },
+        },
+        {
+            title: '速度',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassSpeed} RangeData={item?.HeroPanel?.SP}></RangeShow>
+            },
+        },
+        {
+            title: '暴击率',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassCC} RangeData={item?.HeroPanel?.CC}></RangeShow>
+            },
+        },
+        {
+            title: '暴击伤害',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassCD} RangeData={item?.HeroPanel?.CD}></RangeShow>
+            },
+        },
+        {
+            title: '效果命中',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassHr} RangeData={item?.HeroPanel?.HR}></RangeShow>
+            },
+        },
+        {
+            title: '效果抗性',
+            render(col, item: HeroTemplate, index) {
+                return <RangeShow key={col+"-"+index} Type={ClassRr} RangeData={item?.HeroPanel?.RR}></RangeShow>
+            },
+        },
+        {
+            title: '操作',
+            render(col, item: HeroTemplate, index) {
+                return <div key={col + "-" + index}>
+                    
+                    <Link onClick={() => {
+                        SkipToUrl(PathHeroTemplateAnalyse + "/" + item.ID)
+                    }}>分析</Link>
+                    {props.isPublic!== true && <Link onClick={() => {
+                        SkipToUrl(PathHeroTemplateUpdate + "/" + item.ID)
+                    }}>编辑</Link>}
+                    {props.isPublic !== true && <Link onClick={() => {
+                        Modal.confirm({
+                            onOk: () => {
+                                heroTemplateDelete({ params: { ID: item.ID } }).then((response) => {
+                                    HandlerAxiosSuccessPrefix("删除角色模板", response)
+                                    setFresh(!fresh)
+                                }).catch((error) => {
+                                    HandlerAxiosErrPrefix("删除角色模板", error)
+                                })
+                            },
+                            title: "删除确认",
+                            content: <div>
+                                是否确认删除模板[{item.HeroTemplateName}]
+                            </div>,
+                        })
+                    }}
+                    >删除</Link>}
+                </div>
+            },
+        },
+    ];
     return (
         <div>
-            <Button type={"primary"} onClick={() => {
+            {props.isPublic !== true ? <Button type={"primary"} style={{ margin: 30 }} onClick={() => {
                 SkipToUrl(PathHeroTemplateCreate)
-             }}>创建角色模板</Button>
-            {/* <Button type='primary' onClick={() => { SkipToUrl(PathHeroTemplateCreate) }} style={{ marginBottom: 24 }} >创建卡牌 </Button>
-            <Modal visible={FlagDelete} onCancel={() => { setFlagDelete(false) }} onOk={() => {
-                http.delete(HeroTemplateDeletePath + "?ID=" + HeroTemplateDelete.ID).then(function (response) {
-                    Message.success("删除成功")
-                    setFlagDelete(false)
-                    setReadFlag(false)
-                })
-                    .catch(function (error) {
-                        HandlerAxiosErr(error)
-                    })
-            }}>请确认是否删除【{HeroTemplateDelete.Name}】</Modal>
-            <Row className='grid-gutter-demo' gutter={[24, 12]}>
-                {HeroTemplateList?.map((card: HeroTemplate, index) => {
-                    return (
-                        <Col span={4} key={index}>
-                            <ArcoHeroTemplate
-                                title={card.Name}
-                                style={{ width: "%15" }}
-                                extra={HeroTemplateSerialNumberLabelMap.get(card.HeroTemplateSerialNumber)?.label + "-" + Array((4 - card.HeroTemplateID.toString().length) > 0 ? (4 - card.HeroTemplateID.toString().length) : 0).join("0") + card.HeroTemplateID + "-" + HeroTemplateLevelLabelMap.get(card.Level)}
-                                actions={[
-                                    <span className='icon-hover'>
-                                        <IconEdit onClick={() => {
-                                            SkipToUrl(PathHeroTemplateUpdate + "/" + card.ID)
-                                        }} />
-                                    </span>,
-                                    <span className='icon-hover'>
-                                        <IconDelete onClick={() => {
-                                            setFlagDelete(true)
-                                            setHeroTemplateDelete(card)
-                                        }} />
-                                    </span>,
-                                ]}
+            }}>创建角色模板</Button> : <></>}
+            <Card
+                style={{ margin: 10 }}
+            >
+                <Grid.Row>
+                    <Grid.Col span={5} style={{ marginRight: 10 }}>
+                        <Form.Item label='属性' >
+                            <Select
+                                // addBefore={ "属性"}
+                                style={{ width: 200 }}
+                                onChange={(val) => {
+                                    setAttributeCode(val)
+                                }}
+                                value={attributeCode}
+                                mode='multiple'
+                                allowClear
                             >
-                                {card.Content}
-                            </ArcoHeroTemplate>
-                        </Col>
-                    );
-                })}
-            </Row> */}
+                                <Select.Option value={AttributeCode.Fire}>火焰</Select.Option>
+                                <Select.Option value={AttributeCode.Ice}>寒气</Select.Option>
+                                <Select.Option value={AttributeCode.Wind}>自然</Select.Option>
+                                <Select.Option value={AttributeCode.Light}>光明</Select.Option>
+                                <Select.Option value={AttributeCode.Dark}>黑暗</Select.Option>
+                            </Select>
+                        </Form.Item>
+                    </Grid.Col>
+                    <Grid.Col span={5} style={{ marginRight: 10 }}>
+                        <Form.Item label='职业' >
+                            <Select
+                                mode='multiple'
+                                style={{ width: 200 }}
+                                allowClear
+                                onChange={(val) => {
+                                    setJobCode(val)
+                                }}
+                                value={jobCode}
+                            >
+                                <Select.Option value={JobCode.Mage}>法师</Select.Option>
+                                <Select.Option value={JobCode.Knight}>骑士</Select.Option>
+                                <Select.Option value={JobCode.Assassin}>盗贼</Select.Option>
+                                <Select.Option value={JobCode.Ranger}>射手</Select.Option>
+                                <Select.Option value={JobCode.Manauser}>精灵师</Select.Option>
+                                <Select.Option value={JobCode.Warrior}>战士</Select.Option>
+                            </Select>
+                        </Form.Item>
+                    </Grid.Col>
+                    <Grid.Col span={5} style={{ marginRight: 10 }}>
+                        <Form.Item label='星级' style={{ marginRight: 10 }}>
+                            <Select
+                                mode='multiple'
+                                style={{ width: 200 }}
+                                allowClear
+                                onChange={(val) => {
+                                    setStarCode(val)
+                                }}
+                                value={starCode}
+                            >
+                                <Select.Option value={3}>三星</Select.Option>
+                                <Select.Option value={4}>四星</Select.Option>
+                                <Select.Option value={5}>五星</Select.Option>
+                            </Select>
+                        </Form.Item>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                        <Form.Item label='角色名' style={{ marginRight: 10 }}>
+                            <Input onChange={(val) => { setName(val) }}></Input>
+                        </Form.Item>
+                    </Grid.Col>
+                </Grid.Row>
+                <Grid.Row></Grid.Row>
+            </Card>
+            <Table
+                data={heroTemplateListAfterFilter}
+                columns={columns}
+                onChange={(pagination) => {
+                    console.log(pagination)
+                    if (pagination.current !== undefined) {
+                        handlePageChange(pagination.current.toString())
+                    }
+                }}
+                pagination={{
+                    current: pageNum,
+                    // total:,
+                }}
+            />
         </div>
     );
 }

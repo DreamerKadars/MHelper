@@ -1,0 +1,90 @@
+{
+    "c2019": {
+        "name": "末日萝菲",
+        "extra_panels": [
+            {
+                "reason": "技能加成",
+                "EffectValue": [
+                    {
+                        "classType": "cc",
+                        "value": 30
+                    }
+                ]
+            }
+        ]
+    },
+    "c1106": {
+        "name": "赛娜",
+        "extra_panels": [
+            {
+                "reason": "攻击力倍率1.3",
+                "EffectValue": [
+                    {
+                        "classType": "atkPercentFinal",
+                        "value": 30
+                    }
+                ]
+            }
+        ]
+    },
+    "c2110": {
+        "name": "海盗船长芙兰",
+        "extra_panels": [
+            {
+                "reason": "海上狂徒",
+                "EffectValue": [
+                    {
+                        "classType": "hr",
+                        "value": 50
+                    }
+                ]
+            }
+        ]
+    },
+    "c1129": {
+        "name": "艾莉雅",
+        "extra_panels": [
+            {
+                "reason": "黑暗的引导者",
+                "EffectValue": [
+                    {
+                        "classType": "cc",
+                        "value": 20
+                    }
+                ]
+            }
+        ]
+    },
+    "c1141": {
+        "name": "雨修",
+        "extra_panels": [
+            {
+                "reason": "攻防倍率1.2",
+                "EffectValue": [
+                    {
+                        "classType": "atkPercentFinal",
+                        "value": 20
+                    },
+                    {
+                        "classType": "defendPercentFinal",
+                        "value": 20
+                    }
+                ]
+            }
+        ]
+    },
+    "c3094": {
+        "name": "伊顿",
+        "extra_panels": [
+            {
+                "reason": "血量倍率1.2",
+                "EffectValue": [
+                    {
+                        "classType": "hpPercentFinal",
+                        "value": 20
+                    }
+                ]
+            }
+        ]
+    }
+}

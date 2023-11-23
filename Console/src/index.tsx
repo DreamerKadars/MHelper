@@ -15,7 +15,7 @@ import HeroData from "./pages/HeroData/HeroData"
 import { LoadHeroJSON } from "./utils/api/help";
 import MLogin from "./pages/MLogin/MLogin";
 import HeroTemplateForm from "./pages/Admin/HeroTemplate/HeroForm/HeroFrom";
-import { PathHeroData, PathHeroTemplateCreate, PathHeroTemplateManage, PathLogin, PathMain } from "./const";
+import { PathHeroData, PathHeroTemplateAnalyse, PathHeroTemplateCreate, PathHeroTemplateManage, PathHeroTemplatePublic, PathHeroTemplateUpdate, PathIDParam, PathLogin, PathMain } from "./const";
 import HeroTemplateManage from "./pages/Admin/HeroTemplate/HeroTemplateManage";
 
 const Sider = Layout.Sider;
@@ -35,8 +35,11 @@ createRoot(document.getElementById('root')!).render(<div className='layout'>
             <Route path={PathMain} element={<HomePage />} />
             <Route path={PathHeroData} element={<HeroData />} />
             <Route path={PathLogin} element={<MLogin />} />
-            <Route path={PathHeroTemplateManage} element={<HeroTemplateManage />} />
-            <Route path={PathHeroTemplateCreate} element={<HeroTemplateForm type={"create" } />}></Route>
+            <Route path={PathHeroTemplateManage} element={<HeroTemplateManage isPublic={false} />} />
+            <Route path={PathHeroTemplateCreate} element={<HeroTemplateForm type={"create"} />}></Route>
+            <Route path={PathHeroTemplateUpdate + PathIDParam} element={<HeroTemplateForm type={"update"} />}></Route>
+            <Route path={PathHeroTemplateAnalyse + PathIDParam} element={<HeroTemplateForm type={"analyse"} />}></Route>
+            <Route path={PathHeroTemplatePublic } element={<HeroTemplateManage isPublic={true} />}></Route>
             <Route path='/*' element={<Navigate to={PathMain}></Navigate>} />
           </Routes>
         </BrowserRouter>

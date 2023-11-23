@@ -9,7 +9,7 @@ import { Grid } from '@arco-design/web-react';
 import { Radar, Bar } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement, ChartOptions } from "chart.js";
 import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain, SetList } from '../const';
-import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitEquipment, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../pages/type";
+import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitEquipment, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../utils/const";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
 import { LoadHeroJSON } from "../api/help";
 import { HeroDetailStatisticShow } from "../StatisticShow/StatisticShow";

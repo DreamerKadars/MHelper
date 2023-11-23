@@ -200,7 +200,7 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 					continue
 				}
 				equip.MainType = object.Class
-				if percent && (object.Class== utils.ClassAtk || object.Class== utils.ClassDefend || object.Class == utils.ClassHp){
+				if percent && (object.Class == utils.ClassAtk || object.Class == utils.ClassDefend || object.Class == utils.ClassHp) {
 					equip.MainType += "Percent"
 				}
 				equip.MainValue = value
@@ -345,13 +345,13 @@ func rectIsInRect(x1, y1, x2, y2 int, ret image.Rectangle) bool {
 
 }
 
-//判断点是否在图片像素的矩形框内
+// 判断点是否在图片像素的矩形框内
 func pointInRect(p image.Point, ret image.Rectangle) bool {
 	return ret.Min.X <= p.X && p.X <= ret.Max.X &&
 		ret.Min.Y <= p.Y && p.Y <= ret.Max.Y
 }
 
-//加载图片
+// 加载图片
 func loadImage(path string) (image.Image, string, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -361,7 +361,7 @@ func loadImage(path string) (image.Image, string, error) {
 	return image.Decode(file)
 }
 
-//保存图片
+// 保存图片
 func saveImage(path string, subImg image.Image, quality int, tt string) error {
 	f, err := os.Create(path) //创建文件，会自动覆盖
 	if err != nil {

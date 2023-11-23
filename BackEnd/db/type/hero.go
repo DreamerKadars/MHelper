@@ -56,6 +56,7 @@ type HeroDetail struct {
 	Grade         int64           `json:"grade"`
 	JobCode       string          `json:"jobCode"`
 	AttributeCode string          `json:"attributeCode"`
+	EEType        string          `json:"eeType"`
 	HeroDetail    HeroDetailClass `json:"heroDetail"`
 }
 
@@ -96,9 +97,34 @@ type HeroDetailClass struct {
 	EqipRankShare3             float64 `json:"eqipRankShare3"`
 }
 
+// 记录一条信息
+type OneClassValueInfo struct {
+	ClassType string `json:"classType"`
+	Value     int    `json:"value"`
+}
+
+type HeroExtraPanelInfoFile map[string]HeroExtraPanelInfo
+
+func UnmarshalHeroExtraPanelInfoDataFile(data []byte) (map[string]HeroExtraPanelInfo, error) {
+	var r HeroExtraPanelInfoFile
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+type ExtraPanel struct {
+	Reason      string              `json:"reason"`
+	EffectValue []OneClassValueInfo `json:"effectValue"`
+}
+
+type HeroExtraPanelInfo struct {
+	Name        string       `json:"name"`
+	ExtraPanels []ExtraPanel `json:"extra_panels"`
+}
+
 type HeroStatic struct {
 	HeroDetailFribbels
 	HeroDetail
+	HeroExtraPanelInfo
 }
 
 type GetHeroStaticDetailRequest struct {

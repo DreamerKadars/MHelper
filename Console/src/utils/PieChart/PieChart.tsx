@@ -1,4 +1,4 @@
-import { Equipment } from "../../pages/type";
+import { Equipment } from "../../utils/const";
 
 // 85等级的分段
 const levelGrade90 = [60, 63, 65, 68, 70, 73, 1000]

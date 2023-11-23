@@ -54,3 +54,7 @@ export function HandlerAxiosErrPrefix(prefix: string,error: any ) {
         Message.error(prefix + error.message)
     }
 }
+
+export function HandlerAxiosSuccessPrefix(prefix: string, data: any) {    
+    Message.success(prefix + "成功")
+}

@@ -9,7 +9,7 @@ import { Grid } from '@arco-design/web-react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement } from "chart.js";
 import { E7DataDomain } from '../const';
-import { AttributeCodeIconFlex, HeroDetail, JobCodeIconFlex } from "../../pages/type";
+import { AttributeCodeIconFlex, HeroDetail, JobCodeIconFlex } from "../../utils/const";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;

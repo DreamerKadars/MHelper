@@ -1,3 +1,4 @@
+import { HeroDetail } from "../utils/const"
 import { E7DataDomain } from "./const"
 
 export function SkipToUrl(url: string) { 
@@ -8,4 +9,8 @@ export function GenerateSetImageUrl(setTemp:string) {
 }
 export function GenerateArtifactImageUrl(artifactTemp: string) {
     return E7DataDomain + "/ArtifactImage/" + artifactTemp + "_ico.png"
+}
+
+export function GetHeroDetailFromListByHeroCode(heroCode:string,listInfo?: HeroDetail[]) { 
+    return listInfo?.find(item => item.heroCode === heroCode)
 }

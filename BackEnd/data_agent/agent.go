@@ -20,7 +20,6 @@ func IsArgsDataAgent() bool {
 func StartDataAgent() {
 	for {
 		// 更新英雄数据
-		// UpdateHeroDataJSON()
 		// 更新英雄图片
 
 		<-time.NewTicker(time.Hour).C
@@ -40,8 +39,9 @@ func UpdateHeroDataJSON() {
 	err := utils.GenerateHeroDataJSON()
 	if err != nil {
 		utils.Info("call GenerateHeroDataJSON fail:%+v", err)
+	} else {
+		utils.Info("call GenerateHeroDataJSON success")
 	}
-	utils.Info("call GenerateHeroDataJSON success")
 }
 
 func UpdateHeroImage() {

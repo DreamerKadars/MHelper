@@ -9,8 +9,9 @@ import { Grid } from '@arco-design/web-react';
 import { Radar, Bar  } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement, ChartOptions } from "chart.js";
 import { ClassRangeMap, E7DataDomain } from '../const';
-import { AttributeCodeIconFlex, HeroDetail, JobCodeIconFlex } from "../../pages/type";
+import { AttributeCodeIconFlex, HeroDetail, JobCodeIconFlex, Range } from "../../utils/const";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
+import { IconMinus, IconPlus } from "@arco-design/web-react/icon";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -237,10 +238,72 @@ export const HeroDetailStatisticShow = (props: HeroDetailStatisticShowProps) => 
 interface SetShowProps { 
     SetString: string;
 }
-const SetShow = (props: SetShowProps) => {
+export const SetShow = (props: SetShowProps) => {
     let set1 = props.SetString.split(",")
     return <Space direction='vertical'><ArcoImage.PreviewGroup infinite>{set1.map((setTemp, index) => {
         return <Space><ArcoImage width={30} style={{ display: "inline-block" }} key={index} src={E7DataDomain + "/SetIcon/set_" + setTemp + ".png"}></ArcoImage></Space>
     })}</ArcoImage.PreviewGroup></Space>
     return <div></div>
- }
+}
+ 
+interface RangeShowProps { 
+    Type: string;
+    RangeData?: Range;
+}
+
+const GreenColorCodeByLevel = [
+    "#00FF00",
+    "#00EE00",
+    "#00DD00",
+    "#00CC00",
+    "#00BB00",
+    "#00AA00",
+    "#009900",
+    "#008800",
+    "#007700",
+    "#006600",
+];
+
+export const RangeShow = (props: RangeShowProps) => {
+    if (props.RangeData == undefined) { 
+        return <div style={{ fontWeight: 700 }}>-</div>
+    }
+
+    let numberRange = ClassRangeMap.get(props.Type)
+    if (numberRange === undefined) {
+        return <span style={{ fontWeight: 700 }}>-</span>
+    }
+    if (!props.RangeData.Enable) { 
+        return <span style={{ fontWeight: 700 }}>-</span>
+    }
+
+    let averageValue = 0
+    if (props.RangeData.Down <= numberRange[0] ) { 
+        averageValue = props.RangeData.Up
+    } else if (props.RangeData.Up >= numberRange[1]) {
+        averageValue = props.RangeData.Down
+    } else {
+        averageValue = (props.RangeData.Up + props.RangeData.Down)/2
+    } 
+    
+    let Level = Math.floor((averageValue - numberRange[0])*10 / (numberRange[1] - numberRange[0]))
+    
+    Level = Math.max(0, Level)
+    Level = Math.min(9, Level)
+
+    let frontStyle = { color: GreenColorCodeByLevel[Level], fontWeight: 700 }
+    
+    if (props.RangeData.Down <= numberRange[0]) {
+        return <div>
+            <span style={frontStyle}>{averageValue}{"-"}</span>
+        </div>
+    } else if (props.RangeData.Up >= numberRange[1]) {
+        return <div>
+            <span style={frontStyle}>{averageValue}{"+"}</span>
+        </div>
+    } else {    
+        return <div>
+            <span style={frontStyle}>{averageValue}</span>
+        </div>
+    }
+}

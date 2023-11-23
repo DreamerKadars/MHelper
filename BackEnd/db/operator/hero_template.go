@@ -11,6 +11,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type HeroTemplateOperator struct {
@@ -74,7 +75,8 @@ func (o *HeroTemplateOperator) ListHeroTemplate(ctx context.Context, req *db_typ
 	if req.HeroCode != nil {
 		filter = append(filter, bson.E{Key: "hero_code", Value: req.HeroCode})
 	}
-	cur, err := client.GetCollection(o.GetCollectionName()).Find(ctx, filter)
+
+	cur, err := client.GetCollection(o.GetCollectionName()).Find(ctx, filter, &options.FindOptions{Sort: bson.D{{Key: "createtime", Value: -1}}})
 	if err != nil {
 		return nil, err
 	}
@@ -180,7 +182,7 @@ func (o *HeroTemplateOperator) IsValidHeroTemplate(oldInfo, newInfo *db_type.Her
 		if err != nil {
 			return err
 		}
-		err = bson.Unmarshal(updateInfoJSON, tempHeroTemplate)
+		err = bson.Unmarshal(updateInfoJSON, &tempHeroTemplate)
 		if err != nil {
 			return err
 		}

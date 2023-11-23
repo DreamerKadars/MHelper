@@ -17,8 +17,11 @@ export const PathMain: string = "/Main"
 export const PathHeroData: string = "/HeroData"
 export const PathLogin: string = "/Login"
 export const PathAdmin: string = "/Admin"
-export const PathHeroTemplateManage: string = PathAdmin+"/HeroTemplateManage"
+export const PathHeroTemplateManage: string = PathAdmin + "/HeroTemplateManage"
+
+export const PathHeroTemplatePublic: string = "/HeroTemplatePublic"
 
 export const PathHeroTemplateUpdate: string = PathAdmin + "/HeroTemplateUpdate"
 export const PathIDParam: string = "/:id"
 export const PathHeroTemplateCreate: string = PathAdmin + "/HeroTemplateCreate"
+export const PathHeroTemplateAnalyse: string = PathAdmin + "/HeroTemplateAnalyse"

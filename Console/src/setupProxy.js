@@ -8,4 +8,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   )
+  app.use(
+    "/e7",
+    createProxyMiddleware({
+      target: "http://127.0.0.1:8080", 
+      changeOrigin: true,
+    })
+  )
 }

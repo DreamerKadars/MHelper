@@ -9,9 +9,10 @@ import (
 )
 
 const (
-	JwtCookieKey   = "user_jwt_token"
-	LocationHeader = "Location"
-	DefaultIndex   = "/Main"
+	JwtCookieKey      = "user_jwt_token"
+	UserNameCookieKey = "user_name"
+	LocationHeader    = "Location"
+	DefaultIndex      = "/Main"
 )
 
 var jwtSecret []byte
@@ -57,6 +58,14 @@ func SetJwtCookie(ctx iris.Context, username string) {
 		Expires: time.Now().Add(time.Hour * 72),
 		Path:    "/",
 	})
+	ctx.SetCookie(&http.Cookie{
+		// Domain:  "",
+		Name:    UserNameCookieKey,
+		Value:   string(username),
+		Expires: time.Now().Add(time.Hour * 72),
+		Path:    "/",
+	})
+
 	ctx.StatusCode(http.StatusOK)
 	// ctx.Header(LocationHeader, DefaultIndex)
 }

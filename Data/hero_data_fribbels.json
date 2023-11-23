@@ -73,6 +73,72 @@
       }
     }
   },
+  "Abyssal Yufine": {
+    "code": "c2016",
+    "_id": "abyssal-yufine",
+    "name": "Abyssal Yufine",
+    "moonlight": true,
+    "rarity": 5,
+    "attribute": "dark",
+    "role": "knight",
+    "zodiac": "waterbearer",
+    "self_devotion": {
+      "type": "def_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2016_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2016_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 14048,
+        "atk": 830,
+        "hp": 6619,
+        "spd": 106,
+        "def": 713,
+        "chc": 0.23,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 14048,
+        "atk": 830,
+        "hp": 6619,
+        "spd": 106,
+        "def": 713,
+        "chc": 0.23,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
   "Achates": {
     "code": "c1017",
     "_id": "achates",
@@ -442,13 +508,13 @@
       "lv60SixStarFullyAwakened": {
         "cp": 15498,
         "atk": 758,
-        "hp": 5826,
-        "spd": 95,
+        "hp": 6991,
+        "spd": 101,
         "def": 672,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
-        "eff": 0,
+        "eff": 0.25,
         "efr": 0.12,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
@@ -913,9 +979,9 @@
       "lv60SixStarFullyAwakened": {
         "cp": 17640,
         "atk": 812,
-        "hp": 3925,
-        "spd": 107,
-        "def": 599,
+        "hp": 4906,
+        "spd": 112,
+        "def": 689,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
@@ -1668,14 +1734,14 @@
       "lv60SixStarFullyAwakened": {
         "cp": 18267,
         "atk": 540,
-        "hp": 4900,
+        "hp": 5390,
         "spd": 98,
         "def": 729,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
-        "efr": 0.12,
+        "efr": 0.52,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
         "bonusMaxHpPercent": 0,
@@ -4569,6 +4635,90 @@
       }
     }
   },
+  "Brieg": {
+    "code": "c1145",
+    "_id": "brieg",
+    "name": "Brieg",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "ice",
+    "role": "knight",
+    "zodiac": "ram",
+    "self_devotion": {
+      "type": "max_hp_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1145_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1145_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.7,
+        "pow": 1,
+        "targets": 1,
+        "selfHpScaling": 0.12,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "rate": 0,
+        "pow": 0,
+        "options": [
+          {
+            "name": "S2 barrier",
+            "rate": 0,
+            "pow": 0,
+            "selfHpScaling": 0.185
+          }
+        ]
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "with proc dmg",
+        "rate": 1,
+        "pow": 1,
+        "targets": 3,
+        "selfHpScaling": 0.22,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 13403,
+        "atk": 658,
+        "hp": 5375,
+        "spd": 110,
+        "def": 523,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.06,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 17219,
+        "atk": 821,
+        "hp": 6751,
+        "spd": 110,
+        "def": 648,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.18,
+        "efr": 0
+      }
+    }
+  },
   "Butcher Corps Inquisitor": {
     "code": "c3001",
     "_id": "butcher-corps-inquisitor",
@@ -5657,7 +5807,53 @@
       "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
       "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2037_l.png"
     },
-    "ex_equip": [],
+    "ex_equip": [
+      {
+        "_id": "exc106601",
+        "id": "exc106601",
+        "name": "Dragon Emerald",
+        "description": "Jewelry that Luna's father passed on to her. It is the only thing her mother left behind when she left.",
+        "unit": "c1066",
+        "role": "warrior",
+        "rarity": 5,
+        "stat": {
+          "type": "att_rate",
+          "value": 0.07
+        },
+        "skills": [
+          {
+            "skill": 1,
+            "description": "Increases the caster's Combat Readiness by 15% after using Infinity Slash.",
+            "skill_description": "Stabs the target a random number of times, before increasing Combat Readiness of the caster by 15%. Skill cooldown decreases by 1-3 turns and damage dealt increases according to the number of attacks.",
+            "values": [],
+            "_id": 0
+          },
+          {
+            "skill": 3,
+            "description": "Decreases the enemy's Attack for 2 turns after using Ragnar Spear.",
+            "skill_description": "Soars into the air and hits the enemy with a spear, with a {{variable}} chance to decrease Defense for 2 turns and a 100% chance to decrease Attack for 2 turns. Attacks using an advantageous element.",
+            "values": [
+              18,
+              17
+            ],
+            "_id": 1
+          },
+          {
+            "skill": 3,
+            "description": "Grants an extra turn to the caster when the enemy is defeated by Ragnar Spear.",
+            "skill_description": "Soars into the air and hits the enemy with a spear, with a {{variable}} chance to decrease Defense for 2 turns. Attacks using an advantageous element. Grants an extra turn to the caster when the enemy is defeated.",
+            "values": [
+              18,
+              35
+            ],
+            "_id": 2
+          }
+        ],
+        "assets": {
+          "icon": "https://assets.epicsevendb.com/_source/item/icon_eq_exclusive_c1066.png"
+        }
+      }
+    ],
     "skills": {
       "S1": {
         "hitTypes": ["crit", "crushing", "normal", "miss"],
@@ -8289,13 +8485,13 @@
       "lv60SixStarFullyAwakened": {
         "cp": 16292,
         "atk": 921,
-        "hp": 4855,
+        "hp": 5826,
         "spd": 112,
         "def": 631,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
-        "eff": 0.18,
+        "eff": 0.33,
         "efr": 0.18,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
@@ -9558,8 +9754,8 @@
         "cp": 15140,
         "atk": 703,
         "hp": 5914,
-        "spd": 105,
-        "def": 596,
+        "spd": 114,
+        "def": 626,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
@@ -11771,6 +11967,94 @@
       }
     }
   },
+  "Infinite Horizon Achates": {
+    "code": "c6017",
+    "_id": "infinite-horizon-achates",
+    "name": "Infinite Horizon Achates",
+    "moonlight": true,
+    "rarity": 4,
+    "attribute": "light",
+    "role": "manauser",
+    "zodiac": "fish",
+    "self_devotion": {
+      "type": "res",
+      "grades": {
+        "C": 0.068,
+        "B": 0.102,
+        "A": 0.136,
+        "S": 0.17,
+        "SS": 0.204,
+        "SSS": 0.238
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c6017_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c6017_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "rate": 0,
+        "pow": 0,
+        "options": [
+          {
+            "name": "S2 barrier",
+            "rate": 0,
+            "pow": 0,
+            "selfHpScaling": 0.18
+          }
+        ]
+      },
+      "S3": {
+        "hitTypes": [],
+        "rate": 0,
+        "pow": 0,
+        "options": [
+          {
+            "name": "S3 heal",
+            "rate": 0,
+            "pow": 0,
+            "selfHpScaling": 0.2
+          }
+        ]
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 20659,
+        "atk": 576,
+        "hp": 5165,
+        "spd": 100,
+        "def": 767,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0.12
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 20659,
+        "atk": 576,
+        "hp": 5165,
+        "spd": 100,
+        "def": 767,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0.12
+      }
+    }
+  },
   "Iseria": {
     "code": "c1024",
     "_id": "iseria",
@@ -12354,6 +12638,73 @@
         "spd": 114,
         "def": 518,
         "chc": 0.27,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
+  "Kane": {
+    "code": "c1152",
+    "_id": "kane",
+    "name": "Kane",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "fire",
+    "role": "warrior",
+    "zodiac": "lion",
+    "self_devotion": {
+      "type": "att_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1152_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1152_l.png"
+    },
+    "ex_equip": [
+    ],
+    "skills": {
+      "S1": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 13727,
+        "atk": 1040,
+        "hp": 4414,
+        "spd": 105,
+        "def": 472,
+        "chc": 0.22999999999999998,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 17416,
+        "atk": 1359,
+        "hp": 5542,
+        "spd": 105,
+        "def": 585,
+        "chc": 0.22999999999999998,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
@@ -13629,6 +13980,7 @@
     "skills": {
       "S1": {
         "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
         "pow": 1,
         "targets": 1,
         "options": []
@@ -14370,7 +14722,21 @@
       "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
       "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1089_l.png"
     },
-    "ex_equip": [],
+    "ex_equip": [
+      {
+        "_id": "exc100301",
+        "id": "exc100301",
+        "name": "Valkyrie Wing",
+        "description": "A mysterious circlet that symbolizes strength and beauty, and is the source of Rose's Fighting Spirit.",
+        "unit": "c1003",
+        "role": "knight",
+        "rarity": 5,
+        "stat": {
+          "type": "max_hp_rate",
+          "value": 0.07
+        }
+      }
+    ],
     "skills": {
       "S1": {
         "hitTypes": ["crit", "crushing", "normal", "miss"],
@@ -15540,14 +15906,14 @@
       "lv60SixStarFullyAwakened": {
         "cp": 17952,
         "atk": 540,
-        "hp": 5319,
-        "spd": 96,
+        "hp": 5851,
+        "spd": 101,
         "def": 705,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
-        "efr": 0,
+        "efr": 0.25,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
         "bonusMaxHpPercent": 0,
@@ -15710,7 +16076,7 @@
         "overrideAdditionalCd": 0,
         "overrideAdditionalSpd": 0,
         "overrideAdditionalEff": 0,
-        "overrideAdditionalRes": 0.3
+        "overrideAdditionalRes": 0
       },
       "lv60SixStarFullyAwakened": {
         "cp": 17416,
@@ -15733,7 +16099,7 @@
         "overrideAdditionalCd": 0,
         "overrideAdditionalSpd": 0,
         "overrideAdditionalEff": 0,
-        "overrideAdditionalRes": 0.3
+        "overrideAdditionalRes": 0
       }
     }
   },
@@ -15828,8 +16194,8 @@
       "lv60SixStarFullyAwakened": {
         "cp": 17847,
         "atk": 849,
-        "hp": 4450,
-        "spd": 101,
+        "hp": 5340,
+        "spd": 111,
         "def": 662,
         "chc": 0.15,
         "chd": 1.5,
@@ -16311,14 +16677,14 @@
       },
       "lv60SixStarFullyAwakened": {
         "cp": 15062,
-        "atk": 1000,
-        "hp": 4895,
+        "atk": 1150,
+        "hp": 5874,
         "spd": 114,
         "def": 518,
         "chc": 0.27,
         "chd": 1.5,
         "dac": 0.03,
-        "eff": 0,
+        "eff": 0.25,
         "efr": 0,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
@@ -16334,6 +16700,80 @@
       }
     }
   },
+  "Midnight Gala Lilias": {
+    "code": "c5089",
+    "_id": "midnight-gala-lilias",
+    "name": "Midnight Gala Lilias",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "wind",
+    "role": "assassin",
+    "zodiac": "scales",
+    "self_devotion": {
+      "type": "att_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c5089_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c5089_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1.1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "100% penetration",
+        "rate": 0.5,
+        "pow": 1,
+        "targets": 1,
+        "penetration": 1,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 13275,
+        "atk": 1208,
+        "hp": 5178,
+        "spd": 121,
+        "def": 508,
+        "chc": 0.15,
+        "chd": 1.65,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 13275,
+        "atk": 1208,
+        "hp": 5178,
+        "spd": 121,
+        "def": 508,
+        "chc": 0.15,
+        "chd": 1.65,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
   "Mighty Scout": {
     "code": "m0063",
     "_id": "mighty-scout",
@@ -16341,7 +16781,7 @@
     "moonlight": false,
     "rarity": 2,
     "attribute": "wind",
-    "role": "warrior",
+    "role": "assassin",
     "zodiac": "goat",
     "self_devotion": {
       "type": "max_hp",
@@ -16802,20 +17242,18 @@
       },
       "S2": {
         "hitTypes": [],
-        "rate": 0,
-        "pow": 0,
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
         "options": [
           {
-            "name": "S2 barrier",
+            "name": "S3 barrier",
             "rate": 0,
             "pow": 0,
             "selfHpScaling": 0.3045
           }
         ]
-      },
-      "S3": {
-        "hitTypes": [],
-        "options": []
       }
     },
     "calculatedStatus": {
@@ -16840,7 +17278,7 @@
         "overrideAdditionalCd": 0,
         "overrideAdditionalSpd": 0,
         "overrideAdditionalEff": 0,
-        "overrideAdditionalRes": 0.2
+        "overrideAdditionalRes": 0.3
       },
       "lv60SixStarFullyAwakened": {
         "cp": 18832,
@@ -16863,7 +17301,7 @@
         "overrideAdditionalCd": 0,
         "overrideAdditionalSpd": 0,
         "overrideAdditionalEff": 0,
-        "overrideAdditionalRes": 0.2
+        "overrideAdditionalRes": 0.3
       }
     }
   },
@@ -16936,7 +17374,7 @@
     ],
     "skills": {
       "S1": {
-        "hitTypes": [],
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
         "rate": 0.7,
         "pow": 1,
         "targets": 1,
@@ -17349,6 +17787,73 @@
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
+        "efr": 0
+      }
+    }
+  },
+  "Nahkwol": {
+    "code": "c1151",
+    "_id": "nahkwol",
+    "name": "Nahkwol",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "fire",
+    "role": "ranger",
+    "zodiac": "goat",
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "B": 0.09,
+        "A": 0.135,
+        "S": 0.18,
+        "SS": 0.225,
+        "SSS": 0.27
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/nahkwolPortrait.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/nahkwolPanel.png"
+    },
+    "ex_equip": [
+    ],
+    "skills": {
+      "S1": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 13285,
+        "atk": 804,
+        "hp": 4542,
+        "spd": 115,
+        "def": 472,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.18,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 17052,
+        "atk": 1003,
+        "hp": 5704,
+        "spd": 115,
+        "def": 585,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.3,
         "efr": 0
       }
     }
@@ -19426,10 +19931,10 @@
       },
       "lv60SixStarFullyAwakened": {
         "cp": 14932,
-        "atk": 1039,
-        "hp": 3925,
+        "atk": 1195,
+        "hp": 4906,
         "spd": 110,
-        "def": 606,
+        "def": 667,
         "chc": 0.27,
         "chd": 1.5,
         "dac": 0.03,
@@ -20778,11 +21283,11 @@
       },
       "lv60SixStarFullyAwakened": {
         "cp": 14563,
-        "atk": 1081,
+        "atk": 1243,
         "hp": 4572,
-        "spd": 111,
+        "spd": 116,
         "def": 494,
-        "chc": 0.22999999999999998,
+        "chc": 0.33,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
@@ -21471,12 +21976,12 @@
         "cp": 12139,
         "atk": 549,
         "hp": 5098,
-        "spd": 91,
+        "spd": 97,
         "def": 535,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
-        "eff": 0,
+        "eff": 0.25,
         "efr": 0,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
@@ -22126,14 +22631,14 @@
     "role": "ranger",
     "zodiac": "maiden",
     "self_devotion": {
-      "type": "att_rate",
+      "type": "cri",
       "grades": {
-        "C": 0.04,
-        "B": 0.06,
-        "A": 0.08,
-        "S": 0.1,
-        "SS": 0.12,
-        "SSS": 0.14
+        "C": 0.042,
+        "B": 0.063,
+        "A": 0.084,
+        "S": 0.105,
+        "SS": 0.126,
+        "SSS": 0.147
       }
     },
     "assets": {
@@ -23060,12 +23565,12 @@
       },
       "lv60SixStarFullyAwakened": {
         "cp": 14563,
-        "atk": 1081,
-        "hp": 4572,
+        "atk": 1189,
+        "hp": 5258,
         "spd": 111,
         "def": 494,
         "chc": 0.23,
-        "chd": 1.5,
+        "chd": 1.55,
         "dac": 0.03,
         "eff": 0,
         "efr": 0,
@@ -24652,14 +25157,14 @@
       "lv50FiveStarFullyAwakened": {
         "cp": 12124,
         "atk": 607,
-        "hp": 4640,
+        "hp": 5568,
         "spd": 95,
         "def": 511,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
-        "efr": 0.12,
+        "efr": 0.47,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
         "bonusMaxHpPercent": 0,
@@ -24675,14 +25180,14 @@
       "lv60SixStarFullyAwakened": {
         "cp": 15498,
         "atk": 758,
-        "hp": 5826,
+        "hp": 6991,
         "spd": 95,
         "def": 672,
         "chc": 0.15,
         "chd": 1.5,
         "dac": 0.03,
         "eff": 0,
-        "efr": 0.12,
+        "efr": 0.47,
         "bonusMaxAtkPercent": 0,
         "bonusMaxDefPercent": 0,
         "bonusMaxHpPercent": 0,
@@ -24694,6 +25199,102 @@
         "overrideAdditionalSpd": 0,
         "overrideAdditionalEff": 0,
         "overrideAdditionalRes": 0.35
+      }
+    }
+  },
+  "Urban Shadow Choux": {
+    "code": "c2101",
+    "_id": "urban-shadow-choux",
+    "name": "Urban Shadow Choux",
+    "moonlight": true,
+    "rarity": 5,
+    "attribute": "dark",
+    "role": "warrior",
+    "zodiac": "ram",
+    "self_devotion": {
+      "type": "max_hp_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2101_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2101_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.5,
+        "pow": 1,
+        "targets": 1,
+        "selfHpScaling": 0.10,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.5,
+        "pow": 1,
+        "targets": 1,
+        "selfHpScaling": 0.25,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 11377,
+        "atk": 789,
+        "hp": 4735,
+        "spd": 117,
+        "def": 514,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0,
+        "bonusMaxAtkPercent": 0,
+        "bonusMaxDefPercent": 0,
+        "bonusMaxHpPercent": 0,
+        "overrideAtk": 0,
+        "overrideHp": 0,
+        "overrideDef": 0,
+        "overrideAdditionalCr": 0.3,
+        "overrideAdditionalCd": 0,
+        "overrideAdditionalSpd": 0,
+        "overrideAdditionalEff": 0,
+        "overrideAdditionalRes": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 14466,
+        "atk": 984,
+        "hp": 6266,
+        "spd": 117,
+        "def": 637,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0,
+        "bonusMaxAtkPercent": 0,
+        "bonusMaxDefPercent": 0,
+        "bonusMaxHpPercent": 0,
+        "overrideAtk": 0,
+        "overrideHp": 0,
+        "overrideDef": 0,
+        "overrideAdditionalCr": 0.3,
+        "overrideAdditionalCd": 0,
+        "overrideAdditionalSpd": 0,
+        "overrideAdditionalEff": 0,
+        "overrideAdditionalRes": 0
       }
     }
   },
@@ -24785,6 +25386,79 @@
         "overrideAdditionalSpd": 5,
         "overrideAdditionalEff": 0.2,
         "overrideAdditionalRes": 0
+      }
+    }
+  },
+  "Veronica": {
+    "code": "c1150",
+    "_id": "veronica",
+    "name": "Veronica",
+    "moonlight": false,
+    "rarity": 4,
+    "attribute": "fire",
+    "role": "ranger",
+    "zodiac": "maiden",
+    "self_devotion": {
+      "type": "cri",
+      "grades": {
+        "C": 0.042,
+        "B": 0.063,
+        "A": 0.084,
+        "S": 0.105,
+        "SS": 0.126,
+        "SSS": 0.147
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1150_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1150_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.7,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.8,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 12121,
+        "atk": 910,
+        "hp": 3739,
+        "spd": 121,
+        "def": 418,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 15378,
+        "atk": 1188,
+        "hp": 4693,
+        "spd": 121,
+        "def": 518,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
       }
     }
   },

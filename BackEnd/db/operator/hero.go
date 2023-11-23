@@ -15,7 +15,7 @@ var heroStaticOperator HeroStaticOperator
 
 var heroStaticMap map[string]db_type.HeroStatic = make(map[string]db_type.HeroStatic)
 
-func InitStaticHero(heroDataFile, heroDataFribbelsFile string) error {
+func InitStaticHero(heroDataFile, heroDataFribbelsFile, heroExtraPanelInfoDataFile string) error {
 	heroDataByte, err := os.ReadFile(heroDataFile)
 	if err != nil {
 		return err
@@ -25,10 +25,20 @@ func InitStaticHero(heroDataFile, heroDataFribbelsFile string) error {
 		return err
 	}
 
+	heroExtraPanelInfoDataByte, err := os.ReadFile(heroExtraPanelInfoDataFile)
+	if err != nil {
+		return err
+	}
 	heroDataFribbelsByte, err := os.ReadFile(heroDataFribbelsFile)
 	if err != nil {
 		return err
 	}
+
+	heroExtraPanelInfoData, err := db_type.UnmarshalHeroExtraPanelInfoDataFile(heroExtraPanelInfoDataByte)
+	if err != nil {
+		return err
+	}
+
 	heroDataFribbels, err := db_type.UnmarshalHeroDetailFribbelsFile(heroDataFribbelsByte)
 	if err != nil {
 		return err
@@ -45,6 +55,7 @@ func InitStaticHero(heroDataFile, heroDataFribbelsFile string) error {
 		heroStaticMap[heroDataDetail.HeroCode] = db_type.HeroStatic{
 			HeroDetail:         heroDataDetail,
 			HeroDetailFribbels: heroDataFribbels[heroDataDetail.HeroCode],
+			HeroExtraPanelInfo: heroExtraPanelInfoData[heroDataDetail.HeroCode],
 		}
 	}
 	utils.Info("read static data success")

@@ -7,13 +7,14 @@ import { Upload } from '@arco-design/web-react';
 import { UploadItem } from "@arco-design/web-react/es/Upload";
 import { Grid } from '@arco-design/web-react';
 import { E7DataDomain } from '../const';
-import { AttributeCodeIconFlex, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCodeIconFlex } from "../../pages/type";
+import { AttributeCodeIconFlex, HeroDetail, HeroListResult, InitializeHeroStaticDetail, JobCodeIconFlex } from "../../utils/const";
 import { LoadHeroJSON } from "../api/help";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
 
 interface HeroSelectProps {
     HeroCode: string;
-    OnChange: (heroDetail: HeroDetail) => any
+    OnChange?: (heroDetail: HeroDetail) => any;
+    disabled?: boolean;
 }
 
 export const HeroSelect = (props: HeroSelectProps) => {
@@ -29,21 +30,28 @@ export const HeroSelect = (props: HeroSelectProps) => {
             }
         }
     }
-    console.log(HeroListResult)
     return <Grid.Row>
         <Grid.Col span={18}>
-            <Select
-                virtualListProps={{height:500}}
+            {props.disabled ===true ? <div style={{margin:7}}>
+                {HeroListResult?.heroList.map((heroDetail: HeroDetail) => {
+                    if (heroDetail.heroCode == props.HeroCode) {
+                        return heroDetail.heroName
+                    }
+                })}
+            </div> : <Select
+                disabled={props.disabled}
+                value={props.HeroCode}
+                virtualListProps={{ height: 500 }}
                 style={{ width: 200 }}
                 onChange={(heroCode) => {
-                    console.log(heroCode)
                     let res = FindHeroDetailInList(heroCode, HeroListResult?.heroList)
                     if (res == undefined) {
                         Message.error("找不到角色编码")
                         return
                     }
-                    console.log(res)
-                    props.OnChange(res)
+                    if (props.OnChange) {
+                        props.OnChange(res)
+                    }
                     // setFresh(!fresh)
                 }}
                 renderFormat={(option, value) => {
@@ -70,12 +78,12 @@ export const HeroSelect = (props: HeroSelectProps) => {
                         <HeroImageShow ImageSizeParm={0.6} HeroDetail={heroDetail}></HeroImageShow>
                     </Select.Option>
                 })}
-            </Select>
+            </Select>}
         </Grid.Col>
         <Grid.Col span={6}>
-            {HeroListResult?.heroList.map((heroDetail) => {
+            {HeroListResult?.heroList.map((heroDetail,heroIndex) => {
                 if (props.HeroCode == heroDetail.heroCode) {
-                    return <HeroImageShow HeroDetail={heroDetail}></HeroImageShow>
+                    return <HeroImageShow key={heroIndex} HeroDetail={heroDetail}></HeroImageShow>
                 }
             })}
         </Grid.Col>

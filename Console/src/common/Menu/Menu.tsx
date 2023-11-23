@@ -26,6 +26,10 @@ export default function Menu() {
                 <IconCalendar />
                 角色数据
             </MenuItem>
+            <MenuItem key='/HeroTemplatePublic'>
+                <IconCalendar />
+                角色配装
+            </MenuItem>
             {(cookie.load(JwtCookieKey) !== "" && cookie.load(JwtCookieKey) !== undefined) && <ArcoMenu.SubMenu key={PathAdmin} title={<>
                 <IconDesktop /> 后台管理
             </>}>

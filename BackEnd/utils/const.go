@@ -11,6 +11,7 @@ const (
 	DataFolder                = "../Data/"
 	DataHeroStatisticName     = "hero_data.json"
 	DataArtifactStatisticName = "artifact_data.json"
+	DataEEFribbelsName        = "ee_data_fribbels.json"
 	DataHeroImageFolder       = "../Data/HeroImage/"
 	DataArtifactImageFolder   = "../Data/ArtifactImage/"
 
