@@ -5,7 +5,7 @@ import necklace from "../asset/necklace.jpg"
 import ring from "../asset/ring.png"
 import shoes from "../asset/shoes.png"
 
-export const E7DataDomain = "http://e7.soultrial.top/Data"
+export const E7DataDomain = "https://e7.soultrial.top/Data"
 
 export const ClassAtk = "atk"       // 攻击
 export const ClassDefend = "defend"    // 防御
