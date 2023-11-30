@@ -25,3 +25,5 @@ export const PathHeroTemplateUpdate: string = PathAdmin + "/HeroTemplateUpdate"
 export const PathIDParam: string = "/:id"
 export const PathHeroTemplateCreate: string = PathAdmin + "/HeroTemplateCreate"
 export const PathHeroTemplateAnalyse: string = PathAdmin + "/HeroTemplateAnalyse"
+
+export const PathEquipAnalyse: string = "/EquipAnalyse"

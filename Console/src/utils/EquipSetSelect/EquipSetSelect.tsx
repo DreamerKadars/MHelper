@@ -32,7 +32,7 @@ interface EquipSetSelect {
 
 export const EquipSetSelect = (props: EquipSetSelect) => {
     return <div>
-        <span style={{ marginRight: 20 }}>套装筛选</span>
+        <span style={{ marginRight: 20 }}>装备套装</span>
         <Select
             value={props.EquipSet}
             onChange={props.onChange}
@@ -64,18 +64,15 @@ interface EquipSetMultiSelectProps {
 }
 
 export const EquipSetMultiSelect = (props: EquipSetMultiSelectProps) => {
-    console.log(props.EquipSet)
     return <div>
         {props.noLabel !== true && <span style={{ marginRight: 20 }}>套装筛选</span>}
         {props.EquipSet?.map((equipSet, index) => {
             return <div key={index} style={{marginBottom:15}}>
                 {equipSet.map((tempEquipSet: string, tempIndex: number) => {
-                    console.log(tempEquipSet, tempIndex)
                     return <Tag key={tempIndex} style={{ marginRight: 10 }} closable={!props.disabled} visible={true} onClose={() => {
                         let temp = props.EquipSet
                         temp[index] = temp[index].filter((_, index) => index !== tempIndex)
                         props.onChange(temp)
-                        console.log(temp[index])
                     }}>
                         <Image preview={false} width={30} src={GenerateSetImageUrl(tempEquipSet + "")}></Image>
                     </Tag>

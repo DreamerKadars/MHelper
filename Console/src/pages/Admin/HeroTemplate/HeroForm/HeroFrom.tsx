@@ -31,6 +31,7 @@ import { HeroTemplateCreate, HeroTemplateGet, HeroTemplateUpdate } from '../../.
 import { CalClassSetGrade, CalClassSetValue, CalGradeByClass, CalLeftMainValueByClass, CalMainGradeByClass, CalMainValueByClass, CalValueByClass, ClassAtk, ClassCC, ClassCD, ClassChineseMap, ClassDefend, ClassHp, ClassHr, ClassMainMap, ClassRr, ClassSetMap, ClassSpeed, ClassToFKeyMap, EquipLocNecklace, EquipLocRing, EquipLocShoes, MainNecklaceRange, MainRingRange, MainShoesRange, SetMaxHp, SetSpeed } from '../../../../utils/const';
 import { IconExclamationCircle, IconQuestionCircle } from '@arco-design/web-react/icon';
 import { RangeShow } from '../../../../utils/StatisticShow/StatisticShow';
+import { CalculateClassGradeNeedOne, CalculateClassGradeNeedOneRes, CalculateOneEquipConfInfoByTemplate, ClassGradeNeedShowProps } from '../../../../utils/HeroTemplateHelper/HeroTemplateHelper';
 // import { PathHeroTemplateManage } from '../../..';
 const FormItem = Form.Item;
 
@@ -181,6 +182,8 @@ interface RangeEditProps {
     disabled?: boolean;
     classType: string;
 }
+
+
 
 export function RangeEdit(props: RangeEditProps) {
     let marks: Record<number, React.ReactNode> = {}
@@ -441,9 +444,13 @@ export default function HeroTemplateForm(props: HeroTemplateFormProps) {
                 </Grid.Col>
                 {/* !editEnable &&  */}
                 {<Grid.Col span={12}>
-                    <Card title={<div>{"角色数据"}</div>} style={{marginBottom:10}}>
-                        <HeroDetailBackEndShow heroDetailBackEnd={heroDetailBackEnd}/>
-                    </Card>
+                    <Collapse
+                        style={{marginBottom:10}}
+                    >
+                        <Collapse.Item header='角色基础数据' name='1'>
+                            <HeroDetailBackEndShow heroDetailBackEnd={heroDetailBackEnd} />
+                        </Collapse.Item>
+                    </Collapse>
                     <Card title={<div>{"分数需求"}<Popover content={<div>{"说明:主属性固定值按525攻、2835血、310防计算,专属装备加成取最高"}</div>}><IconQuestionCircle /></Popover> </div>}>
                         <Collapse
                             lazyload={false}
@@ -478,6 +485,9 @@ export default function HeroTemplateForm(props: HeroTemplateFormProps) {
                             })}
                         </Collapse>
                     </Card>
+                    {/* <Card title={<div>{"配装分享"}</div>} style={{ marginBottom: 10 }}>
+                        <Button type='primary'>图片分享</Button>
+                    </Card> */}
                 </Grid.Col>}
             </Grid.Row>
         </Card>
@@ -485,10 +495,11 @@ export default function HeroTemplateForm(props: HeroTemplateFormProps) {
 }
 
 interface EquipmentMainSelectProps {
-    value: string[];
+    value: string[] | string;
     loc: string;
-    onChange: (info: string[]) => any;
+    onChange: (info: any) => any;
     disabled?: boolean;
+    single?: boolean;
 }
 
 export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
@@ -506,9 +517,14 @@ export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
     }
 
     return <div>
-        {props.disabled ?
-                <Space size='small'>
-                    {props.value?.map((value: string) => {
+        {props.disabled ?<>
+                {props.single === true ? <div>
+                    {selectRange?.map((oneRangeValue: string, artifactIndex: number) => {
+                        if (oneRangeValue === props.value) {
+                            return <Tag>{ClassChineseMap.get(props.value)}</Tag>
+                        }
+                    })}
+                </div> : <div><Space size='small'>{(props.value as string[])?.map((value: string) => {
                         return <div>
                             {selectRange?.map((oneRangeValue: string, artifactIndex: number) => {
                                 if (oneRangeValue === value) {
@@ -516,13 +532,12 @@ export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
                                 }
                             })}
                         </div>
-                    })}
-                </Space>
+                })}</Space></div>}</>
             :
                 <Select
                     disabled={props.disabled}
                     value={props.value}
-                    mode='multiple'
+                    mode={props.single === true ? undefined : 'multiple'}
                     onChange={props.onChange}
                 >
                 {selectRange.map((item) => {
@@ -534,82 +549,14 @@ export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
         </div>
 }
 
+function ClassGradeNeedShow(props: ClassGradeNeedShowProps) {
+    const { heroInfo, classType, aim } = props
 
-interface ClassGradeNeedShowProps { 
-    classType: string
-    setList: string[]
-    mainNecklace: string
-    mainRing: string
-    mainShoes: string
-    heroInfo: CalculatedStatus
-    extraHeroInfo?:ExtraPanel[]
-    aim?: Range
-    subGrade: number
-    setSubGrade: (newValue:number) => any
-}
-
-function ClassGradeNeedShow(props: ClassGradeNeedShowProps) { 
-    const { classType, setList, mainNecklace, mainRing, mainShoes, heroInfo, aim } = props
-
-    // 基础值+套装+主属性+副属性 = 模版目标
-    let baseValue = 0
-    let leftValue = CalLeftMainValueByClass(classType)
-    let setValue = 0
-    let mainValue = 0
-    let subValue = 0
-    let subGrade = 0
-
-    let factor = 100 // 有情况会导致有倍率计算
-
-    let extraValue: { reason: string, value: number }[] = []
-    let extraValueSum = 0
-
-    if (aim === undefined || aim.Enable === false) {
-        
-    } else { 
-        setValue = CalClassSetValue(heroInfo,setList,classType)
-
-        let FKeyTemp = ClassToFKeyMap.get(classType)
-        if (FKeyTemp !== undefined) { 
-            baseValue = heroInfo?.lv60SixStarFullyAwakened[FKeyTemp]
-            if (FKeyTemp === FKeyCC || FKeyTemp === FKeyCD || FKeyTemp === FKeyHR || FKeyTemp === FKeyRR) { 
-                baseValue *= 100
-            }
-        }
-
-        mainValue = CalMainValueByClass(heroInfo, mainNecklace, classType) + CalMainValueByClass(heroInfo, mainRing, classType) + CalMainValueByClass(heroInfo, mainShoes, classType)
-        mainValue = Number(mainValue.toFixed(2))
-        props.extraHeroInfo?.map((ExtraPanel) => { 
-            ExtraPanel.effectValue.map((panel) => { 
-                if (panel.classType.indexOf(classType) >= 0) { 
-                    if (panel.classType.indexOf(ClassSuffixFinal) >= 0) {
-                        factor += panel.value
-                        return
-                    }
-                    let tempValue = CalValueByClass(heroInfo,panel.classType,panel.value)
-                    extraValue.push({
-                        reason: ExtraPanel.reason,
-                        value:tempValue,
-                    })
-                    extraValueSum += tempValue
-                }
-            })
-        })
-
-
-        subValue = Number((aim.Down * 100 / factor - baseValue - leftValue - setValue - mainValue - extraValueSum).toFixed(2))
-        subGrade = CalGradeByClass(heroInfo, classType, subValue)
-    }
-
-    useEffect(() => {
-        if (subGrade !== props.subGrade) { 
-            props.setSubGrade(subGrade)
-        }
-    }, [props])
-    
-    if (aim === undefined || aim.Enable === false) {
+    if (props.aim === undefined || props.aim.Enable === false || props.calculateClassGradeNeedOneRes == undefined) {
         return <div>-</div>
     }
+
+    const { baseValue, leftValue, setValue, mainValue, subValue, subGrade, factor, extraValue } = props.calculateClassGradeNeedOneRes
     
     return <div>
         {factor===100?"":"("}
@@ -628,7 +575,7 @@ function ClassGradeNeedShow(props: ClassGradeNeedShowProps) {
         {mainValue !== 0 ? <Popover content={<div>右三主属性加成({CalGradeByClass(heroInfo,classType,mainValue)}分)</div>}><span style={{ fontWeight: "bold" ,color: "orange" }}>+{mainValue}</span></Popover>:""}
         {subValue !== 0 ? <Popover content={<div>副属性加成({CalGradeByClass(heroInfo, classType, subValue)}分)</div>}><span style={{ fontWeight: "bold", color: "purple" }}>+{subValue}</span></Popover>:""}
         {factor === 100 ? "" : ")*" + (factor / 100).toFixed(2)}
-        <Popover content={"目标阈值"}><span style={{ fontWeight: "bold", color: "red" }}>={aim.Down}</span></Popover>
+        <Popover content={"目标阈值"}><span style={{ fontWeight: "bold", color: "red" }}>={aim!.Down}</span></Popover>
     </div>
 }
 
@@ -664,74 +611,40 @@ export function GetArtifactValueByLevel(artifactCode: string, level: number, all
 
 function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) { 
     const { setIndex, set, mainNecklace, mainRing, mainShoes, heroDetailBackEnd, nowHeroTemplateData } = props
-    
-    const [subGradeHP, setSubGradeHP] = useState(0)
-    const [subGradeATK, setSubGradeATK] = useState(0)
-    const [subGradeDF, setSubGradeDF] = useState(0)
-    const [subGradeSP, setSubGradeSP] = useState(0)
-    const [subGradeCC, setSubGradeCC] = useState(0)
-    const [subGradeCD, setSubGradeCD] = useState(0)
-    const [subGradeHR, setSubGradeHR] = useState(0)
-    const [subGradeRR, setSubGradeRR] = useState(0)
-
-    let failFlag = false
-    if (subGradeHP < 0 || subGradeATK < 0 || subGradeDF < 0 || subGradeSP < 0 || subGradeCC < 0 || subGradeCD < 0 || subGradeHR < 0 || subGradeRR < 0) { 
-        failFlag = true
-    }
 
     // 计算得分
     let setGrade = 0
     set.map((setTemp) => {
         setGrade += CalClassSetGrade(heroDetailBackEnd?.calculatedStatus, setTemp)
     })
+    let oneEquipConfInfo = CalculateOneEquipConfInfoByTemplate({
+        template: nowHeroTemplateData,
+        heroDetailBackEnd: heroDetailBackEnd,
+        set: set,
+        mainNecklace: mainNecklace,
+        mainRing: mainRing,
+        mainShoes: mainShoes,
+        artifactInfo: props.artifactInfo,
+        allArtifactInfoList: props.allArtifactInfoList,
+        selfDevotion: props.selfDevotion,
+    })
+
+    const subGradeHP = oneEquipConfInfo.resCalculateClassGradeNeedOneHP.subGrade
+    const subGradeATK = oneEquipConfInfo.resCalculateClassGradeNeedOneAtk.subGrade
+    const subGradeDF = oneEquipConfInfo.resCalculateClassGradeNeedOneDefend.subGrade
+    const subGradeSP = oneEquipConfInfo.resCalculateClassGradeNeedOneSpeed.subGrade
+    const subGradeCC = oneEquipConfInfo.resCalculateClassGradeNeedOneCC.subGrade
+    const subGradeCD = oneEquipConfInfo.resCalculateClassGradeNeedOneCD.subGrade
+    const subGradeHR = oneEquipConfInfo.resCalculateClassGradeNeedOneHR.subGrade
+    const subGradeRR = oneEquipConfInfo.resCalculateClassGradeNeedOneRR.subGrade
+
+    let failFlag = false
+    if (subGradeHP < 0 || subGradeATK < 0 || subGradeDF < 0 || subGradeSP < 0 || subGradeCC < 0 || subGradeCD < 0 || subGradeHR < 0 || subGradeRR < 0) {
+        failFlag = true
+    }
+
     // 计算平均分
     let averageGrade = Number(((subGradeHP + subGradeATK + subGradeDF + subGradeSP + subGradeCC + subGradeCD + subGradeRR + subGradeHR) / 6).toFixed(2))
-    
-    
-    let extra_panels: ExtraPanel[] = []
-    if (heroDetailBackEnd.extra_panels !== undefined && heroDetailBackEnd.extra_panels !== null) { 
-        extra_panels = [...heroDetailBackEnd.extra_panels]
-    }
-
-    // 计算神器的攻击力和血量加到额外配置上
-    if (props.artifactInfo !== undefined && props.artifactInfo !== null && props.artifactInfo[0] !== undefined) { 
-        let res = GetArtifactValueByLevel(props.artifactInfo[0].ArtifactCode === undefined ? "" : props.artifactInfo[0].ArtifactCode,
-            props.artifactInfo[0].Level === undefined ? 0 : props.artifactInfo[0].Level, 
-            props.allArtifactInfoList)
-        extra_panels.push({
-            reason: '神器加成',
-            effectValue: [{
-                classType: "hp",
-                value: res.HP,
-            }, {
-                    classType: "atk",
-                    value: res.ATK,
-                }]
-        })
-    }
-
-    // 计算阵型的攻击力和血量加到额外配置上
-    if (props.selfDevotion !== undefined && props.selfDevotion !== "") { 
-        let value = GetSelfDevotionGradeValueByLevel(props.selfDevotion, heroDetailBackEnd.self_devotion)
-        extra_panels.push({
-            reason: props.selfDevotion +'自阵加成',
-            effectValue: [{
-                classType: ConvertSelfDevotionTypeToCommon(heroDetailBackEnd.self_devotion?.type),
-                value: value,
-            }]
-        })
-    }
-
-    // 计算专属装备的加成加到额外配置上
-    if (heroDetailBackEnd.eeType !== undefined && heroDetailBackEnd.eeType !== "") {
-        extra_panels.push({
-            reason: '专属装备加成',
-            effectValue: [{
-                classType: heroDetailBackEnd.eeType,
-                value: GetEETypeValue(heroDetailBackEnd.eeType),
-            }]
-        })
-    }
 
     return <Collapse.Item
         header={<>
@@ -771,15 +684,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassHp}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.HP}
-                        subGrade={subGradeHP}
-                        setSubGrade={setSubGradeHP}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneHP}
                     />
                 </>,
             }, {
@@ -787,15 +694,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassDefend}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.DF}
-                        subGrade={subGradeDF}
-                        setSubGrade={setSubGradeDF}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneDefend}
                     />
                 </>,
             }, {
@@ -803,15 +704,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassAtk}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.ATK}
-                        subGrade={subGradeATK}
-                        setSubGrade={setSubGradeATK}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneAtk}
                     />
                 </>,
             }, {
@@ -819,15 +714,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassSpeed}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.SP}
-                        subGrade={subGradeSP}
-                        setSubGrade={setSubGradeSP}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneSpeed}
                     />
                 </>,
             }, {
@@ -835,15 +724,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassCC}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.CC}
-                        subGrade={subGradeCC}
-                        setSubGrade={setSubGradeCC}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneCC}
                     />
                 </>,
             }, {
@@ -851,15 +734,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassCD}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.CD}
-                        subGrade={subGradeCD}
-                        setSubGrade={setSubGradeCD}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneCD}
                     />
                 </>,
             }, {
@@ -867,15 +744,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassHr}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.HR}
-                        subGrade={subGradeHR}
-                        setSubGrade={setSubGradeHR}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneHR}
                     />
                 </>,
             }, {
@@ -883,15 +754,9 @@ function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) {
                 value: <>
                     <ClassGradeNeedShow
                         classType={ClassRr}
-                        setList={set}
-                        mainNecklace={mainNecklace}
-                        mainRing={mainRing}
-                        mainShoes={mainShoes}
                         heroInfo={heroDetailBackEnd?.calculatedStatus!}
-                        extraHeroInfo={extra_panels}
                         aim={nowHeroTemplateData.HeroPanel?.RR}
-                        subGrade={subGradeRR}
-                        setSubGrade={setSubGradeRR}
+                        calculateClassGradeNeedOneRes={oneEquipConfInfo.resCalculateClassGradeNeedOneRR}
                     />
                 </>,
             }, {
@@ -974,7 +839,6 @@ export function SelfDevotionSelect(props: SelfDevotionSelectProps) {
                     {"无"}
                 </Select.Option>
                 {Object.keys(props.selfDevotionInfo.grades).map((key) => { 
-                    console.log(key)
                     return <Select.Option value={key} key={key}>
                         <Grid.Row >
                             <Grid.Col span={6}>

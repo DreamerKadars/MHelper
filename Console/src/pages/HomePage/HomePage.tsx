@@ -11,7 +11,7 @@ import { Pie } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement } from "chart.js";
 import { Equipment, InitEquipment, UploadImageRespInfo } from "../../utils/const";
 import { LoadHeroJSON } from "../../utils/api/help";
-import { EquipAnalyse } from "../../utils/EquipAnalyse/EquipAnalyse";
+import { EquipAnalyse, EquipAnalyseModal } from "../../utils/EquipAnalyse/EquipAnalyse";
 import { GetTotalGrade, PieChart } from "../../utils/PieChart/PieChart";
 import { IconDelete, IconEye } from "@arco-design/web-react/icon";
 Chart.register(...registerables);
@@ -126,7 +126,7 @@ const HomePage = () => {
 
     return (
         <Layout>
-            <EquipAnalyse equip={equip} visible={visible} onCancel={() => { setVisible(false) }}/>
+            <EquipAnalyseModal equip={equip} visible={visible} onCancel={() => { setVisible(false) }}/>
             <Header>
                 <Row className='grid-demo' style={{ marginBottom: 16 }}>
                     <Col span={24} style={{

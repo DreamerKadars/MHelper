@@ -134,3 +134,10 @@ type GetHeroStaticDetailRequest struct {
 type GetHeroStaticDetailResponse struct {
 	Info HeroStatic
 }
+
+type ListHeroStaticDetailRequest struct {
+}
+
+type ListHeroStaticDetailResponse struct {
+	Infos []HeroStatic
+}

@@ -52,7 +52,6 @@ export function HeroTemplateList(auth?: boolean) {
     if (auth === false) {
         url = '/api/v1/e7/hero_template/list'
     }
-    console.log(url)
     return useAxios({
         url: url,
         method: 'GET',
