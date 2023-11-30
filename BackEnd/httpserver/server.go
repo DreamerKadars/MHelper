@@ -54,6 +54,7 @@ func StartHttpServer() {
 		e7.Post("/upload", api.UploadImageInfo)
 		e7.Post("/login", api.Login)
 		e7.Get("/hero_static_data", api.GetHeroStaticDetail)
+		e7.Get("/hero_static_data_list", api.ListHeroStaticDetail)
 		e7.Get("/hero_template/get", api.GetHeroTemplate)
 		e7.Get("/hero_template/list", api.ListHeroTemplate)
 	}

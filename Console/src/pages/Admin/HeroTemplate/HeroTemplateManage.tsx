@@ -46,7 +46,7 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
     useEffect(() => {
         funcHeroTemplateList().then((resp) => {
             setHeroTemplateList(resp.data.Data)
-        }).catch((error) => { HandlerAxiosErrPrefix("创建角色模板", error) })
+        }).catch((error) => { HandlerAxiosErrPrefix("读取角色模板", error) })
     }, [fresh])
     
     useEffect(() => {
@@ -55,7 +55,6 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
         if (page == null) {
             page = "1"
         }
-        console.log(page)
         setPageNum(Number(page))
     }, [location]);
 
@@ -195,7 +194,7 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
                 SkipToUrl(PathHeroTemplateCreate)
             }}>创建角色模板</Button> : <></>}
             <Card
-                style={{ margin: 10 }}
+                style={{ marginBottom: 10 }}
             >
                 <Grid.Row>
                     <Grid.Col span={5} style={{ marginRight: 10 }}>
@@ -267,7 +266,6 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
                 data={heroTemplateListAfterFilter}
                 columns={columns}
                 onChange={(pagination) => {
-                    console.log(pagination)
                     if (pagination.current !== undefined) {
                         handlePageChange(pagination.current.toString())
                     }

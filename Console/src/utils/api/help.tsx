@@ -47,6 +47,13 @@ export function GetHeroDetail() {
     });
 }
 
+export function ListHeroDetail() {
+    return useAxios({
+        url: '/api/v1/e7/hero_static_data_list',
+        method: 'GET',
+    });
+}
+
 export function HandlerAxiosErrPrefix(prefix: string,error: any ) {
     if (error.response?.data?.Message) {
         Message.error(prefix + error.response.data.Message)

@@ -1,4 +1,11 @@
-export const E7DataDomain = "http://e7-data.soultrial.top/data"
+import weapon from "../asset/weapon.png"
+import helmet from "../asset/helmet.png"
+import cuirass from "../asset/cuirass.png"
+import necklace from "../asset/necklace.jpg"
+import ring from "../asset/ring.png"
+import shoes from "../asset/shoes.png"
+
+export const E7DataDomain = "http://e7.soultrial.top/Data"
 
 export const ClassAtk = "atk"       // 攻击
 export const ClassDefend = "defend"    // 防御
@@ -61,9 +68,16 @@ export const ClassMainMap: Map<string,number> = new Map([
     [ClassRr,  65],
 ]);
 
-export const EquipLocRing = "ring"
+
+export const EquipLocWeapon = "weapon"
+export const EquipLocHelmet = "helmet"
+export const EquipLocCuirass = "cuirass"
 export const EquipLocNecklace = "necklace"
+export const EquipLocRing = "ring"
 export const EquipLocShoes = "shoes"
+
+export const EquipLocRange = [EquipLocWeapon, EquipLocHelmet, EquipLocCuirass, EquipLocNecklace, EquipLocRing,EquipLocShoes ]
+export const EquipLocCNRange = [ "武器" ,"头盔", "胸甲", "项链", "戒指", "鞋子" ]
 
 export const MainRange = { ClassAtk, ClassDefend, ClassHp, ClassSpeed, ClassCC, ClassCD, ClassHr }
 export const MainAllRange = { ClassAtk, ClassAtkPercent, ClassDefend, ClassDefendPercent, ClassHp, ClassHpPercent, ClassSpeed, ClassCC, ClassCD, ClassHr,ClassRr }
@@ -368,10 +382,12 @@ export interface Equipment {
     OriginImageHeight: number;
     MainType: string;
     MainValue: number;
+    EquipLoc: string;
+    Set?: string;
 }
 
 export const InitEquipment = () => {
-    return {
+    let res: Equipment = {
         ID: '',
         Class: '',
         X1: 0,
@@ -399,7 +415,9 @@ export const InitEquipment = () => {
         OriginImageHeight: 0,
         MainType: "",
         MainValue: 0,
+        EquipLoc: "",
     }
+    return res
 }
 
 export interface Object {
@@ -932,4 +950,56 @@ export function GetEETypeValue(type:string) {
             return 16
     }
     return 0
+}
+
+// 攻击需求 0-20 分 基本不需要 不能歪
+// 攻击需求 20-120 分 歪3次以内，也就是27分以内，超过作废
+// 120分以上，多少都OK
+export const SubGradeNeedLevelRange = new Map<string, number[]>([
+    [ClassAtk, [20, 120, 170, 220]],
+    [ClassHp, [20, 120, 170, 220]],
+    [ClassDefend, [20, 120, 170, 220]],
+    [ClassSpeed, [20, 120, 200, 250]],
+    [ClassCC, [20, 50, 100, 1000]],
+    [ClassCD, [20, 50, 100, 170]],
+    [ClassHr, [20, 50, 100, 150]],
+    [ClassRr, [20, 50, 100, 150]],
+    ]
+)
+
+export const GetSubGradeNeedLevel = (classType: string, grade: number) => {
+    let range = SubGradeNeedLevelRange.get(classType)
+    if (grade === 0) { 
+        return 0
+    }
+    if (range === undefined) { 
+        return 0
+    }
+    let res = 4
+    
+    for (let i = 0; i < range.length;i++){
+        if (grade < range[i]) { 
+            res = i
+            break
+        }
+    }
+    return res
+}
+
+export function GetDefaultEquipImage(EquipLoc: string) {
+    switch (EquipLoc) { 
+        case EquipLocWeapon:
+            return weapon
+        case EquipLocHelmet:
+            return helmet
+        case EquipLocCuirass:
+            return cuirass
+        case EquipLocNecklace:
+            return necklace
+        case EquipLocRing:
+            return ring
+        case EquipLocShoes:
+            return shoes
+    }
+    return ""
 }

@@ -18,3 +18,12 @@ func GetHeroStaticDetail(ctx iris.Context) {
 	}
 	utils.SuccessResponse(ctx, resp.Info)
 }
+
+func ListHeroStaticDetail(ctx iris.Context) {
+	resp, err := db.Operator.ListHeroStaticDetail(ctx, &db_type.ListHeroStaticDetailRequest{})
+	if err != nil {
+		utils.FailResponse(ctx, err)
+		return
+	}
+	utils.SuccessResponse(ctx, resp.Infos)
+}

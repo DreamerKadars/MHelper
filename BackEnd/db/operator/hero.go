@@ -70,3 +70,11 @@ func (o *HeroStaticOperator) GetHeroStaticDetail(ctx context.Context, req *db_ty
 	}
 	return nil, db_type.ErrNotFound
 }
+
+func (o *HeroStaticOperator) ListHeroStaticDetail(ctx context.Context, req *db_type.ListHeroStaticDetailRequest) (*db_type.ListHeroStaticDetailResponse, error) {
+	resp := db_type.ListHeroStaticDetailResponse{}
+	for _, info := range heroStaticMap {
+		resp.Infos = append(resp.Infos, info)
+	}
+	return &resp, nil
+}
