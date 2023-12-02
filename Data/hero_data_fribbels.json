@@ -27108,5 +27108,31 @@
         "efr": 0
       }
     }
+  },
+  "fumier":{
+    "code": "c1147",
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "B": 0.09,
+        "A": 0.135,
+        "S": 0.18,
+        "SS": 0.225,
+        "SSS": 0.27
+      }
+    },
+    "calculatedStatus": {
+      "lv60SixStarFullyAwakened": {
+        "atk": 1039,
+        "hp": 5299,
+        "spd": 115,
+        "def": 673,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.18,
+        "efr": 0.18
+      }
+    }
   }
 }
