@@ -161,7 +161,8 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
 
     let columns: TableColumnProps[] = [
         {
-            title: '使用角色',
+            title: '使用角色', 
+            width: 40,
             render(col, item: HeroTemplateForEquipSearchTableUnit, index) {
                 let tempHeroDetail = GetHeroDetailFromListByHeroCode(item.template.HeroCode!, HeroListResult?.heroList)
                 if (tempHeroDetail) {
@@ -169,6 +170,13 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
                 } else {
                     return <div key={col + "-" + index}></div>
                 }
+            },
+        },
+        {
+            title: '配装名称',
+            width: 100,
+            render(col, item: HeroTemplateForEquipSearchTableUnit, index) {
+                return <span style={{fontSize:10}} key={col + "-" + index}>{item.template.HeroTemplateName}</span>
             },
         },
         {

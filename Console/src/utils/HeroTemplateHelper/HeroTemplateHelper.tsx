@@ -1,7 +1,8 @@
 import { Descriptions } from "@arco-design/web-react"
 import { GetArtifactValueByLevel } from "../../pages/Admin/HeroTemplate/HeroForm/HeroFrom"
-import { ArtifactListResult, ArtifactTemplateInfo, CalClassSetValue, CalGradeByClass, CalLeftMainValueByClass, CalMainValueByClass, CalValueByClass, CalculatedStatus, ClassAtk, ClassAtkPercent, ClassCC, ClassCD, ClassChineseMap, ClassDefend, ClassDefendPercent, ClassHp, ClassHpPercent, ClassHr, ClassRr, ClassSpeed, ClassSuffixFinal, ClassToFKeyMap, ConvertSelfDevotionTypeToCommon, Equipment, ExtraPanel, FKeyCC, FKeyCD, FKeyHR, FKeyRR, GetEETypeValue, GetSelfDevotionGradeValueByLevel, GetSubGradeNeedLevel, HeroDetailBackEnd, HeroTemplate, Range } from "../const"
+import { ArtifactListResult, ArtifactTemplateInfo, CalClassSetValue, CalGradeByClass, CalLeftMainValueByClass, CalMainValueByClass, CalValueByClass, CalculatedStatus, ClassAtk, ClassAtkPercent, ClassCC, ClassCD, ClassChineseMap, ClassDefend, ClassDefendPercent, ClassHp, ClassHpPercent, ClassHr, ClassRr, ClassSpeed, ClassSuffixFinal, ClassToFKeyMap, ConvertSelfDevotionTypeToCommon, EquipLocNecklace, EquipLocRing, EquipLocShoes, Equipment, ExtraPanel, FKeyCC, FKeyCD, FKeyHR, FKeyRR, GetEETypeValue, GetSelfDevotionGradeValueByLevel, GetSubGradeNeedLevel, HeroDetailBackEnd, HeroTemplate, Range } from "../const"
 import { IconFire } from "@arco-design/web-react/icon"
+import { ValidSubValueAnalyse } from "../EquipAnalyse/ValidSubValueAnalyse"
 
 export interface ClassGradeNeedShowProps {
     classType: string
@@ -488,7 +489,7 @@ export function CalculateHeroTemplateByEquip(req: CalculateHeroTemplateByEquipRe
 
         let aktUnnecessaryGrade = CalculateClassSubValueValidGrade(atkGrade + atkPercentGrade, resTemp.AtkLevel).unnecessaryGrade
         let hpUnnecessaryGrade = CalculateClassSubValueValidGrade(hpGrade + hpPercentGrade, resTemp.HpLevel).unnecessaryGrade
-        let defendUnnecessaryGrade = CalculateClassSubValueValidGrade(defendGrade + defendPercentGrade, resTemp.HpLevel).unnecessaryGrade
+        let defendUnnecessaryGrade = CalculateClassSubValueValidGrade(defendGrade + defendPercentGrade, resTemp.DefendLevel).unnecessaryGrade
         let speedResult = CalculateClassSubValueValidGrade(speedGrade, resTemp.SpeedLevel)
         let ccResult = CalculateClassSubValueValidGrade(ccGrade, resTemp.CCLevel)
         let cdResult = CalculateClassSubValueValidGrade(cdGrade, resTemp.CDLevel)
@@ -549,6 +550,136 @@ export function CalculateHeroTemplateByEquip(req: CalculateHeroTemplateByEquipRe
         }
         resTemp.unnecessaryGrade = allGrade - validValue
         res.push(resTemp)
+    })
+    return res
+}
+
+export interface CalculateEquipValidSubNumByHeroTemplateReq {
+    templateList: HeroTemplate[]
+    HeroDetailMap: Map<string, HeroDetailBackEnd>,
+    equip: Equipment,
+    setFilter?: string,
+    EquipLoc?: string,
+}
+
+export interface ValidSubValueAnalyseInfo { 
+    Num: number;
+    TemplateId: string[];
+}
+
+export interface CalculateEquipValidSubNumByHeroTemplateRes {
+    ThreeValid: ValidSubValueAnalyseInfo;
+    FourValid: ValidSubValueAnalyseInfo;
+    TwoValid: ValidSubValueAnalyseInfo;    
+}
+
+export function CalculateEquipValidSubNumByHeroTemplate(req: CalculateEquipValidSubNumByHeroTemplateReq) {
+    let res: CalculateEquipValidSubNumByHeroTemplateRes = {
+        ThreeValid: { Num: 0, TemplateId: [] },
+        FourValid: { Num: 0, TemplateId: [] },
+        TwoValid: { Num: 0, TemplateId: [] },
+    }
+    req.templateList.map((template, index) => {
+        if (req.setFilter !== undefined && req.setFilter !== "") {
+            let flagSet = false
+            template.Set?.map((setString: string[]) => {
+                setString.map((set: string) => {
+                    if (set == req.setFilter) {
+                        flagSet = true
+                    }
+                })
+            })
+            if (!flagSet) {
+                return
+            }
+        }
+
+        if (req.equip?.EquipLoc !== undefined && req.equip?.EquipLoc !== "") {
+            let mainTypeFilterRange: string[] = []
+            switch (req.equip?.EquipLoc) {
+                case EquipLocNecklace:
+                    if (template.MainNecklace !== undefined) {
+                        mainTypeFilterRange = template.MainNecklace
+                    }
+                    break
+                case EquipLocRing:
+                    if (template.MainRing !== undefined) {
+                        mainTypeFilterRange = template.MainRing
+                    }
+                    break
+                case EquipLocShoes:
+                    if (template.MainShoes !== undefined) {
+                        mainTypeFilterRange = template.MainShoes
+                    }
+                    break
+            }
+
+            if (mainTypeFilterRange.length !== 0) {
+                let mainTypeFilterFlag = false
+                mainTypeFilterRange.map((tempMainType) => {
+                    if (tempMainType === req.equip?.MainType) {
+                        mainTypeFilterFlag = true
+                    }
+                })
+                if (!mainTypeFilterFlag) {
+                    return
+                }
+            }
+        }
+
+        let heroDetailBackEnd = req.HeroDetailMap.get(template.HeroCode!)
+        if (heroDetailBackEnd === undefined || heroDetailBackEnd.calculatedStatus === undefined) {
+            return
+        }
+        let resConfInfoByTemplate = CalculateOneEquipConfInfoByTemplate({
+            template: template,
+            heroDetailBackEnd: heroDetailBackEnd,
+            set: [],
+            mainNecklace: "",
+            mainRing: "",
+            mainShoes: "",
+        })
+
+        let resTemp: HeroTemplateByEquipRes = { grade: 0, }
+
+        resTemp.AtkLevel = GetSubGradeNeedLevel(ClassAtk, resConfInfoByTemplate.resCalculateClassGradeNeedOneAtk.subGrade)
+        resTemp.HpLevel = GetSubGradeNeedLevel(ClassHp, resConfInfoByTemplate.resCalculateClassGradeNeedOneHP.subGrade)
+        resTemp.DefendLevel = GetSubGradeNeedLevel(ClassDefend, resConfInfoByTemplate.resCalculateClassGradeNeedOneDefend.subGrade)
+        resTemp.SpeedLevel = GetSubGradeNeedLevel(ClassSpeed, resConfInfoByTemplate.resCalculateClassGradeNeedOneSpeed.subGrade)
+        resTemp.CCLevel = GetSubGradeNeedLevel(ClassCC, resConfInfoByTemplate.resCalculateClassGradeNeedOneCC.subGrade)
+        resTemp.CDLevel = GetSubGradeNeedLevel(ClassCD, resConfInfoByTemplate.resCalculateClassGradeNeedOneCD.subGrade)
+        resTemp.HRLevel = GetSubGradeNeedLevel(ClassHr, resConfInfoByTemplate.resCalculateClassGradeNeedOneHR.subGrade)
+        resTemp.RRLevel = GetSubGradeNeedLevel(ClassRr, resConfInfoByTemplate.resCalculateClassGradeNeedOneRR.subGrade)
+
+        let subNum = 0 // 计算副属性的数量，不应该大于4个
+        let subValueList = [req.equip.CC, req.equip.CD, req.equip.Atk, req.equip.Speed, req.equip.AtkPercent, req.equip.Hp, req.equip.HpPercent, req.equip.RR, req.equip.Hr, req.equip.Defend, req.equip.DefendPercent]
+        let subLevelList = [resTemp.CCLevel, resTemp.CDLevel, resTemp.AtkLevel, resTemp.SpeedLevel, resTemp.AtkLevel, resTemp.HpLevel, resTemp.HpLevel, resTemp.RRLevel, resTemp.HRLevel, resTemp.DefendLevel, resTemp.DefendLevel]
+        subValueList.map((_,index) => {
+            if (subValueList[index] !== 0 && subLevelList[index] !== 0 && subLevelList[index] !== undefined) {
+                subNum++;
+            }
+        })
+
+        switch (subNum) { 
+            case 2:
+                res.TwoValid.Num++
+                if (template.ID !== undefined) {
+                    res.TwoValid.TemplateId.push(template.ID)
+                }
+                break;
+            case 3:
+                res.ThreeValid.Num++
+                if (template.ID !== undefined) {
+                    res.ThreeValid.TemplateId.push(template.ID)
+                }
+                break;
+            case 4:
+                res.FourValid.Num++
+                if (template.ID !== undefined) {
+                    res.FourValid.TemplateId.push(template.ID)
+                }
+                break;
+        }
     })
     return res
 }

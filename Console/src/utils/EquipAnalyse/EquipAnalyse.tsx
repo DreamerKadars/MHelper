@@ -19,6 +19,7 @@ import { EquipSetSelect } from "../EquipSetSelect/EquipSetSelect";
 import { EquipmentMainSelect } from "../../pages/Admin/HeroTemplate/HeroForm/HeroFrom";
 import { HeroTemplateForEquipSearchTable } from "./HeroTemplateForEquipSearchTable/HeroTemplateForEquipSearchTable";
 import { CalculateHeroTemplateByEquip } from "../HeroTemplateHelper/HeroTemplateHelper";
+import { ValidSubValueAnalyse } from "./ValidSubValueAnalyse";
 Chart.register(...registerables);
 Chart.register(ArcElement);
 const Row = Grid.Row;
@@ -270,82 +271,106 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
     equip.DefendPercent = DefendPercent
     equip.UpgradeLevel = UpgradeLevel
     equip.Level = EquipLevel
+    equip.MainType = MainType
+    equip.MainValue = MainValue
 
+    let subNum = 0 // 计算副属性的数量，不应该大于4个
+    let subValueList = [CC, CD, Atk, Speed, AtkPercent, Hp, HpPercent, RR, Hr, Defend, DefendPercent]
+    subValueList.map((value) => { 
+        if (value !== 0) {
+            subNum++;
+        }
+    })
+    
     return <Card>
     <HeroDetailStatisticShow Hero={hero} visible={heroVisible} onCancel={() => { setHeroVisible(false) }} />
         <Grid.Row>
-            <Grid.Col span={5}>
-                <div><Image src={(props.equip?.EquipImageStr === undefined || props.equip?.EquipImageStr === "") ? GetDefaultEquipImage(equipLoc) : props.equip?.EquipImageStr}>
-                    
-                </Image>
-                </div>
+            <Grid.Col span={10}>
+                <Grid.Row>
+                    <Grid.Col span={12}>
+                        <div><Image src={(props.equip?.EquipImageStr === undefined || props.equip?.EquipImageStr === "") ? GetDefaultEquipImage(equipLoc) : props.equip?.EquipImageStr}>
 
-                <div>
-                    {/* <Button style={{ margin: 20 }} type="primary" onClick={() => { setFresh(!fresh) }}>计算结果</Button> */}
-                    <Button style={{ margin: 20 }} type="primary" onClick={() => { SetZero() }}>重置分数</Button>
-                </div>
-                <Radio.Group defaultValue='a' style={{ marginBottom: 20 }} onChange={setEquipLoc}>
-                    {EquipLocRange.map((key,index) => { 
-                        return <Radio value={key} key={index}>{EquipLocCNRange[index]}</Radio>
-                    })}
-                </Radio.Group>
-                <div style={{ width: 150 }}>
-                    {(equipLoc === EquipLocNecklace || equipLoc === EquipLocRing || equipLoc === EquipLocShoes) && <div>
-                        <span>主属性</span>
-                        <EquipmentMainSelect
-                        disabled={false}
-                        loc={equipLoc}
-                        onChange={(mainSelect: string) => {
-                            setMainType(mainSelect)
-                        }}
-                        value={MainType}
-                        single={ true}
-                        />
-                    </div>
-                    }    
-                </div>
-                <div style={{ marginTop: 20 }}>
-                    <EquipSetSelect
-                        EquipSet={equipSet}
-                        onChange={setEquipSet}
-                    />
-                </div>
-                <div style={{ marginTop: 20 }}>
-                    <div><span style={{ color: "" }}>攻击分: {(atkGrade + atkPercentGrade).toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>防御分: {(defendGrade + defendPercentGrade).toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>生命分: {(hpGrade + hpPercentGrade).toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>速度分: {speedGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>暴率分: {ccGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>暴伤分: {cdGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>命中分: {hrGrade.toFixed(2)}</span></div>
-                    <div><span style={{ color: "" }}>抵抗分: {rrGrade.toFixed(2)}</span></div>
-                    <div><span style={{ fontSize: 25, fontWeight: "bold", color: "red" }}>总分: {totalGrade.toFixed(2)}</span></div>
-                </div>
+                        </Image>
+                        </div>
+
+                        <div>
+                            {/* <Button style={{ margin: 20 }} type="primary" onClick={() => { setFresh(!fresh) }}>计算结果</Button> */}
+                            <Button style={{ margin: 20 }} type="primary" onClick={() => { SetZero() }}>重置分数</Button>
+                        </div>
+                        <Radio.Group defaultValue='a' style={{ marginBottom: 20 }} onChange={setEquipLoc}>
+                            {EquipLocRange.map((key, index) => {
+                                return <Radio value={key} key={index}>{EquipLocCNRange[index]}</Radio>
+                            })}
+                        </Radio.Group>
+                        <div style={{ width: 150 }}>
+                            {(equipLoc === EquipLocNecklace || equipLoc === EquipLocRing || equipLoc === EquipLocShoes) && <div>
+                                <span>主属性</span>
+                                <EquipmentMainSelect
+                                    disabled={false}
+                                    loc={equipLoc}
+                                    onChange={(mainSelect: string) => {
+                                        setMainType(mainSelect)
+                                    }}
+                                    value={MainType}
+                                    single={true}
+                                />
+                            </div>
+                            }
+                        </div>
+                        <div style={{ marginTop: 20 }}>
+                            <EquipSetSelect
+                                EquipSet={equipSet}
+                                onChange={setEquipSet}
+                            />
+                        </div>
+                        <div style={{ marginTop: 20 }}>
+                            <div><span style={{ color: "" }}>攻击分: {(atkGrade + atkPercentGrade).toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>防御分: {(defendGrade + defendPercentGrade).toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>生命分: {(hpGrade + hpPercentGrade).toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>速度分: {speedGrade.toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>暴率分: {ccGrade.toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>暴伤分: {cdGrade.toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>命中分: {hrGrade.toFixed(2)}</span></div>
+                            <div><span style={{ color: "" }}>抵抗分: {rrGrade.toFixed(2)}</span></div>
+                            <div><span style={{ fontSize: 25, fontWeight: "bold", color: "red" }}>总分: {totalGrade.toFixed(2)}</span></div>
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col span={12}>
+                        <div style={{ width: 200, marginRight: 10 }}>
+                            <InputNumber defaultValue={0} hideControl prefix={<span style={{ color: "blue" }}>攻击力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Atk} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtk(val) } else { setAtk(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>攻击力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={AtkPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtkPercent(val) } else { setAtkPercent(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>防御力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Defend} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefend(val) } else { setDefend(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>防御力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={DefendPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefendPercent(val) } else { setDefendPercent(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>生命值 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Hp} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHp(val) } else { setHp(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>生命值 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={HpPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHpPercent(val) } else { setHpPercent(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>速度{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Speed} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setSpeed(val) } else { setSpeed(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>暴击率{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CC} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCC(val) } else { setCC(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>暴击伤害{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CD} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCD(val) } else { setCD(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
+                            <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
+                            {subNum>4 ?<span style={{color:"red"}}>副属性数量不应该大于4条!</span>:<></>}
+                            {/* <InputNumber prefix={<span style={{ color: "blue" }}>装备等级{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={EquipLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setEquipLevel(val) } else { setEquipLevel(0) } }} /> */}
+                        </div>
+                    </Grid.Col>
+                </Grid.Row>
                 <Collapse
-                    style={{ marginTop: 40 }}
+                    style={{ marginTop: 40, marginRight: 15 }}
+                    defaultActiveKey={['1', '2', '3']}
                 >
-                    <Collapse.Item header='强化预览(85级红装重铸前)' name='1'>
-                        <PieChart equip={equip} />
+                    <Collapse.Item header='强化分析' name='1'>
+                        <InputNumber prefix={<span style={{ color: "blue" }}>当前强化等级{"\u00A0\u00A0\u00A0\u00A0\u00A0"}+</span>} min={0} value={UpgradeLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setUpgradeLevel(val) } else { setUpgradeLevel(0) } }} />
+                        <Collapse.Item header={<div style={{ fontSize: 10 }}>有效词条分析</div>} name='2'>
+                            <ValidSubValueAnalyse equip={nowEquip}></ValidSubValueAnalyse>
+                        </Collapse.Item>
+                        <Collapse.Item header={<div style={{ fontSize: 10 }}>分数估算预览(85级红装重铸前)</div>} name='3'>
+                            <div style={{ height: 370 }}><PieChart equip={equip} /></div>
+                            
+                        </Collapse.Item>
                     </Collapse.Item>
                 </Collapse> 
             </Grid.Col>
-            <Grid.Col span={5}>
-                <div style={{ width: 200 ,marginRight:10}}>
-                    <InputNumber defaultValue={0} hideControl prefix={<span style={{ color: "blue" }}>攻击力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Atk} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtk(val) } else { setAtk(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>攻击力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={AtkPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtkPercent(val) } else { setAtkPercent(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Defend} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefend(val) } else { setDefend(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>防御力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={DefendPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefendPercent(val) } else { setDefendPercent(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Hp} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHp(val) } else { setHp(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>生命值 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={HpPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHpPercent(val) } else { setHpPercent(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>速度{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Speed} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setSpeed(val) } else { setSpeed(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击率{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CC} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCC(val) } else { setCC(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>暴击伤害{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CD} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCD(val) } else { setCD(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
-                    <InputNumber prefix={<span style={{ color: "blue" }}>强化等级{"\u00A0\u00A0\u00A0\u00A0\u00A0"}+</span>} min={0} value={UpgradeLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setUpgradeLevel(val) } else { setUpgradeLevel(0) } }} />
-                    {/* <InputNumber prefix={<span style={{ color: "blue" }}>装备等级{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={EquipLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setEquipLevel(val) } else { setEquipLevel(0) } }} /> */}
-                </div>
-            </Grid.Col>
+        
+           
             <Grid.Col span={14}>
                 <div style={{ backgroundColor: "blue" }}></div>
                 <Grid.Row>

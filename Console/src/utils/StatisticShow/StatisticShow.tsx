@@ -291,7 +291,7 @@ export const RangeShow = (props: RangeShowProps) => {
     Level = Math.max(0, Level)
     Level = Math.min(9, Level)
 
-    let frontStyle = { color: GreenColorCodeByLevel[Level], fontWeight: 700 }
+    let frontStyle = { color: GreenColorCodeByLevel[Level], fontWeight: 700, fontSize: 13 }
     
     if (props.RangeData.Down <= numberRange[0]) {
         return <div>

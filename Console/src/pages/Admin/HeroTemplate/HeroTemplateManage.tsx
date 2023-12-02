@@ -1,10 +1,10 @@
-import { Button, Card, Form, Grid, Input, Link, Message, Modal, Select, Table, TableColumnProps } from '@arco-design/web-react';
+import { Button, Card, Form, Grid, Image, Input, Link, Message, Modal, Select, Space, Table, TableColumnProps } from '@arco-design/web-react';
 import { useEffect, useState } from 'react';
 import { ConvertHeroListResultToMap, GetHeroDetailFromMap, HeroDetail, HeroListResult, HeroTemplate } from '../../../utils/const';
 
 import { IconEdit, IconDelete } from '@arco-design/web-react/icon';
 import { HandlerAxiosErrPrefix, HandlerAxiosSuccessPrefix, LoadHeroJSON } from '../../../utils/api/help';
-import { GetHeroDetailFromListByHeroCode, SkipToUrl } from '../../../utils/helper';
+import { GenerateSetImageUrl, GetHeroDetailFromListByHeroCode, SkipToUrl } from '../../../utils/helper';
 import { PathHeroTemplateAnalyse, PathHeroTemplateCreate, PathHeroTemplateUpdate } from '../../../const';
 import { HeroTemplateDelete, HeroTemplateList, HeroTemplateUpdate } from '../../../utils/api/heroTemplate';
 import HeroImageShow from '../../../utils/HeroImageShow/HeroImageShow';
@@ -88,7 +88,7 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
         {
             title: '模板名称',
             render(col, item: HeroTemplate, index) {
-                return <span key={col+"-"+index}>{item.HeroTemplateName}</span>
+                return <span style={{fontSize:12}} key={col+"-"+index}>{item.HeroTemplateName}</span>
             },
         },
         {
@@ -109,19 +109,39 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
             },
         },
         {
-            title: '生命值',
+            title: '套装',
+            render(col, item: HeroTemplate, index) {
+                let allSet: string[] = []
+                let setAllTemp: string[] = []
+                item.Set?.map((setString: string[]) => {
+                    setString.map((set: string) => {
+                        setAllTemp.push(set)
+                    })
+                })
+                setAllTemp.map((set) => {
+                    if (!allSet.includes(set) && set !== "") {
+                        allSet.push(set)
+                    }
+                })
+                return <Space key={index} direction='vertical'><Image.PreviewGroup infinite>{allSet.map((setTemp, index) => {
+                    return <Space><Image width={30} style={{ display: "inline-block" }} key={index} src={GenerateSetImageUrl(setTemp)}></Image></Space>
+                })}</Image.PreviewGroup></Space>
+            },
+        },
+        {
+            title: '生命',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassHp} RangeData={item?.HeroPanel?.HP}></RangeShow>
             },
         },
         {
-            title: '攻击力',
+            title: '攻击',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassAtk} RangeData={item?.HeroPanel?.ATK}></RangeShow>
             },
         },
         {
-            title: '防御力',
+            title: '防御',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassDefend} RangeData={item?.HeroPanel?.DF}></RangeShow>
             },
@@ -133,25 +153,25 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
             },
         },
         {
-            title: '暴击率',
+            title: '暴率',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassCC} RangeData={item?.HeroPanel?.CC}></RangeShow>
             },
         },
         {
-            title: '暴击伤害',
+            title: '暴伤',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassCD} RangeData={item?.HeroPanel?.CD}></RangeShow>
             },
         },
         {
-            title: '效果命中',
+            title: '命中',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassHr} RangeData={item?.HeroPanel?.HR}></RangeShow>
             },
         },
         {
-            title: '效果抗性',
+            title: '抗性',
             render(col, item: HeroTemplate, index) {
                 return <RangeShow key={col+"-"+index} Type={ClassRr} RangeData={item?.HeroPanel?.RR}></RangeShow>
             },

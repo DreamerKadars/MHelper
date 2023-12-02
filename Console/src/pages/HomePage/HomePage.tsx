@@ -213,11 +213,11 @@ const HomePage = () => {
                     inputEquip.Level = 85
                     setEquip(inputEquip)
                 }}>手动录入装备</Button>
-                <div style={{ display: "flex", float: "right",margin:20 }} >
+                {/* <div style={{ display: "flex", float: "right",margin:20 }} >
                     <Popover content={<div>由于作者本人是国服萌新，只有竞技场88装备和龙讨伐装备，需要其他种类装备的截图用于训练模型。如果您上传了<span style={{ color: "red" }}>迷宫88/活动88/龙讨伐外的85和90装备</span>，希望您可以选择该选项，我们将感谢您的支持。</div>}>
                         <Checkbox checked={ImageSave} onChange={setImageSave}>同意保存图片用做数据集</Checkbox>
                     </Popover>
-                </div>
+                </div> */}
                 
                 <br />
                 {Info?.length > 0 && <div>
