@@ -5,6 +5,7 @@ import { Pie } from 'react-chartjs-2';
 const levelGrade90 = [60, 63, 65, 68, 70, 73, 1000]
 const levelGrade85 = [50, 53, 55, 58, 60, 63, 1000]
 interface EquipmentPieChartProps {
+    mode: string;
     equip: Equipment;
 }
 
@@ -154,14 +155,16 @@ export const PieChart = (props: EquipmentPieChartProps) => {
         maintainAspectRatio: false
     };
 
-    return (
-        <div>
-            <Pie style={ {height:350}} data={data} options={options} />
-        </div>
-    );
+    if (props.mode === "pie") { 
+        return (
+            <div>
+                <Pie style={{ height: 350 }} data={data} options={options} />
+            </div>
+        );
+    }
+    
     return <div>
-        
-        <p style={{ fontSize: 10 }}>: <span style={{ color: "gray" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[0]).toFixed(2)}%</span></p>
+        <p style={{ fontSize: 10 }}>{`废件:0-` + gradeLevel[0]+":"}<span style={{ color: "gray" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[0]).toFixed(2)}%</span></p>
         <p style={{ fontSize: 10 }}>过度:{gradeLevel[0] + 1}-{gradeLevel[1]}:<span style={{ color: "green" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[1]).toFixed(2)}%</span></p>
         <p style={{ fontSize: 10 }}>能用:{gradeLevel[1] + 1}-{gradeLevel[2]}:<span style={{ color: "blue" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[2]).toFixed(2)}%</span></p>
         <p style={{ fontSize: 10 }}>主力:{gradeLevel[2] + 1}-{gradeLevel[3]}:<span style={{ color: "purple" }}>{`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}{(result[3]).toFixed(2)}%</span></p>

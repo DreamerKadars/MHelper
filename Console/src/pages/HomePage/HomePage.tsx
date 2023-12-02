@@ -325,7 +325,7 @@ const HomePage = () => {
                                 width: 250,
                                 render(col, item, index) {
                                     return <div style={{}}>
-                                        <PieChart equip={item} />
+                                        <PieChart equip={item} mode=""/>
                                     </div>
                                 }
                             },

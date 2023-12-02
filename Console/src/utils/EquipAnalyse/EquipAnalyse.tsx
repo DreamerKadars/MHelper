@@ -363,13 +363,11 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                             <ValidSubValueAnalyse equip={nowEquip}></ValidSubValueAnalyse>
                         </Collapse.Item>
                         <Collapse.Item header={<div style={{ fontSize: 10 }}>分数估算预览(85级红装重铸前)</div>} name='3'>
-                            <div style={{ height: 370 }}><PieChart equip={equip} /></div>
-                            
+                            <div style={{ height: 370 }}><PieChart mode="pie" equip={equip} /></div>
                         </Collapse.Item>
                     </Collapse.Item>
                 </Collapse> 
             </Grid.Col>
-        
            
             <Grid.Col span={14}>
                 <div style={{ backgroundColor: "blue" }}></div>
