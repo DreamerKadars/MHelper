@@ -157,7 +157,7 @@ export const PieChart = (props: EquipmentPieChartProps) => {
 
     if (props.mode === "pie") { 
         return (
-            <div>
+            <div style={{ height: 350 }}>
                 <Pie style={{ height: 350 }} data={data} options={options} />
             </div>
         );
