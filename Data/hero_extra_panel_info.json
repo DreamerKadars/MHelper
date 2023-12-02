@@ -41,6 +41,20 @@
             }
         ]
     },
+    "c5024": {
+        "name": "南国的伊赛丽亚",
+        "extra_panels": [
+            {
+                "reason": "攻击力倍率1.5",
+                "EffectValue": [
+                    {
+                        "classType": "atkPercentFinal",
+                        "value": 50
+                    }
+                ]
+            }
+        ]
+    },
     "c1129": {
         "name": "艾莉雅",
         "extra_panels": [
