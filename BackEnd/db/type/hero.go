@@ -2,6 +2,18 @@ package db_type
 
 import "encoding/json"
 
+type EETypeInfo struct {
+	HeroCode string `json:"heroCode"`
+	HeroName string `json:"heroName"`
+	EEType   string `json:"eeType"`
+}
+
+func UnmarshalEETypeDataFile(data []byte) (map[string]EETypeInfo, error) {
+	var r map[string]EETypeInfo
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
 func UnmarshalHeroDetailFribbelsFile(data []byte) (map[string]HeroDetailFribbels, error) {
 	var r map[string]HeroDetailFribbels
 	err := json.Unmarshal(data, &r)

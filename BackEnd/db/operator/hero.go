@@ -15,7 +15,7 @@ var heroStaticOperator HeroStaticOperator
 
 var heroStaticMap map[string]db_type.HeroStatic = make(map[string]db_type.HeroStatic)
 
-func InitStaticHero(heroDataFile, heroDataFribbelsFile, heroExtraPanelInfoDataFile string) error {
+func InitStaticHero(heroDataFile, heroDataFribbelsFile, heroExtraPanelInfoDataFile, eeTypeDataFile string) error {
 	heroDataByte, err := os.ReadFile(heroDataFile)
 	if err != nil {
 		return err
@@ -47,11 +47,21 @@ func InitStaticHero(heroDataFile, heroDataFribbelsFile, heroExtraPanelInfoDataFi
 		heroDataFribbels[value.Code] = value
 	}
 
+	eeTypeDataFileBytes, err := os.ReadFile(eeTypeDataFile)
+	if err != nil {
+		return err
+	}
+	heroEETypeInfoMap, err := db_type.UnmarshalEETypeDataFile(eeTypeDataFileBytes)
+	if err != nil {
+		return err
+	}
+
 	for _, heroDataDetail := range heroData.HeroList {
 		if _, ok := heroDataFribbels[heroDataDetail.HeroCode]; !ok {
 			// panic(fmt.Errorf("找不到[%s]对应的角色数据", heroDataDetail.HeroCode))
 			utils.Info("%+v", fmt.Errorf("找不到[%s]对应的角色数据", heroDataDetail.HeroCode))
 		}
+		heroDataDetail.EEType = heroEETypeInfoMap[heroDataDetail.HeroCode].EEType
 		heroStaticMap[heroDataDetail.HeroCode] = db_type.HeroStatic{
 			HeroDetail:         heroDataDetail,
 			HeroDetailFribbels: heroDataFribbels[heroDataDetail.HeroCode],

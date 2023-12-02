@@ -1,0 +1,387 @@
+{
+    "c1002": {
+        "heroCode": "c1002",
+        "heroName": "赛西莉亚",
+        "eeType": "hr"
+    },
+    "c1003": {
+        "heroCode": "c1003",
+        "heroName": "萝季",
+        "eeType": "speed"
+    },
+    "c1006": {
+        "heroCode": "c1006",
+        "heroName": "绮世",
+        "eeType": "speed"
+    },
+    "c1007": {
+        "heroCode": "c1007",
+        "heroName": "维德瑞",
+        "eeType": "atkPercent"
+    },
+    "c1008": {
+        "heroCode": "c1008",
+        "heroName": "亚敏",
+        "eeType": "speed"
+    },
+    "c1009": {
+        "heroCode": "c1009",
+        "heroName": "夏绿蒂",
+        "eeType": "hpPercent"
+    },
+    "c1011": {
+        "heroCode": "c1011",
+        "heroName": "卡琳",
+        "eeType": "hr"
+    },
+    "c1014": {
+        "heroCode": "c1014",
+        "heroName": "席德",
+        "eeType": "hr"
+    },
+    "c1015": {
+        "heroCode": "c1015",
+        "heroName": "巴尔＆塞尚",
+        "eeType": "atkPercent"
+    },
+    "c1016": {
+        "heroCode": "c1016",
+        "heroName": "优芬妮",
+        "eeType": "hr"
+    },
+    "c1017": {
+        "heroCode": "c1017",
+        "heroName": "雅卡泰丝",
+        "eeType": "hpPercent"
+    },
+    "c1019": {
+        "heroCode": "c1019",
+        "heroName": "萝菲",
+        "eeType": "atkPercent"
+    },
+    "c1021": {
+        "heroCode": "c1021",
+        "heroName": "汀果",
+        "eeType": "defendPercent"
+    },
+    "c1023": {
+        "heroCode": "c1023",
+        "heroName": "凯隆",
+        "eeType": "cc"
+    },
+    "c1027": {
+        "heroCode": "c1027",
+        "heroName": "查尔斯",
+        "eeType": "atkPercent"
+    },
+    "c1028": {
+        "heroCode": "c1028",
+        "heroName": "克莱莉莎",
+        "eeType": "atkPercent"
+    },
+    "c1030": {
+        "heroCode": "c1030",
+        "heroName": "尤娜",
+        "eeType": "speed"
+    },
+    "c1033": {
+        "heroCode": "c1033",
+        "heroName": "可丽",
+        "eeType": "atkPercent"
+    },
+    "c1039": {
+        "heroCode": "c1039",
+        "heroName": "海斯特",
+        "eeType": "cc"
+    },
+    "c1040": {
+        "heroCode": "c1040",
+        "heroName": "塞丽拉",
+        "eeType": "atkPercent"
+    },
+    "c1042": {
+        "heroCode": "c1042",
+        "heroName": "泰温",
+        "eeType": "hpPercent"
+    },
+    "c1043": {
+        "heroCode": "c1043",
+        "heroName": "洛曼",
+        "eeType": "speed"
+    },
+    "c1044": {
+        "heroCode": "c1044",
+        "heroName": "缪伊",
+        "eeType": "hr"
+    },
+    "c1046": {
+        "heroCode": "c1046",
+        "heroName": "丽迪卡",
+        "eeType": "hr"
+    },
+    "c1048": {
+        "heroCode": "c1048",
+        "heroName": "雅拉敏塔",
+        "eeType": "speed"
+    },
+    "c1049": {
+        "heroCode": "c1049",
+        "heroName": "克萝爱",
+        "eeType": "atkPercent"
+    },
+    "c1050": {
+        "heroCode": "c1050",
+        "heroName": "泰妮布里雅",
+        "eeType": "hr"
+    },
+    "c1054": {
+        "heroCode": "c1054",
+        "heroName": "铃儿",
+        "eeType": "hr"
+    },
+    "c1062": {
+        "heroCode": "c1062",
+        "heroName": "安洁莉卡",
+        "eeType": "speed"
+    },
+    "c1066": {
+        "heroCode": "c1066",
+        "heroName": "露娜",
+        "eeType": "atkPercent"
+    },
+    "c1069": {
+        "heroCode": "c1069",
+        "heroName": "鲁特比",
+        "eeType": "atkPercent"
+    },
+    "c1070": {
+        "heroCode": "c1070",
+        "heroName": "克劳乌",
+        "eeType": "speed"
+    },
+    "c1071": {
+        "heroCode": "c1071",
+        "heroName": "维尔萝娜",
+        "eeType": "hr"
+    },
+    "c1072": {
+        "heroCode": "c1072",
+        "heroName": "赛珂兰特",
+        "eeType": "atkPercent"
+    },
+    "c1073": {
+        "heroCode": "c1073",
+        "heroName": "卡威利",
+        "eeType": "cc"
+    },
+    "c1076": {
+        "heroCode": "c1076",
+        "heroName": "迪埃妮",
+        "eeType": "speed"
+    },
+    "c1079": {
+        "heroCode": "c1079",
+        "heroName": "洁若米亚",
+        "eeType": "atkPercent"
+    },
+    "c1080": {
+        "heroCode": "c1080",
+        "heroName": "帕贝尔",
+        "eeType": "cc"
+    },
+    "c1082": {
+        "heroCode": "c1082",
+        "heroName": "璐璐卡",
+        "eeType": "hr"
+    },
+    "c1087": {
+        "heroCode": "c1087",
+        "heroName": "尤贝乌斯",
+        "eeType": "atkPercent"
+    },
+    "c1088": {
+        "heroCode": "c1088",
+        "heroName": "薇薇安",
+        "eeType": "hpPercent"
+    },
+    "c1089": {
+        "heroCode": "c1089",
+        "heroName": "莉莉亚斯",
+        "eeType": "hpPercent"
+    },
+    "c1090": {
+        "heroCode": "c1090",
+        "heroName": "雷伊",
+        "eeType": "rr"
+    },
+    "c1091": {
+        "heroCode": "c1091",
+        "heroName": "艾蕾娜",
+        "eeType": "rr"
+    },
+    "c1095": {
+        "heroCode": "c1095",
+        "heroName": "莉莉贝",
+        "eeType": "cc"
+    },
+    "c1096": {
+        "heroCode": "c1096",
+        "heroName": "梅丽莎",
+        "eeType": "cc"
+    },
+    "c1097": {
+        "heroCode": "c1097",
+        "heroName": "暴击型卡农",
+        "eeType": "hr"
+    },
+    "c1099": {
+        "heroCode": "c1099",
+        "heroName": "指挥型莱伊卡",
+        "eeType": "speed"
+    },
+    "c1100": {
+        "heroCode": "c1100",
+        "heroName": "艾莲西雅",
+        "eeType": "cc"
+    },
+    "c1101": {
+        "heroCode": "c1101",
+        "heroName": "小泡芙",
+        "eeType": "speed"
+    },
+    "c1103": {
+        "heroCode": "c1103",
+        "heroName": "瑟琳",
+        "eeType": "cc"
+    },
+    "c1104": {
+        "heroCode": "c1104",
+        "heroName": "魔勒",
+        "eeType": "hpPercent"
+    },
+    "c1106": {
+        "heroCode": "c1106",
+        "heroName": "赛娜",
+        "eeType": "hpPercent"
+    },
+    "c1110": {
+        "heroCode": "c1110",
+        "heroName": "芙兰",
+        "eeType": "hr"
+    },
+    "c1113": {
+        "heroCode": "c1113",
+        "heroName": "伊莉娜芙",
+        "eeType": "cc"
+    },
+    "c1119": {
+        "heroCode": "c1119",
+        "heroName": "札哈克",
+        "eeType": "atkPercent"
+    },
+    "c1124": {
+        "heroCode": "c1124",
+        "heroName": "亚露嘉",
+        "eeType": "speed"
+    },
+    "c1132": {
+        "heroCode": "c1132",
+        "heroName": "莎伦",
+        "eeType": "hr"
+    },
+    "c2003": {
+        "heroCode": "c2003",
+        "heroName": "暗影萝季",
+        "eeType": "hr"
+    },
+    "c2004": {
+        "heroCode": "c2004",
+        "heroName": "流浪者席可",
+        "eeType": "speed"
+    },
+    "c2013": {
+        "heroCode": "c2013",
+        "heroName": "杀手卡尔图哈",
+        "eeType": "hr"
+    },
+    "c2014": {
+        "heroCode": "c2014",
+        "heroName": "杀手席德",
+        "eeType": "hr"
+    },
+    "c2018": {
+        "heroCode": "c2018",
+        "heroName": "求道者埃德勒",
+        "eeType": "atkPercent"
+    },
+    "c2020": {
+        "heroCode": "c2020",
+        "heroName": "注视者修里",
+        "eeType": "speed"
+    },
+    "c2022": {
+        "heroCode": "c2022",
+        "heroName": "戴丝蒂娜",
+        "eeType": "rr"
+    },
+    "c2028": {
+        "heroCode": "c2028",
+        "heroName": "猫咪克莱莉莎",
+        "eeType": "rr"
+    },
+    "c2029": {
+        "heroCode": "c2029",
+        "heroName": "流浪勇士雷欧",
+        "eeType": "speed"
+    },
+    "c2035": {
+        "heroCode": "c2035",
+        "heroName": "大将法济斯",
+        "eeType": "hpPercent"
+    },
+    "c2036": {
+        "heroCode": "c2036",
+        "heroName": "不法之徒克罗泽",
+        "eeType": "hpPercent"
+    },
+    "c2037": {
+        "heroCode": "c2037",
+        "heroName": "挑战者多米妮尔",
+        "eeType": "atkPercent"
+    },
+    "c2047": {
+        "heroCode": "c2047",
+        "heroName": "武斗家肯恩",
+        "eeType": "cc"
+    },
+    "c2062": {
+        "heroCode": "c2062",
+        "heroName": "罪戾的安洁莉卡",
+        "eeType": "speed"
+    },
+    "c2065": {
+        "heroCode": "c2065",
+        "heroName": "风云苏琳",
+        "eeType": "cc"
+    },
+    "c2085": {
+        "heroCode": "c2085",
+        "heroName": "烈焰的卡瓦朱",
+        "eeType": "atkPercent"
+    },
+    "c2086": {
+        "heroCode": "c2086",
+        "heroName": "大族长卡瓦娜",
+        "eeType": "atkPercent"
+    },
+    "c3026": {
+        "heroCode": "c3026",
+        "heroName": "永恒不变的黛莉亚",
+        "eeType": "atkPercent"
+    },
+    "c5071": {
+        "heroCode": "c5071",
+        "heroName": "海边的维尔萝娜",
+        "eeType": "atkPercent"
+    }
+}

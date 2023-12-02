@@ -14,6 +14,7 @@ type StaticDataConf struct {
 	HeroDataFribbelsFile       string `yaml:"hero_data_fribbels_file"`
 	HeroDataFile               string `yaml:"hero_data_file"`
 	HeroExtraPanelInfoDataFile string `yaml:"hero_extra_panel_info_data_file"`
+	EETypeDataFile             string `yaml:"eeType_data_file"`
 }
 
 var staticDataConf StaticDataConf
@@ -25,7 +26,9 @@ func SetStaticDataConf(s StaticDataConf) {
 func InitDB() {
 	err := operator.InitStaticHero(staticDataConf.Dir+staticDataConf.HeroDataFile,
 		staticDataConf.Dir+staticDataConf.HeroDataFribbelsFile,
-		staticDataConf.Dir+staticDataConf.HeroExtraPanelInfoDataFile)
+		staticDataConf.Dir+staticDataConf.HeroExtraPanelInfoDataFile,
+		staticDataConf.Dir+staticDataConf.EETypeDataFile,
+	)
 	if err != nil {
 		panic(err)
 	}
