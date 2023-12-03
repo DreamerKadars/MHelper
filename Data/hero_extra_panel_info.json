@@ -13,6 +13,20 @@
             }
         ]
     },
+    "c2101": {
+        "name": "都市暗影小泡芙",
+        "extra_panels": [
+            {
+                "reason": "技能加成",
+                "EffectValue": [
+                    {
+                        "classType": "cc",
+                        "value": 30
+                    }
+                ]
+            }
+        ]
+    },
     "c1106": {
         "name": "赛娜",
         "extra_panels": [
