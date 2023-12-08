@@ -177,8 +177,9 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
         newEquip.UpgradeLevel = UpgradeLevel
         newEquip.EquipLoc = equipLoc
         newEquip.Set = equipSet
+        newEquip.Level = EquipLevel
         setNowEquip(newEquip)
-    }, [fresh, Atk, Hp, Defend, AtkPercent, HpPercent, DefendPercent, CC, CD, Hr, RR, Speed, MainType, MainValue, UpgradeLevel, equipLoc, equipSet])
+    }, [fresh, Atk, Hp, Defend, AtkPercent, HpPercent, DefendPercent, CC, CD, Hr, RR, Speed, MainType, MainValue, UpgradeLevel, EquipLevel, equipLoc, equipSet])
 
     let speedGrade = Speed * 2
     let atkGrade = (Atk / 9)
@@ -349,7 +350,6 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                             <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
                             <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
                             {subNum>4 ?<span style={{color:"red"}}>副属性数量不应该大于4条!</span>:<></>}
-                            {/* <InputNumber prefix={<span style={{ color: "blue" }}>装备等级{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={EquipLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setEquipLevel(val) } else { setEquipLevel(0) } }} /> */}
                         </div>
                     </Grid.Col>
                 </Grid.Row>
@@ -359,6 +359,10 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                 >
                     <Collapse.Item header='强化分析' name='1'>
                         <InputNumber prefix={<span style={{ color: "blue" }}>当前强化等级{"\u00A0\u00A0\u00A0\u00A0\u00A0"}+</span>} min={0} value={UpgradeLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setUpgradeLevel(val) } else { setUpgradeLevel(0) } }} />
+                        <Select prefix={<span style={{ color: "blue" }}>装备等级{"\u00A0\u00A0\u00A0\u00A0"}</span>} value={EquipLevel} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setEquipLevel(val) } else { setEquipLevel(0) } }} >
+                            <Select.Option key={85} value={85}>85装备</Select.Option>
+                            <Select.Option key={88} value={88}>88装备</Select.Option>
+                        </Select>
                         <Collapse.Item header={<div style={{ fontSize: 10 }}>有效词条分析</div>} name='2'>
                             <ValidSubValueAnalyse equip={nowEquip}></ValidSubValueAnalyse>
                         </Collapse.Item>
