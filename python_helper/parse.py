@@ -84,7 +84,7 @@ class ImageHandler(FileSystemEventHandler):
             ret, mask_all_192 = cv2.threshold(gray, 192, 255, cv2.THRESH_BINARY)
             cv2.imwrite(os.path.join(image_process_dir_192,os.path.basename(image_path)), mask_all_192)
             
-            ret, mask_all_127 = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+            ret, mask_all_127 = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY)
             cv2.imwrite(os.path.join(image_process_dir_127,os.path.basename(image_path)), mask_all_127)
             # 将检测结果保存为JSON文件
             with open(json_path, "w") as json_file:
