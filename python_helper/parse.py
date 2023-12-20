@@ -9,19 +9,34 @@ from watchdog.events import FileSystemEventHandler
 
 def get_color(number):
     color_dict = {
-        0: (255, 0, 0),    # Red
-        1: (0, 0, 255),    # Blue
-        2: (0, 255, 0),    # Green
-        3: (255, 255, 0),  # Yellow
-        4: (255, 165, 0),  # Orange
-        5: (128, 0, 128),  # Purple
-        6: (255, 192, 203),  # Pink
-        7: (0, 255, 255),  # Cyan
-        8: (165, 42, 42)   # Brown
+        0: (255, 0, 0),     # Red
+        1: (0, 0, 255),     # Blue
+        2: (0, 255, 0),     # Green
+        3: (255, 255, 0),   # Yellow
+        4: (255, 165, 0),   # Orange
+        5: (128, 0, 128),   # Purple
+        6: (255, 192, 203), # Pink
+        7: (0, 255, 255),   # Cyan
+        8: (165, 42, 42),   # Brown
+        9: (0, 128, 0),     # Dark Green
+        10: (255, 0, 255),  # Magenta
+        11: (0, 255, 255),  # Aqua
+        12: (128, 128, 128),# Gray
+        13: (128, 0, 0),    # Maroon
+        14: (0, 128, 128),  # Teal
+        15: (128, 128, 0),  # Olive
+        16: (192, 192, 192),# Silver
+        17: (0, 0, 128),    # Navy
+        18: (128, 0, 128),  # Fuchsia
+        19: (0, 128, 0),    # Lime
+        20: (128, 128, 0),  # Olive
+        21: (0, 0, 128),    # Navy
+        22: (128, 0, 128),  # Fuchsia
+        23: (0, 128, 0),    # Lime
+        24: (128, 128, 0)   # Olive
     }
 
     return color_dict.get(number, (0, 0, 0))  # 默认返回黑色
-
 
 # 定义图片目录和JSON保存目录
 image_dir = "./predict/image"

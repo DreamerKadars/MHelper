@@ -20,9 +20,65 @@ const (
 	ClassLevel85        = "85"        // 85级装备
 	dpiMin              = 70
 	dpiMax              = 2400
-	numLengthParam      = 2.20
+	numLengthParam      = 2.10
 	numLengthParamLarge = 3.0
+
+	equipLocE1 = "e1"
+	equipLocE2 = "e2"
+	equipLocE3 = "e3"
+	equipLocE4 = "e4"
+	equipLocE5 = "e5"
+	equipLocE6 = "e6"
+
+	ParseSetAcc       = "hr"        // 命中
+	ParseSetAtt       = "atk"       // 攻击
+	ParseSetCoop      = "coop"      // 夹击
+	ParseSetCounter   = "counter"   // 反击
+	ParseSetCri       = "cc"        // 暴击
+	ParseSetCriDmg    = "cd"        // 暴伤
+	ParseSetImmune    = "immune"    // 免疫
+	ParseSetMaxHp     = "hp"        // 生命
+	ParseSetPenetrate = "penetrate" // 穿透
+	ParseSetRage      = "rage"      // 愤怒
+	ParseSetRes       = "rr"        // 抗性
+	ParseSetRevenge   = "revenge"   // 复仇
+	ParseSetScar      = "scar"      // 伤口
+	ParseSetShield    = "shield"    // 护盾
+	ParseSetSpeed     = "speed"     // 速度
+	ParseSetTorrent   = "torrent"   // 激流
+	ParseSetVampire   = "vampire"   // 吸血
+	ParseSetDef       = "defend"    // 防御
 )
+
+var ConvertSetType map[string]string = map[string]string{
+	ParseSetAcc:       utils.SetAcc,
+	ParseSetAtt:       utils.SetAtt,
+	ParseSetCoop:      utils.SetCoop,
+	ParseSetCounter:   utils.SetCounter,
+	ParseSetCri:       utils.SetCri,
+	ParseSetCriDmg:    utils.SetCriDmg,
+	ParseSetImmune:    utils.SetImmune,
+	ParseSetMaxHp:     utils.SetMaxHp,
+	ParseSetPenetrate: utils.SetPenetrate,
+	ParseSetRage:      utils.SetRage,
+	ParseSetRes:       utils.SetRes,
+	ParseSetRevenge:   utils.SetRevenge,
+	ParseSetScar:      utils.SetScar,
+	ParseSetShield:    utils.SetShield,
+	ParseSetSpeed:     utils.SetSpeed,
+	ParseSetTorrent:   utils.SetTorrent,
+	ParseSetVampire:   utils.SetVampire,
+	ParseSetDef:       utils.SetDef,
+}
+
+var ConvertLocValue map[string]string = map[string]string{
+	equipLocE1: utils.EquipLocWeapon,
+	equipLocE2: utils.EquipLocHelmet,
+	equipLocE3: utils.EquipLocCuirass,
+	equipLocE4: utils.EquipLocNecklace,
+	equipLocE5: utils.EquipLocRing,
+	equipLocE6: utils.EquipLocShoes,
+}
 
 type Equipment struct {
 	ID string // 随机数ID
@@ -40,11 +96,13 @@ type Equipment struct {
 	DefendPercent  int       //防御力百分比
 	Level          int       // 等级
 	UpgradeLevel   int       // 强化等级
-	UpgradePercent []float64 //升级到各个级别装备的概率
+	UpgradePercent []float64 // 升级到各个级别装备的概率
 	AnchorIndex    int       // 主属性锚点下标
 	Objects        []Object  // 包含在内的检测物体
 	MainType       string    // 主属性类型
 	MainValue      int       // 主属性数值
+	Set            string    // 套装类型
+	EquipLoc       string    // 装备位置
 }
 
 type Object struct {
@@ -243,14 +301,20 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 					equip.Hr = value
 				}
 			}
+
+			// 锚点左侧的被判断是装备套装
+			if object.X2 < equip.Objects[indexAnchor].X1 {
+				if set, exist := ConvertSetType[object.Class]; exist {
+					equip.Set = set
+				}
+			}
+
+			//判断装备位置
+			if locStr, exist := ConvertLocValue[object.Class]; exist {
+				equip.EquipLoc = locStr
+			}
 		}
 
-		// 读取装备等级
-		// x1, y1, x2, y2 := GetLevelLoc(equip.X1, equip.Y1, equip.X2, equip.Y2)
-		// equip.Level, _, err = CalculateNum(utils.ImageAfterProcessPath, imageFileName, imageSuffix, x1, y1, x2, y2)
-		// if err != nil {
-		// 	utils.Error("%+v", err)
-		// }
 		// 读取装备强化等级
 		x1, y1, x2, y2 := GetUpgradeLevelLoc(equip.X1, equip.Y1, equip.X2, equip.Y2)
 		equip.UpgradeLevel, _, err = CalculateNum(indexImage, utils.ImageAfterProcess192Path, imageFileName, imageSuffix, true, x1, y1, x2, y2)

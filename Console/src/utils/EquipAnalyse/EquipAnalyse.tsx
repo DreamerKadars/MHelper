@@ -145,7 +145,10 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
             setMainValue(props.equip.MainValue)
             setUpgradeLevel(props.equip.UpgradeLevel)
             setEquipLevel(props.equip.Level)
-            setEquipLoc("")
+            if (props.equip.Set !== undefined) { 
+                setEquipSet(props.equip.Set)
+            }
+            setEquipLoc(props.equip.EquipLoc)
             setFresh(!fresh)
         } else { 
             SetZero()
@@ -192,43 +195,44 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
     let cdGrade = (CD * 1.1)
     let hrGrade = Hr
     let rrGrade = RR
-    if (equipLoc !== "") {
-        switch (MainType) {
-            case ClassAtk:
-                atkGrade += MainValue / 9
-                break;
-            case ClassAtk + ClassSuffixPercent:
-                atkPercentGrade += MainValue
-                break;
-            case ClassDefend:
-                defendGrade += MainValue / 6
-                break;
-            case ClassDefend + ClassSuffixPercent:
-                defendPercentGrade += MainValue
-                break;
-            case ClassHp:
-                hpGrade += MainValue / 50
-                break;
-            case ClassHp + ClassSuffixPercent:
-                hpPercentGrade += MainValue
-                break;
-            case ClassSpeed:
-                speedGrade += MainValue * 2
-                break;
-            case ClassCC:
-                ccGrade += MainValue * 1.5
-                break;
-            case ClassCD:
-                cdGrade += MainValue * 1.1
-                break;
-            case ClassHr:
-                hrGrade += MainValue
-                break;
-            case ClassRr:
-                rrGrade += MainValue
-                break;
-        }
-    }
+    // 总分干扰判断，取消
+    // if (equipLoc !== "") {
+    //     switch (MainType) {
+    //         case ClassAtk:
+    //             atkGrade += MainValue / 9
+    //             break;
+    //         case ClassAtk + ClassSuffixPercent:
+    //             atkPercentGrade += MainValue
+    //             break;
+    //         case ClassDefend:
+    //             defendGrade += MainValue / 6
+    //             break;
+    //         case ClassDefend + ClassSuffixPercent:
+    //             defendPercentGrade += MainValue
+    //             break;
+    //         case ClassHp:
+    //             hpGrade += MainValue / 50
+    //             break;
+    //         case ClassHp + ClassSuffixPercent:
+    //             hpPercentGrade += MainValue
+    //             break;
+    //         case ClassSpeed:
+    //             speedGrade += MainValue * 2
+    //             break;
+    //         case ClassCC:
+    //             ccGrade += MainValue * 1.5
+    //             break;
+    //         case ClassCD:
+    //             cdGrade += MainValue * 1.1
+    //             break;
+    //         case ClassHr:
+    //             hrGrade += MainValue
+    //             break;
+    //         case ClassRr:
+    //             rrGrade += MainValue
+    //             break;
+    //     }
+    // }
     const totalGrade = speedGrade + atkGrade + defendGrade + hpGrade + atkPercentGrade + defendPercentGrade + hpPercentGrade + ccGrade + cdGrade + hrGrade + rrGrade
 
     interface FindSuitHero {
@@ -298,7 +302,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                             {/* <Button style={{ margin: 20 }} type="primary" onClick={() => { setFresh(!fresh) }}>计算结果</Button> */}
                             <Button style={{ margin: 20 }} type="primary" onClick={() => { SetZero() }}>重置分数</Button>
                         </div>
-                        <Radio.Group defaultValue='a' style={{ marginBottom: 20 }} onChange={setEquipLoc}>
+                        <Radio.Group defaultValue='a' style={{ marginBottom: 20 }} onChange={setEquipLoc} value={equipLoc}>
                             {EquipLocRange.map((key, index) => {
                                 return <Radio value={key} key={index}>{EquipLocCNRange[index]}</Radio>
                             })}
