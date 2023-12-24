@@ -23,7 +23,16 @@ export const GetTotalGrade = (item: Equipment) => {
     const rrGrade = item.RR
     return speedGrade + atkGrade + defendGrade + hpGrade + atkPercentGrade + defendPercentGrade + hpPercentGrade + ccGrade + cdGrade + hrGrade + rrGrade
 }
-
+export const CalEquipNum=(equip:Equipment)=>{
+    let subNum = 0 // 计算副属性的数量，不应该大于4个
+    let subValueList = [equip.CC, equip.CD, equip.Atk, equip.Speed, equip.AtkPercent, equip.Hp, equip.HpPercent, equip.RR, equip.Hr, equip.Defend, equip.DefendPercent]
+    subValueList.map((value) => { 
+        if (value !== 0) {
+            subNum++;
+        }
+    })
+    return subNum
+}
 export const PieChart = (props: EquipmentPieChartProps) => {
     let totalGrade = GetTotalGrade(props.equip)
     let grade: number[] = Array<number>(500)
@@ -40,71 +49,79 @@ export const PieChart = (props: EquipmentPieChartProps) => {
     if (upgradeTime < 0 || upgradeTime > 5) {
         return <div></div>
     }
+    console.log(grade)
+
+    let subNum = CalEquipNum(props.equip)
+    let oneValuePercent = subNum === 0 ? 0.25 : 1 / subNum
     if (props.equip.Level == 85) {
         for (let i = 0; i < upgradeTime; i++) {
+            console.log(grade)
+            // if (i>0){
+            //     break;
+            // }
             for (let j = 0; j < 100; j++) {
                 if (props.equip.Atk !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.5 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.5 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.5 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.5 * grade[j]
                 }
                 if (props.equip.AtkPercent !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Defend !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.5 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.5 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.5 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.5 * grade[j]
                 }
                 if (props.equip.DefendPercent !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Hp !== 0) {
-                    gradeTemp[j + 3] = gradeTemp[j + 3] + 0.25 * 0.5 * grade[j]
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.5 * grade[j]
+                    gradeTemp[j + 3] = gradeTemp[j + 3] + oneValuePercent * 0.5 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.5 * grade[j]
                 }
                 if (props.equip.HpPercent !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Speed !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.33 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.33 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.33 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.33 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.33 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.33 * grade[j]
                 }
                 if (props.equip.Hr !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.RR !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.CC !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.33 * grade[j] // 4.5分
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.33 * grade[j] // 6分
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.33 * grade[j] // 7.5分
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.33 * grade[j] // 4.5分
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.33 * grade[j] // 6分
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.33 * grade[j] // 7.5分
                 }
                 if (props.equip.CD !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.25 * grade[j] // 4.4
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.25 * grade[j] // 5.5 
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.25 * grade[j] // 6.6
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.25 * grade[j] // 7.7
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.25 * grade[j] // 4.4
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.25 * grade[j] // 5.5
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.25 * grade[j] // 6.6
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.25 * grade[j] // 7.7
                 }
             }
             for (let j = 0; j < 100; j++) {
@@ -120,68 +137,68 @@ export const PieChart = (props: EquipmentPieChartProps) => {
             for (let j = 0; j < 100; j++) {
                 if (props.equip.Atk !== 0) {
                     // 范围在38-53之间，基本上就是5分
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 1 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 1 * grade[j]
                 }
                 if (props.equip.AtkPercent !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Defend !== 0) {
                     // 范围在32到39之间，基本上就是6分
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 1 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 1 * grade[j]
                 }
                 if (props.equip.DefendPercent !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Hp !== 0) {
                     // 范围在179-229之间，基本上就是4分
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 1 * grade[j]
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 1 * grade[j]
                 }
                 if (props.equip.HpPercent !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.Speed !== 0) {
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.5 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.5 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.5 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.5 * grade[j]
                 }
                 if (props.equip.Hr !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j]
                 }
                 if (props.equip.RR !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j]
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j]
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j]
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j]
                 }
 
                 if (props.equip.CC !== 0) {
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.25 * grade[j] // 4.5分
-                    gradeTemp[j + 6] = gradeTemp[j + 6] + 0.25 * 0.25 * grade[j] // 6分
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.25 * grade[j] // 7.5分
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.25 * grade[j] // 9分
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.25 * grade[j] // 4.5分
+                    gradeTemp[j + 6] = gradeTemp[j + 6] + oneValuePercent * 0.25 * grade[j] // 6分
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.25 * grade[j] // 7.5分
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.25 * grade[j] // 9分
                 }
                 if (props.equip.CD !== 0) {
-                    gradeTemp[j + 4] = gradeTemp[j + 4] + 0.25 * 0.2 * grade[j] // 4.4
-                    gradeTemp[j + 5] = gradeTemp[j + 5] + 0.25 * 0.2 * grade[j] // 5.5 
-                    gradeTemp[j + 7] = gradeTemp[j + 7] + 0.25 * 0.2 * grade[j] // 6.6
-                    gradeTemp[j + 8] = gradeTemp[j + 8] + 0.25 * 0.2 * grade[j] // 7.7
-                    gradeTemp[j + 9] = gradeTemp[j + 9] + 0.25 * 0.2 * grade[j] // 8.8
+                    gradeTemp[j + 4] = gradeTemp[j + 4] + oneValuePercent * 0.2 * grade[j] // 4.4
+                    gradeTemp[j + 5] = gradeTemp[j + 5] + oneValuePercent * 0.2 * grade[j] // 5.5 
+                    gradeTemp[j + 7] = gradeTemp[j + 7] + oneValuePercent * 0.2 * grade[j] // 6.6
+                    gradeTemp[j + 8] = gradeTemp[j + 8] + oneValuePercent * 0.2 * grade[j] // 7.7
+                    gradeTemp[j + 9] = gradeTemp[j + 9] + oneValuePercent * 0.2 * grade[j] // 8.8
                 }
             }
             for (let j = 0; j < 100; j++) {
@@ -209,6 +226,7 @@ export const PieChart = (props: EquipmentPieChartProps) => {
             result[i] += grade[j]
         }
     }
+    console.log(result)
 
     const data = {
         labels: [`废件: 0 - ` + gradeLevel[0],
