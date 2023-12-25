@@ -5,6 +5,17 @@ import necklace from "../asset/necklace.jpg"
 import ring from "../asset/ring.png"
 import shoes from "../asset/shoes.png"
 
+import atkPng from "../asset/class/atk.png"
+import ccPng from "../asset/class/cc.png"
+import cdPng from "../asset/class/cd.png"
+import defendPng from "../asset/class/defend.png"
+import hpPng from "../asset/class/hp.png"
+import hrPng from "../asset/class/hr.png"
+import rrPng from "../asset/class/rr.png"
+import speedPng from "../asset/class/speed.png"
+import percentPng from "../asset/class/percent.png"
+
+
 export const E7DataDomain = "https://e7.soultrial.top/Data"
 
 export const ClassAtk = "atk"       // 攻击
@@ -1000,6 +1011,30 @@ export function GetDefaultEquipImage(EquipLoc: string) {
             return ring
         case EquipLocShoes:
             return shoes
+    }
+    return ""
+}
+
+export function GetClassImage(classType: string) {
+    switch (classType) {
+        case ClassAtk:
+            return atkPng
+        case ClassHp:
+            return hpPng
+        case ClassDefend:
+            return defendPng
+        case ClassCC:
+            return ccPng
+        case ClassCD:
+            return cdPng
+        case ClassSpeed:
+            return speedPng
+        case ClassHr:
+            return hrPng
+        case ClassRr:
+            return rrPng
+        case ClassSuffixPercent:
+            return percentPng
     }
     return ""
 }

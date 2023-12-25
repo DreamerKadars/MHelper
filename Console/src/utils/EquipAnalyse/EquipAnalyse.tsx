@@ -8,7 +8,7 @@ import { UploadItem } from "@arco-design/web-react/es/Upload";
 import { Grid } from '@arco-design/web-react';
 import { Radar, Bar } from 'react-chartjs-2';
 import { Chart, registerables, ArcElement, ChartOptions } from "chart.js";
-import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain, EquipLocCNRange, EquipLocNecklace, EquipLocRange, EquipLocRing, EquipLocShoes, GetDefaultEquipImage, HeroDetailBackEnd, MainNecklaceRange, SetList } from '../const';
+import { ChakeyList, ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassHr, ClassRangeMap, ClassRr, ClassSpeed, ClassSuffixPercent, E7DataDomain, EquipLocCNRange, EquipLocNecklace, EquipLocRange, EquipLocRing, EquipLocShoes, GetClassImage, GetDefaultEquipImage, HeroDetailBackEnd, MainNecklaceRange, SetList } from '../const';
 import { AttributeCode, AttributeCodeIconFlex, Equipment, HeroDetail, HeroListResult, InitEquipment, InitializeHeroStaticDetail, JobCode, JobCodeIconFlex } from "../../utils/const";
 import HeroImageShow from "../HeroImageShow/HeroImageShow";
 import { ListHeroDetail, LoadHeroJSON } from "../api/help";
@@ -292,7 +292,7 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
         <Grid.Row>
             <Grid.Col span={10}>
                 <Grid.Row>
-                    <Grid.Col span={12}>
+                    <Grid.Col span={13}>
                         <div><Image src={(props.equip?.EquipImageStr === undefined || props.equip?.EquipImageStr === "") ? GetDefaultEquipImage(equipLoc) : props.equip?.EquipImageStr}>
 
                         </Image>
@@ -340,19 +340,19 @@ export const EquipAnalyse = (props: EquipAnalyseProps) => {
                             <div><span style={{ fontSize: 25, fontWeight: "bold", color: "red" }}>总分: {totalGrade.toFixed(2)}</span></div>
                         </div>
                     </Grid.Col>
-                    <Grid.Col span={12}>
-                        <div style={{ width: 200, marginRight: 10 }}>
-                            <InputNumber defaultValue={0} hideControl prefix={<span style={{ color: "blue" }}>攻击力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Atk} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtk(val) } else { setAtk(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>攻击力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={AtkPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setAtkPercent(val) } else { setAtkPercent(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>防御力 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Defend} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefend(val) } else { setDefend(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>防御力 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={DefendPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setDefendPercent(val) } else { setDefendPercent(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>生命值 固定{"\u00A0\u00A0\u00A0"}</span>} min={0} value={Hp} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHp(val) } else { setHp(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>生命值 %{"\u00A0\u00A0\u00A0"}{"\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={HpPercent} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHpPercent(val) } else { setHpPercent(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>速度{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Speed} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setSpeed(val) } else { setSpeed(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>暴击率{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CC} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCC(val) } else { setCC(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>暴击伤害{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={CD} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setCD(val) } else { setCD(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>效果命中{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={Hr} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
-                            <InputNumber prefix={<span style={{ color: "blue" }}>效果抵抗{"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"}</span>} min={0} value={RR} style={{ margin: 10, width: 200 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
+                    <Grid.Col span={11}>
+                        <div style={{ width: 120, marginRight: 10 }}>
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassAtk)}></Image></div>} min={0} value={Atk} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setAtk(val) } else { setAtk(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassAtk)}></Image><Image height={20} src={GetClassImage(ClassSuffixPercent)}></Image></div>} min={0} value={AtkPercent} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setAtkPercent(val) } else { setAtkPercent(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassDefend)}></Image></div>} min={0} value={Defend} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setDefend(val) } else { setDefend(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassDefend)}></Image><Image height={20} src={GetClassImage(ClassSuffixPercent)}></Image></div>} min={0} value={DefendPercent} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setDefendPercent(val) } else { setDefendPercent(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassHp)}></Image></div>} min={0} value={Hp} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setHp(val) } else { setHp(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassHp)}></Image><Image height={20} src={GetClassImage(ClassSuffixPercent)}></Image></div>} min={0} value={HpPercent} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setHpPercent(val) } else { setHpPercent(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassSpeed)}></Image></div>} min={0} value={Speed} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setSpeed(val) } else { setSpeed(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassCC)}></Image></div>} min={0} value={CC} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setCC(val) } else { setCC(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassCD)}></Image></div>} min={0} value={CD} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setCD(val) } else { setCD(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassHr)}></Image></div>} min={0} value={Hr} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setHr(val) } else { setHr(0) } }} />
+                            <InputNumber prefix={<div style={{ width: 50 }}><Image height={20} src={GetClassImage(ClassRr)}></Image></div>} min={0} value={RR} style={{ margin: 10, width: 120 }} onChange={(val) => { if (val !== undefined) { setRR(val) } else { setRR(0) } }} />
                             {subNum>4 ?<span style={{color:"red"}}>副属性数量不应该大于4条!</span>:<></>}
                         </div>
                     </Grid.Col>
