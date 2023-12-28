@@ -1,0 +1,4886 @@
+{
+    "atk-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-1-85": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-2-85": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 80,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-3-85": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 120,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-4-85": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 160,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-5-85": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "atk",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 200,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-1-90": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-2-90": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 90,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-3-90": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 135,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-4-90": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 180,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atk-5-90": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "atk",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 225,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-1-85": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-2-85": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-3-85": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-4-85": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-5-85": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "atkPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "atkPercent-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "atkPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 41,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 42,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 43,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 44,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-1-85": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 31,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-2-85": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 62,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-3-85": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 93,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-4-85": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 124,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-5-85": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "defend",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 155,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-1-90": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 35,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-2-90": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 70,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-3-90": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 105,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-4-90": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 140,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defend-5-90": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "defend",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 175,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-1-85": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-2-85": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-3-85": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-4-85": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-5-85": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "defendPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "defendPercent-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "defendPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 41,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 42,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 43,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 44,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-1-85": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 180,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-2-85": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 360,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-3-85": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 540,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-4-85": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 720,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-5-85": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "hp",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 900,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-1-90": {
+        "Total": 1,
+        "IntensifyNum": 1,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 203,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-2-90": {
+        "Total": 1,
+        "IntensifyNum": 2,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 406,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-3-90": {
+        "Total": 1,
+        "IntensifyNum": 3,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 609,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-4-90": {
+        "Total": 1,
+        "IntensifyNum": 4,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 812,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hp-5-90": {
+        "Total": 1,
+        "IntensifyNum": 5,
+        "Class": "hp",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 1015,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-1-85": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-2-85": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-3-85": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-4-85": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-5-85": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "hpPercent",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hpPercent-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "hpPercent",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 41,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 42,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 43,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 44,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-1-85": {
+        "Total": 3,
+        "IntensifyNum": 1,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 2,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 3,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-2-85": {
+        "Total": 9,
+        "IntensifyNum": 2,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-3-85": {
+        "Total": 27,
+        "IntensifyNum": 3,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 7
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-4-85": {
+        "Total": 81,
+        "IntensifyNum": 4,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 16
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 16
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-5-85": {
+        "Total": 243,
+        "IntensifyNum": 5,
+        "Class": "speed",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 30
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 45
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 51
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 45
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 30
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-1-90": {
+        "Total": 2,
+        "IntensifyNum": 1,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 3,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-2-90": {
+        "Total": 4,
+        "IntensifyNum": 2,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-3-90": {
+        "Total": 8,
+        "IntensifyNum": 3,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-4-90": {
+        "Total": 16,
+        "IntensifyNum": 4,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "speed-5-90": {
+        "Total": 32,
+        "IntensifyNum": 5,
+        "Class": "speed",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-1-85": {
+        "Total": 3,
+        "IntensifyNum": 1,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 3,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-2-85": {
+        "Total": 9,
+        "IntensifyNum": 2,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-3-85": {
+        "Total": 27,
+        "IntensifyNum": 3,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 7
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-4-85": {
+        "Total": 81,
+        "IntensifyNum": 4,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 16
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 16
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-5-85": {
+        "Total": 243,
+        "IntensifyNum": 5,
+        "Class": "cc",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 30
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 45
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 51
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 45
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 30
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-1-90": {
+        "Total": 4,
+        "IntensifyNum": 1,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 3,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-2-90": {
+        "Total": 16,
+        "IntensifyNum": 2,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-3-90": {
+        "Total": 64,
+        "IntensifyNum": 3,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 12
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 12
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-4-90": {
+        "Total": 256,
+        "IntensifyNum": 4,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 31
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 40
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 44
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 40
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 31
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cc-5-90": {
+        "Total": 1024,
+        "IntensifyNum": 5,
+        "Class": "cc",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 65
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 101
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 135
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 155
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 155
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 135
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 101
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 65
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-1-85": {
+        "Total": 4,
+        "IntensifyNum": 1,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-2-85": {
+        "Total": 16,
+        "IntensifyNum": 2,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-3-85": {
+        "Total": 64,
+        "IntensifyNum": 3,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 12
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 12
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-4-85": {
+        "Total": 256,
+        "IntensifyNum": 4,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 31
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 40
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 44
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 40
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 31
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-5-85": {
+        "Total": 1024,
+        "IntensifyNum": 5,
+        "Class": "cd",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 65
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 101
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 135
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 155
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 155
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 135
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 101
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 65
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "cd-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "cd",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-1-85": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-2-85": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-3-85": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-4-85": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-5-85": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "hr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "hr-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "hr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 41,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 42,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 43,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 44,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-0-85": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-1-85": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 4,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-2-85": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 10,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-3-85": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 12,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-4-85": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 16,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-5-85": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "rr",
+        "Level": 85,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-0-90": {
+        "Total": 1,
+        "IntensifyNum": 0,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 0,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-1-90": {
+        "Total": 5,
+        "IntensifyNum": 1,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 5,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 6,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 7,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 8,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 9,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-2-90": {
+        "Total": 25,
+        "IntensifyNum": 2,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 10,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 11,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 12,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 13,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 14,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 15,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 2
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-3-90": {
+        "Total": 125,
+        "IntensifyNum": 3,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 15,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 16,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 17,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 18,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 19,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 20,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 19
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 18
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 6
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 3
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-4-90": {
+        "Total": 625,
+        "IntensifyNum": 4,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 20,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 21,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 22,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 23,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 24,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 25,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 85
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 80
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 68
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 52
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 20
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 10
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 4
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 1
+            }
+        ]
+    },
+    "rr-5-90": {
+        "Total": 3125,
+        "IntensifyNum": 5,
+        "Class": "rr",
+        "Level": 90,
+        "Distributions": [
+            {
+                "Value": 25,
+                "DistributionNum": 1
+            },
+            {
+                "Value": 26,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 27,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 28,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 29,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 30,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 31,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 32,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 33,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 34,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 35,
+                "DistributionNum": 381
+            },
+            {
+                "Value": 36,
+                "DistributionNum": 365
+            },
+            {
+                "Value": 37,
+                "DistributionNum": 320
+            },
+            {
+                "Value": 38,
+                "DistributionNum": 255
+            },
+            {
+                "Value": 39,
+                "DistributionNum": 185
+            },
+            {
+                "Value": 40,
+                "DistributionNum": 121
+            },
+            {
+                "Value": 41,
+                "DistributionNum": 70
+            },
+            {
+                "Value": 42,
+                "DistributionNum": 35
+            },
+            {
+                "Value": 43,
+                "DistributionNum": 15
+            },
+            {
+                "Value": 44,
+                "DistributionNum": 5
+            },
+            {
+                "Value": 45,
+                "DistributionNum": 1
+            }
+        ]
+    }
+}
