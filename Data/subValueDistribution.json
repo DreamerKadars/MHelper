@@ -71,11 +71,11 @@
             }
         ]
     },
-    "atk-0-90": {
+    "atk-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -83,11 +83,11 @@
             }
         ]
     },
-    "atk-1-90": {
+    "atk-1-88": {
         "Total": 1,
         "IntensifyNum": 1,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 45,
@@ -95,11 +95,11 @@
             }
         ]
     },
-    "atk-2-90": {
+    "atk-2-88": {
         "Total": 1,
         "IntensifyNum": 2,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 90,
@@ -107,11 +107,11 @@
             }
         ]
     },
-    "atk-3-90": {
+    "atk-3-88": {
         "Total": 1,
         "IntensifyNum": 3,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 135,
@@ -119,11 +119,11 @@
             }
         ]
     },
-    "atk-4-90": {
+    "atk-4-88": {
         "Total": 1,
         "IntensifyNum": 4,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 180,
@@ -131,11 +131,11 @@
             }
         ]
     },
-    "atk-5-90": {
+    "atk-5-88": {
         "Total": 1,
         "IntensifyNum": 5,
         "Class": "atk",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 225,
@@ -455,11 +455,11 @@
             }
         ]
     },
-    "atkPercent-0-90": {
+    "atkPercent-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -467,11 +467,11 @@
             }
         ]
     },
-    "atkPercent-1-90": {
+    "atkPercent-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 5,
@@ -495,11 +495,11 @@
             }
         ]
     },
-    "atkPercent-2-90": {
+    "atkPercent-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 10,
@@ -539,11 +539,11 @@
             }
         ]
     },
-    "atkPercent-3-90": {
+    "atkPercent-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -599,11 +599,11 @@
             }
         ]
     },
-    "atkPercent-4-90": {
+    "atkPercent-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -675,11 +675,11 @@
             }
         ]
     },
-    "atkPercent-5-90": {
+    "atkPercent-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "atkPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 25,
@@ -839,11 +839,11 @@
             }
         ]
     },
-    "defend-0-90": {
+    "defend-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -851,11 +851,11 @@
             }
         ]
     },
-    "defend-1-90": {
+    "defend-1-88": {
         "Total": 1,
         "IntensifyNum": 1,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 35,
@@ -863,11 +863,11 @@
             }
         ]
     },
-    "defend-2-90": {
+    "defend-2-88": {
         "Total": 1,
         "IntensifyNum": 2,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 70,
@@ -875,11 +875,11 @@
             }
         ]
     },
-    "defend-3-90": {
+    "defend-3-88": {
         "Total": 1,
         "IntensifyNum": 3,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 105,
@@ -887,11 +887,11 @@
             }
         ]
     },
-    "defend-4-90": {
+    "defend-4-88": {
         "Total": 1,
         "IntensifyNum": 4,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 140,
@@ -899,11 +899,11 @@
             }
         ]
     },
-    "defend-5-90": {
+    "defend-5-88": {
         "Total": 1,
         "IntensifyNum": 5,
         "Class": "defend",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 175,
@@ -1223,11 +1223,11 @@
             }
         ]
     },
-    "defendPercent-0-90": {
+    "defendPercent-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -1235,11 +1235,11 @@
             }
         ]
     },
-    "defendPercent-1-90": {
+    "defendPercent-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 5,
@@ -1263,11 +1263,11 @@
             }
         ]
     },
-    "defendPercent-2-90": {
+    "defendPercent-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 10,
@@ -1307,11 +1307,11 @@
             }
         ]
     },
-    "defendPercent-3-90": {
+    "defendPercent-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -1367,11 +1367,11 @@
             }
         ]
     },
-    "defendPercent-4-90": {
+    "defendPercent-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -1443,11 +1443,11 @@
             }
         ]
     },
-    "defendPercent-5-90": {
+    "defendPercent-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "defendPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 25,
@@ -1607,11 +1607,11 @@
             }
         ]
     },
-    "hp-0-90": {
+    "hp-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -1619,11 +1619,11 @@
             }
         ]
     },
-    "hp-1-90": {
+    "hp-1-88": {
         "Total": 1,
         "IntensifyNum": 1,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 203,
@@ -1631,11 +1631,11 @@
             }
         ]
     },
-    "hp-2-90": {
+    "hp-2-88": {
         "Total": 1,
         "IntensifyNum": 2,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 406,
@@ -1643,11 +1643,11 @@
             }
         ]
     },
-    "hp-3-90": {
+    "hp-3-88": {
         "Total": 1,
         "IntensifyNum": 3,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 609,
@@ -1655,11 +1655,11 @@
             }
         ]
     },
-    "hp-4-90": {
+    "hp-4-88": {
         "Total": 1,
         "IntensifyNum": 4,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 812,
@@ -1667,11 +1667,11 @@
             }
         ]
     },
-    "hp-5-90": {
+    "hp-5-88": {
         "Total": 1,
         "IntensifyNum": 5,
         "Class": "hp",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 1015,
@@ -1991,11 +1991,11 @@
             }
         ]
     },
-    "hpPercent-0-90": {
+    "hpPercent-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -2003,11 +2003,11 @@
             }
         ]
     },
-    "hpPercent-1-90": {
+    "hpPercent-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 5,
@@ -2031,11 +2031,11 @@
             }
         ]
     },
-    "hpPercent-2-90": {
+    "hpPercent-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 10,
@@ -2075,11 +2075,11 @@
             }
         ]
     },
-    "hpPercent-3-90": {
+    "hpPercent-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -2135,11 +2135,11 @@
             }
         ]
     },
-    "hpPercent-4-90": {
+    "hpPercent-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -2211,11 +2211,11 @@
             }
         ]
     },
-    "hpPercent-5-90": {
+    "hpPercent-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "hpPercent",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 25,
@@ -2495,11 +2495,11 @@
             }
         ]
     },
-    "speed-0-90": {
+    "speed-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -2507,11 +2507,11 @@
             }
         ]
     },
-    "speed-1-90": {
+    "speed-1-88": {
         "Total": 2,
         "IntensifyNum": 1,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 3,
@@ -2523,11 +2523,11 @@
             }
         ]
     },
-    "speed-2-90": {
+    "speed-2-88": {
         "Total": 4,
         "IntensifyNum": 2,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 6,
@@ -2543,11 +2543,11 @@
             }
         ]
     },
-    "speed-3-90": {
+    "speed-3-88": {
         "Total": 8,
         "IntensifyNum": 3,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 9,
@@ -2567,11 +2567,11 @@
             }
         ]
     },
-    "speed-4-90": {
+    "speed-4-88": {
         "Total": 16,
         "IntensifyNum": 4,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 12,
@@ -2595,11 +2595,11 @@
             }
         ]
     },
-    "speed-5-90": {
+    "speed-5-88": {
         "Total": 32,
         "IntensifyNum": 5,
         "Class": "speed",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -2819,11 +2819,11 @@
             }
         ]
     },
-    "cc-0-90": {
+    "cc-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -2831,11 +2831,11 @@
             }
         ]
     },
-    "cc-1-90": {
+    "cc-1-88": {
         "Total": 4,
         "IntensifyNum": 1,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 3,
@@ -2855,11 +2855,11 @@
             }
         ]
     },
-    "cc-2-90": {
+    "cc-2-88": {
         "Total": 16,
         "IntensifyNum": 2,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 6,
@@ -2891,11 +2891,11 @@
             }
         ]
     },
-    "cc-3-90": {
+    "cc-3-88": {
         "Total": 64,
         "IntensifyNum": 3,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 9,
@@ -2939,11 +2939,11 @@
             }
         ]
     },
-    "cc-4-90": {
+    "cc-4-88": {
         "Total": 256,
         "IntensifyNum": 4,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 12,
@@ -2999,11 +2999,11 @@
             }
         ]
     },
-    "cc-5-90": {
+    "cc-5-88": {
         "Total": 1024,
         "IntensifyNum": 5,
         "Class": "cc",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -3323,11 +3323,11 @@
             }
         ]
     },
-    "cd-0-90": {
+    "cd-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -3335,11 +3335,11 @@
             }
         ]
     },
-    "cd-1-90": {
+    "cd-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 4,
@@ -3363,11 +3363,11 @@
             }
         ]
     },
-    "cd-2-90": {
+    "cd-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 8,
@@ -3407,11 +3407,11 @@
             }
         ]
     },
-    "cd-3-90": {
+    "cd-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 12,
@@ -3467,11 +3467,11 @@
             }
         ]
     },
-    "cd-4-90": {
+    "cd-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 16,
@@ -3543,11 +3543,11 @@
             }
         ]
     },
-    "cd-5-90": {
+    "cd-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "cd",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -3947,11 +3947,11 @@
             }
         ]
     },
-    "hr-0-90": {
+    "hr-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -3959,11 +3959,11 @@
             }
         ]
     },
-    "hr-1-90": {
+    "hr-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 5,
@@ -3987,11 +3987,11 @@
             }
         ]
     },
-    "hr-2-90": {
+    "hr-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 10,
@@ -4031,11 +4031,11 @@
             }
         ]
     },
-    "hr-3-90": {
+    "hr-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -4091,11 +4091,11 @@
             }
         ]
     },
-    "hr-4-90": {
+    "hr-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -4167,11 +4167,11 @@
             }
         ]
     },
-    "hr-5-90": {
+    "hr-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "hr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 25,
@@ -4571,11 +4571,11 @@
             }
         ]
     },
-    "rr-0-90": {
+    "rr-0-88": {
         "Total": 1,
         "IntensifyNum": 0,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 0,
@@ -4583,11 +4583,11 @@
             }
         ]
     },
-    "rr-1-90": {
+    "rr-1-88": {
         "Total": 5,
         "IntensifyNum": 1,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 5,
@@ -4611,11 +4611,11 @@
             }
         ]
     },
-    "rr-2-90": {
+    "rr-2-88": {
         "Total": 25,
         "IntensifyNum": 2,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 10,
@@ -4655,11 +4655,11 @@
             }
         ]
     },
-    "rr-3-90": {
+    "rr-3-88": {
         "Total": 125,
         "IntensifyNum": 3,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 15,
@@ -4715,11 +4715,11 @@
             }
         ]
     },
-    "rr-4-90": {
+    "rr-4-88": {
         "Total": 625,
         "IntensifyNum": 4,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 20,
@@ -4791,11 +4791,11 @@
             }
         ]
     },
-    "rr-5-90": {
+    "rr-5-88": {
         "Total": 3125,
         "IntensifyNum": 5,
         "Class": "rr",
-        "Level": 90,
+        "Level": 88,
         "Distributions": [
             {
                 "Value": 25,

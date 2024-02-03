@@ -46,7 +46,9 @@ export default function HeroTemplateManage(props:HeroTemplateManageProps) {
     useEffect(() => {
         funcHeroTemplateList().then((resp) => {
             setHeroTemplateList(resp.data.Data)
-        }).catch((error) => { HandlerAxiosErrPrefix("读取角色模板", error) })
+        }).catch((error) => {
+            HandlerAxiosErrPrefix("读取角色模板", error)
+        })
     }, [fresh])
     
     useEffect(() => {

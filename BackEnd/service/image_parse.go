@@ -48,6 +48,12 @@ const (
 	ParseSetTorrent   = "torrent"   // 激流
 	ParseSetVampire   = "vampire"   // 吸血
 	ParseSetDef       = "defend"    // 防御
+
+	EquipColorRed    = "red"
+	EquipColorPurple = "purple"
+
+	equipLocRedKey    = "redE"
+	equipLocPurpleKey = "purpleE"
 )
 
 var ConvertSetType map[string]string = map[string]string{
@@ -103,6 +109,8 @@ type Equipment struct {
 	MainValue      int       // 主属性数值
 	Set            string    // 套装类型
 	EquipLoc       string    // 装备位置
+	EquipColor     string    // 装备颜色，只支持红色和紫色
+	FourLocClass   string    // 紫装的第四个副属性是特殊的
 }
 
 type Object struct {
@@ -216,6 +224,14 @@ func CorrectYoloObjects(YoloObjects []*Object) []*Equipment {
 	return equipment
 }
 
+func IsClassType(class string) bool {
+	switch class {
+	case utils.ClassAtk, utils.ClassHp, utils.ClassDefend, utils.ClassSpeed, utils.ClassCC, utils.ClassCD, utils.ClassRr, utils.ClassHr:
+		return true
+	}
+	return false
+}
+
 // 解析图片文件并且得出一系列信息
 func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, error) {
 	res := make([]*Equipment, 0)
@@ -249,6 +265,10 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 		var indexAnchor = equip.AnchorIndex
 
 		leftX := equip.Objects[indexAnchor].X1 - (equip.Objects[indexAnchor].X2-equip.Objects[indexAnchor].X1)/5
+
+		// 计算第四个副属性的位置，x最大，y最大的就是
+		FourLocClass, FourLocV := "", float32(-100000)
+
 		// 锚点右侧的属性需要参与计算数值，代表副词条
 		for index, object := range equip.Objects {
 			if index == indexAnchor {
@@ -264,8 +284,11 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 				equip.MainValue = value
 				continue
 			}
+
+			percent := false
 			if object.X1 > leftX {
-				value, percent, err := CalculateNum(indexImage, utils.ImageAfterProcess127Path, imageFileName, imageSuffix, false, int(object.X2), int(object.Y1), int(object.X2+numLengthParam*(object.X2-object.X1)), int(object.Y2))
+				value := 0
+				value, percent, err = CalculateNum(indexImage, utils.ImageAfterProcess127Path, imageFileName, imageSuffix, false, int(object.X2), int(object.Y1), int(object.X2+numLengthParam*(object.X2-object.X1)), int(object.Y2))
 				indexImage++
 				if err != nil {
 					continue
@@ -302,19 +325,38 @@ func ParseImage(imageFileName, imageSuffix string, ID string) ([]*Equipment, err
 				}
 			}
 
+			if index != indexAnchor {
+				// 非主属性的副属性
+				if IsClassType(object.Class) {
+					if object.X1+object.Y1 > FourLocV {
+						FourLocV = object.X1 + object.Y1
+						FourLocClass = object.Class
+						if percent {
+							FourLocClass += "Percent"
+						}
+					}
+				}
+			}
+
 			// 锚点左侧的被判断是装备套装
 			if object.X2 < equip.Objects[indexAnchor].X1 {
 				if set, exist := ConvertSetType[object.Class]; exist {
 					equip.Set = set
 				}
 			}
-
 			//判断装备位置
 			if locStr, exist := ConvertLocValue[object.Class]; exist {
 				equip.EquipLoc = locStr
 			}
+			// 判断装备颜色
+			if object.Class == equipLocRedKey {
+				equip.EquipColor = EquipColorRed
+			} else if object.Class == equipLocPurpleKey {
+				equip.EquipColor = EquipColorPurple
+			}
 		}
 
+		equip.FourLocClass = FourLocClass
 		// 读取装备强化等级
 		x1, y1, x2, y2 := GetUpgradeLevelLoc(equip.X1, equip.Y1, equip.X2, equip.Y2)
 		equip.UpgradeLevel, _, err = CalculateNum(indexImage, utils.ImageAfterProcess192Path, imageFileName, imageSuffix, true, x1, y1, x2, y2)

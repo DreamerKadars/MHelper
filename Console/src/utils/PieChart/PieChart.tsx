@@ -1,4 +1,4 @@
-import { Equipment } from "../../utils/const";
+import { ClassAtk, ClassCC, ClassCD, ClassDefend, ClassHp, ClassSpeed, ClassHr, ClassRr, ClassAtkPercent, ClassDefendPercent, ClassHpPercent, Equipment } from "../../utils/const";
 import { Pie } from 'react-chartjs-2';
 
 // 85等级的分段
@@ -23,7 +23,7 @@ export const GetTotalGrade = (item: Equipment) => {
     const rrGrade = item.RR
     return speedGrade + atkGrade + defendGrade + hpGrade + atkPercentGrade + defendPercentGrade + hpPercentGrade + ccGrade + cdGrade + hrGrade + rrGrade
 }
-export const CalEquipNum=(equip:Equipment)=>{
+export const CalEquipNum = (equip: Equipment) => {
     let subNum = 0 // 计算副属性的数量，不应该大于4个
     let subValueList = [equip.CC, equip.CD, equip.Atk, equip.Speed, equip.AtkPercent, equip.Hp, equip.HpPercent, equip.RR, equip.Hr, equip.Defend, equip.DefendPercent]
     subValueList.map((value) => { 
@@ -49,13 +49,13 @@ export const PieChart = (props: EquipmentPieChartProps) => {
     if (upgradeTime < 0 || upgradeTime > 5) {
         return <div></div>
     }
-    console.log(grade)
+    
 
     let subNum = CalEquipNum(props.equip)
     let oneValuePercent = subNum === 0 ? 0.25 : 1 / subNum
     if (props.equip.Level == 85) {
         for (let i = 0; i < upgradeTime; i++) {
-            console.log(grade)
+            
             // if (i>0){
             //     break;
             // }
@@ -226,7 +226,6 @@ export const PieChart = (props: EquipmentPieChartProps) => {
             result[i] += grade[j]
         }
     }
-    console.log(result)
 
     const data = {
         labels: [`废件: 0 - ` + gradeLevel[0],

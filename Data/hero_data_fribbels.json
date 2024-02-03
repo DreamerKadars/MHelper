@@ -27134,5 +27134,492 @@
         "efr": 0.18
       }
     }
+  },
+  "Byblis": {
+    "code": "c1154",
+    "_id": "Byblis",
+    "name": "Byblis",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "ice",
+    "role": "ranger",
+    "zodiac": "fish",
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "B": 0.09,
+        "A": 0.135,
+        "S": 0.18,
+        "SS": 0.225,
+        "SSS": 0.27
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1154_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c1154_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.8,
+        "pow": 1.3,
+        "targets": 3,
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 3,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 16999,
+        "atk": 797,
+        "hp": 4536,
+        "spd": 120,
+        "def": 492,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 21659,
+        "atk": 993,
+        "hp": 6002,
+        "spd": 120,
+        "def": 611,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
+  "Eternal Wanderer Ludwig": {
+    "code": "c2069",
+    "_id": "eternal-wanderer-ludwig",
+    "name": "Eternal Wanderer Ludwig",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "dark",
+    "role": "mage",
+    "zodiac": "lion",
+    "self_devotion": {
+      "type": "cri",
+      "grades": {
+        "B": 0.056,
+        "A": 0.084,
+        "S": 0.112,
+        "SS": 0.14,
+        "SSS": 0.168
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2069_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c2069_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1.6,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "60% penetration",
+        "rate": 1,
+        "pow": 1,
+        "targets": 3,
+        "penetration": 0.6,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 13169,
+        "atk": 1079,
+        "hp": 3385,
+        "spd": 112,
+        "def": 520,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 16722,
+        "atk": 1412,
+        "hp": 4248,
+        "spd": 112,
+        "def": 645,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
+  "Ezra": {
+    "code": "c3157",
+    "_id": "Ezra",
+    "name": "Ezra",
+    "moonlight": false,
+    "rarity": 5,
+    "attribute": "wind",
+    "role": "assassin",
+    "zodiac": "maiden",
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "D": 0.045,
+        "C": 0.068,
+        "B": 0.09,
+        "A": 0.112,
+        "S": 0.135,
+        "SS": 0.158,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3157_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3157_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 3,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 12898,
+        "atk": 738,
+        "hp": 3939,
+        "spd": 122,
+        "def": 373,
+        "chc": 0.22999999999999998,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 16285,
+        "atk": 921,
+        "hp": 4945,
+        "spd": 122,
+        "def": 462,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.18,
+        "efr": 0
+      }
+    }
+  },
+  "Claudia": {
+    "code": "c3156",
+    "_id": "Claudia",
+    "name": "Claudia",
+    "moonlight": true,
+    "rarity": 3,
+    "attribute": "fire",
+    "role": "knight",
+    "zodiac": "ram",
+    "self_devotion": {
+      "type": "max_hp",
+      "grades": {
+        "D": 180,
+        "C": 270,
+        "B": 360,
+        "A": 450,
+        "S": 540,
+        "SS": 630,
+        "SSS": 720
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3156_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3156_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1,
+        "pow": 1.3,
+        "targets": 1,
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "rate": 0,
+        "pow": 0,
+        "options": [
+          {
+            "name": "S3 heal",
+            "rate": 0,
+            "pow": 0,
+            "selfHpScaling": 0.25
+          }
+        ]
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 11779,
+        "atk": 564,
+        "hp": 4709,
+        "spd": 105,
+        "def": 480,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.06,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 15140,
+        "atk": 703,
+        "hp": 5914,
+        "spd": 105,
+        "def": 596,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0.18,
+        "efr": 0
+      }
+    }
+  },
+  "Amiki": {
+    "code": "c3158",
+    "_id": "Amiki",
+    "name": "Amiki",
+    "moonlight": false,
+    "rarity": 3,
+    "attribute": "ice",
+    "role": "warrior",
+    "zodiac": "scorpion",
+    "self_devotion": {
+      "type": "att",
+      "grades": {
+        "D": 36,
+        "C": 54,
+        "B": 72,
+        "A": 90,
+        "S": 108,
+        "SS": 126,
+        "SSS": 144
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3158_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c3158_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.6,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "70% penetration",
+        "rate": 1.1,
+        "pow": 0.95,
+        "targets": 1,
+        "penetration": 0.7,
+        "options": []
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 12002,
+        "atk": 779,
+        "hp": 4570,
+        "spd": 98,
+        "def": 461,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 15162,
+        "atk": 1019,
+        "hp": 5738,
+        "spd": 98,
+        "def": 571,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0
+      }
+    }
+  },
+  "Silvertide Christy": {
+    "code": "c4123",
+    "_id": "silvertide-christy",
+    "name": "Silvertide Christy",
+    "moonlight": false,
+    "rarity": 3,
+    "attribute": "wind",
+    "role": "knight",
+    "zodiac": "goat",
+    "self_devotion": {
+      "type": "res",
+      "grades": {
+        "D": 0.045,
+        "C": 0.068,
+        "B": 0.09,
+        "A": 0.112,
+        "S": 0.135,
+        "SS": 0.158,
+        "SSS": 0.18
+      }
+    },
+    "assets": {
+      "icon": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c4123_s.png",
+      "image": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/question_circle.png",
+      "thumbnail": "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/main/data/cachedimages/c4123_l.png"
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 1.1,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "rate": 0,
+        "pow": 0,
+        "options": [
+          {
+            "name": "S3 heal",
+            "rate": 0,
+            "pow": 0,
+            "selfHpScaling": 0.12
+          }
+        ]
+      }
+    },
+    "calculatedStatus": {
+      "lv50FiveStarFullyAwakened": {
+        "cp": 12320,
+        "atk": 534,
+        "hp": 4542,
+        "spd": 90,
+        "def": 603,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0.06,
+        "bonusMaxAtkPercent": 0,
+        "bonusMaxDefPercent": 0,
+        "bonusMaxHpPercent": 0,
+        "overrideAtk": 0,
+        "overrideHp": 0,
+        "overrideDef": 0,
+        "overrideAdditionalCr": 0,
+        "overrideAdditionalCd": 0,
+        "overrideAdditionalSpd": 5,
+        "overrideAdditionalEff": 0.35,
+        "overrideAdditionalRes": 0
+      },
+      "lv60SixStarFullyAwakened": {
+        "cp": 15835,
+        "atk": 667,
+        "hp": 5784,
+        "spd": 90,
+        "def": 749,
+        "chc": 0.15,
+        "chd": 1.5,
+        "dac": 0.03,
+        "eff": 0,
+        "efr": 0.18,
+        "bonusMaxAtkPercent": 0,
+        "bonusMaxDefPercent": 0,
+        "bonusMaxHpPercent": 0,
+        "overrideAtk": 0,
+        "overrideHp": 0,
+        "overrideDef": 0,
+        "overrideAdditionalCr": 0,
+        "overrideAdditionalCd": 0,
+        "overrideAdditionalSpd": 5,
+        "overrideAdditionalEff": 0.35,
+        "overrideAdditionalRes": 0
+      }
+    }
   }
 }

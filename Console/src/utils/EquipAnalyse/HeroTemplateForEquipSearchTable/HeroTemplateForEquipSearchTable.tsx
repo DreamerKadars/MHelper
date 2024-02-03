@@ -15,6 +15,7 @@ interface HeroTemplateForEquipSearchTableProps {
     nameFilter?: string;
     transform?: boolean;
     setFilter?: string;
+    HeroTemplateList: HeroTemplate[];
 }
 
 interface HeroTemplateNeed { 
@@ -50,10 +51,6 @@ interface HeroTemplateForEquipSearchTableUnit {
 
 // props.equip.MainValue
 export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearchTableProps) => {
-    const [{ data, loading, error }, refetch] = LoadHeroJSON()
-    const [heroTemplateList, setHeroTemplateList] = useState<HeroTemplate[]>([])
-    const [{ }, funcHeroTemplateList] = HeroTemplateList(false)
-    const [fresh, setFresh] = useState(false)
     const [heroJson,] = LoadHeroJSON()
     const [ListHeroDetailResult] = ListHeroDetail()
     let HeroDetailMap = new Map<string, HeroDetailBackEnd>()
@@ -65,30 +62,25 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
 
     const HeroListMap = ConvertHeroListResultToMap(HeroListResult)
 
-    useEffect(() => {
-        funcHeroTemplateList().then((resp) => {
-            setHeroTemplateList(resp.data.Data)
-        }).catch((error) => { HandlerAxiosErrPrefix("读取角色模板", error) })
-    }, [fresh])
     if (props.equip === undefined) { 
         return <></>
     }
 
     let res = CalculateHeroTemplateByEquip({
-        templateList: heroTemplateList,
+        templateList: props.HeroTemplateList,
         HeroDetailMap: HeroDetailMap,
         equip: props.equip,
         transform: props.transform,
     })
 
-    if (res?.length != heroTemplateList.length) { 
+    if (res?.length != props.HeroTemplateList.length) { 
         return <></>
     }
 
     let dataTable: HeroTemplateForEquipSearchTableUnit[] = []
-    for (let i = 0; i < heroTemplateList.length; i++){
+    for (let i = 0; i < props.HeroTemplateList.length; i++){
         dataTable.push({
-            template: heroTemplateList[i],
+            template: props.HeroTemplateList[i],
             res: res[i],
         })
     }
@@ -182,7 +174,7 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
         {
             title: '分数需求',
             render(col, item: HeroTemplateForEquipSearchTableUnit, index) {
-                return <HeroTemplateNeedShow template={item.template} result={item.res} />
+                return <HeroTemplateNeedShow template={item.template} key={col + "-" + index} result={item.res} />
             },
         },
         {
@@ -201,7 +193,7 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
                         allSet.push(set)
                     }
                 })
-                return <Space key={index} direction='vertical'><Image.PreviewGroup infinite>{allSet.map((setTemp, index) => {
+                return <Space key={col + "-" + index} direction='vertical'><Image.PreviewGroup infinite>{allSet.map((setTemp, index) => {
                     return <Space><Image width={30} style={{ display: "inline-block" }} key={index} src={GenerateSetImageUrl(setTemp)}></Image></Space>
                 })}</Image.PreviewGroup></Space>
             },
@@ -209,7 +201,7 @@ export const HeroTemplateForEquipSearchTable = (props: HeroTemplateForEquipSearc
         {
             title: '利用率',
             render(col, item: HeroTemplateForEquipSearchTableUnit, index) {
-                return <div>
+                return <div key={col + "-" + index}>
                     {item.res.grade}
                     {(item.res.transformHelp !== undefined && item.res.transformHelp !== "") ? "(" + item.res.transformHelp + ")" : ""}
                     {(item.res.unnecessaryGrade !== undefined && item.res.unnecessaryGrade > 8) ? <Popover content={<div>浪费分数:{item.res.unnecessaryGrade}</div> }><IconExclamationCircle style={{ color: "red" }} /> </Popover> : ""}

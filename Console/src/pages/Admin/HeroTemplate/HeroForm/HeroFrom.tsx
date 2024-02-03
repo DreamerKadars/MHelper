@@ -25,13 +25,13 @@ import { GenerateSetImageUrl, SkipToUrl } from '../../../../utils/helper';
 import { PathHeroTemplateManage } from '../../../../const';
 import { HeroSelect } from '../../../../utils/HeroSelect/HeroSelect';
 import HeroImageShow from '../../../../utils/HeroImageShow/HeroImageShow';
-import { CreateHeroPanelWithUP, HeroDetail, HeroDetailBackEnd, HeroFribbelsResult, HeroPanel, Range, HeroTemplate, FKeySpeed, FKeyHP, CalculatedStatus, FKeyCC, FKeyHR, FKeyRR, FKeyCD, ExtraPanel, FKeyDef, FKeyAtk, ArtifactTemplateInfo, SelfDevotion, GetSelfDevotionGradeValueByLevel, GetSelfDevotionTypeChinese, ArtifactInfo, ArtifactListResult, DefaultArtifactInfo, ConvertSelfDevotionTypeToCommon, GetEETypeValue, ClassSuffixFinal } from '../../../../utils/const';
+import { CreateHeroPanelWithUP, HeroDetail, HeroDetailBackEnd, HeroFribbelsResult, HeroPanel, Range, HeroTemplate, FKeySpeed, FKeyHP, CalculatedStatus, FKeyCC, FKeyHR, FKeyRR, FKeyCD, ExtraPanel, FKeyDef, FKeyAtk, ArtifactTemplateInfo, SelfDevotion, GetSelfDevotionGradeValueByLevel, GetSelfDevotionTypeChinese, ArtifactInfo, ArtifactListResult, DefaultArtifactInfo, ConvertSelfDevotionTypeToCommon, GetEETypeValue, ClassSuffixFinal, CalculateOneEquipConfInfoByTemplate } from '../../../../utils/const';
 import { EquipArtifactMultiSelect, EquipSetMultiSelect } from '../../../../utils/EquipSetSelect/EquipSetSelect';
 import { HeroTemplateCreate, HeroTemplateGet, HeroTemplateUpdate } from '../../../../utils/api/heroTemplate';
 import { CalClassSetGrade, CalClassSetValue, CalGradeByClass, CalLeftMainValueByClass, CalMainGradeByClass, CalMainValueByClass, CalValueByClass, ClassAtk, ClassCC, ClassCD, ClassChineseMap, ClassDefend, ClassHp, ClassHr, ClassMainMap, ClassRr, ClassSetMap, ClassSpeed, ClassToFKeyMap, EquipLocNecklace, EquipLocRing, EquipLocShoes, MainNecklaceRange, MainRingRange, MainShoesRange, SetMaxHp, SetSpeed } from '../../../../utils/const';
 import { IconExclamationCircle, IconQuestionCircle } from '@arco-design/web-react/icon';
 import { RangeShow } from '../../../../utils/StatisticShow/StatisticShow';
-import { CalculateClassGradeNeedOne, CalculateClassGradeNeedOneRes, CalculateOneEquipConfInfoByTemplate, ClassGradeNeedShowProps } from '../../../../utils/HeroTemplateHelper/HeroTemplateHelper';
+import { ClassGradeNeedShowProps } from '../../../../utils/HeroTemplateHelper/HeroTemplateHelper';
 // import { PathHeroTemplateManage } from '../../..';
 const FormItem = Form.Item;
 
@@ -500,6 +500,7 @@ interface EquipmentMainSelectProps {
     onChange: (info: any) => any;
     disabled?: boolean;
     single?: boolean;
+    selectRange?: string[]; // 可选的参数，自定义选择范围
 }
 
 export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
@@ -514,6 +515,9 @@ export function EquipmentMainSelect(props: EquipmentMainSelectProps) {
         case EquipLocShoes:
             selectRange = MainShoesRange
             break;
+    }
+    if (props.selectRange !== undefined) { 
+        selectRange = props.selectRange
     }
 
     return <div>
@@ -590,23 +594,6 @@ interface OneEquipConfGradeShowProps {
     artifactInfo?: ArtifactTemplateInfo[]
     selfDevotion?: string
     allArtifactInfoList: ArtifactListResult;
-}
-export function GetArtifactValueByLevel(artifactCode: string, level: number, allArtifactInfoList: ArtifactListResult) { 
-    if (allArtifactInfoList === undefined) { 
-        return { ATK:0, HP:0 }
-    }
-
-    let tempArtifactInfo = DefaultArtifactInfo()
-    allArtifactInfoList.artifactList.map((artifactTemp: ArtifactInfo, artifactIndex: number) => {
-        if (artifactTemp.artifactCode === artifactCode) {
-            tempArtifactInfo = artifactTemp
-        }
-    })
-
-    return {
-        HP: Number(((tempArtifactInfo.abilityDefense * (30 - level) + tempArtifactInfo.enhanceAbilityDefense * level) / 30).toFixed(2)),
-        ATK: Number(((tempArtifactInfo.abilityAttack * (30 - level) + tempArtifactInfo.enhanceAbilityAttack * level) / 30).toFixed(2)), 
-    }
 }
 
 function OneEquipConfGradeShow(props: OneEquipConfGradeShowProps) { 

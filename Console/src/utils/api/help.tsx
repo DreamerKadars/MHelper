@@ -24,6 +24,13 @@ export function LoadArtifactJSON() {
     });
 }
 
+export function LoadSubValueDistributionJSON() {
+    return useAxios({
+        url: E7DataDomain + '/subValueDistribution.json',
+        method: 'GET'
+    });
+}
+
 export interface LoginReq {
     username: string
     password: string

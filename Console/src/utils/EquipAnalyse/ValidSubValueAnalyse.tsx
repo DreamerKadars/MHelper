@@ -31,13 +31,10 @@ const Content = Layout.Content;
 
 interface ValidSubValueAnalyseProps {
     equip?: Equipment;
+    HeroTemplateList: HeroTemplate[];
 }
 
 export const ValidSubValueAnalyse = (props: ValidSubValueAnalyseProps) => {
-    const [{ data, loading, error }, refetch] = LoadHeroJSON()
-    const [heroTemplateList, setHeroTemplateList] = useState<HeroTemplate[]>([])
-    const [{ }, funcHeroTemplateList] = HeroTemplateList(false)
-    const [fresh, setFresh] = useState(false)
     const [heroJson,] = LoadHeroJSON()
     const [ListHeroDetailResult] = ListHeroDetail()
     let HeroDetailMap = new Map<string, HeroDetailBackEnd>()
@@ -49,16 +46,11 @@ export const ValidSubValueAnalyse = (props: ValidSubValueAnalyseProps) => {
 
     const HeroListMap = ConvertHeroListResultToMap(HeroListResult)
 
-    useEffect(() => {
-        funcHeroTemplateList().then((resp) => {
-            setHeroTemplateList(resp.data.Data)
-        }).catch((error) => { HandlerAxiosErrPrefix("读取角色模板", error) })
-    }, [fresh])
     if (props.equip === undefined) {
         return <></>
     }
     let res = CalculateEquipValidSubNumByHeroTemplate({
-        templateList: heroTemplateList,
+        templateList: props.HeroTemplateList,
         HeroDetailMap: HeroDetailMap,
         equip: props.equip,
         setFilter: props.equip.Set,
